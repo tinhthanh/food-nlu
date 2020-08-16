@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1597564951533,
+  "timestamp": 1597574507541,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -2301,7 +2301,7 @@
     "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
     "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
     "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
-    "/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
+    "/assets/icons/icon-72x72.png": "7798b8e0eb61d7375c245af78bbf5c916932bf13",
     "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/assets/images/foody-hallyu-korean-fast-food-duong-3-thang-2-874-635989864458969585.jpg": "2deefb444c6e9405e537090e44e53c265cd7a1e8",
     "/assets/outline/.gitkeep": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
@@ -3452,7 +3452,7 @@
     "/index.html": "5e2b1de477078ff3c4c8788e6e1855c565113a90",
     "/main-es2015.5b43a7573c41c05be56c.js": "4a963e61792d61b75aa3402a56cd5aa092b851a2",
     "/main-es5.5b43a7573c41c05be56c.js": "43be8ab0a862e7a9240ef0478611d55ce7e12ead",
-    "/manifest.webmanifest": "9a088b7c4339228d1082e666ce105dc889bc180c",
+    "/manifest.webmanifest": "9fc8d269a1a98bd71c6ca02c3f064ddf6cd4b130",
     "/polyfills-core-js-es2015.79ebeed52926c7a46d5b.js": "f007c630c357ee7eeec2289a6cfc013dbcbe6fe9",
     "/polyfills-core-js-es5.79ebeed52926c7a46d5b.js": "8531ee642b05d9e12e859babeaec61c2b1c1e57a",
     "/polyfills-css-shim-es2015.1a5fa67c8e0d5b8fcf00.js": "6343427d16ba2f6bb2f94a06e31f7eecc55af384",
