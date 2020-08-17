@@ -6,10 +6,10 @@ import { IonicModule } from '@ionic/angular';
 
 import { ExploreContainerComponent } from './explore-container.component';
 import {BannerComponent} from './share/banner/banner.component';
-
+import { GoogleFoodFormComponent} from  './share/google-food-form/google-food-form.component'
 @NgModule({
   imports: [ CommonModule, FormsModule, IonicModule],
-  declarations: [ExploreContainerComponent, BannerComponent],
-  exports: [ExploreContainerComponent, BannerComponent]
+  declarations: [ExploreContainerComponent, BannerComponent, GoogleFoodFormComponent],
+  exports: [ExploreContainerComponent, BannerComponent, GoogleFoodFormComponent]
 })
 export class ExploreContainerComponentModule {}
