@@ -7,13 +7,40 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
+   <ion-fab vertical="top" slot="fixed" horizontal="end" >
+      <ion-fab-button (click)="openCart()" #cart >
+         <div class="cart-length" > {{ catItemCount | async }} </div>
+         <ion-icon name="cart" class="cart-icon" ></ion-icon>
+      </ion-fab-button>
+   </ion-fab>
+
   <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 3</ion-title>
     </ion-toolbar>
   </ion-header>
-   <div style="width: 100%; ; height: 100%; border: 1px solid red; display: flex; flex-direction: column;">
-    <app-google-food-form></app-google-food-form>
+   <ion-list>
+    <ion-card *ngFor="let p of products" >
+      <ion-card-header>
+          <ion-card-title>{{p.name}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+         <ion-row class="ion-align-items-center" >
+            <ion-col size="8" >
+               <ion-label color="secondary" >
+                  <b>
+                     {{ p.price | currency: 'USD'}}
+                  </b>
+               </ion-label>
+            </ion-col> 
+            <ion-col size="4" class="ion-text-right" >
+               <ion-button fill="clear" (click)="addToCart(p)" >
+                   <ion-icon name="add"></ion-icon>
+               </ion-button>
+            </ion-col>
+         </ion-row>
 
-   </div>
+      </ion-card-content>
+  </ion-card>
+   </ion-list>
 </ion-content>

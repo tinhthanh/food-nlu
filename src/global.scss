@@ -27,3 +27,10 @@
 
 @import "~ng-zorro-antd/ng-zorro-antd.min.css";
 
+
+
+.cart-modal {
+    --height: 50%;
+    --border-radius: 10px;
+    padding:  25px;
+}
