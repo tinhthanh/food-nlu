@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-tabs',
@@ -6,7 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
-
-  constructor() {}
+  cartItemCount: BehaviorSubject<number>;
+  constructor(private cartService: CartService) {
+    this.cartItemCount = this.cartService.getCartItemCount();
+  }
 
 }

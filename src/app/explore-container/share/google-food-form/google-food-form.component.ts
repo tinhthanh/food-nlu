@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { Product, CartService } from 'src/app/services/cart.service';
 
 @Component({
   selector: 'app-google-food-form',
@@ -9,9 +10,29 @@ import { AlertController } from '@ionic/angular';
 export class GoogleFoodFormComponent implements OnInit {
    firstName;
    lastName;
-  constructor(public alertController: AlertController) { }
 
-  ngOnInit() {}
+   cart: Product[] = [];
+  constructor(private cartService: CartService,public alertController: AlertController) { }
+
+  ngOnInit() {
+    this.cart = this.cartService.getCart();
+  }
+  
+  decreaseCartItem(product) {
+    this.cartService.decreaseProduct(product);
+  }
+ 
+  increaseCartItem(product) {
+    this.cartService.addProduct(product);
+  }
+ 
+  removeCartItem(product) {
+    this.cartService.removeProduct(product);
+  }
+ 
+  getTotal() {
+    return this.cart.reduce((i, j) => i + j.price * j.amount, 0);
+  }
 
 
    processForm(event) {

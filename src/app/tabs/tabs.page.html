@@ -18,7 +18,7 @@
       <ion-tab-button tab="cart">
       <ion-icon name="cart-outline"></ion-icon>
       <ion-label>Cart</ion-label>
-      <ion-badge color="danger">0</ion-badge>
+      <ion-badge color="danger">{{ cartItemCount | async }}</ion-badge>
     </ion-tab-button>
 
   </ion-tab-bar>

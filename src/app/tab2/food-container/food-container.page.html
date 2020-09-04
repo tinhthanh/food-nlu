@@ -1,43 +1,21 @@
+
 <ion-grid>
     <ion-row>
         <ion-col size="12">
             <nz-tabset>
                 <nz-tab *ngFor="let tab of tabs" [nzTitle]="titleTemplate">
                     <ng-template #titleTemplate> <i nz-icon [nzType]="tab.icon"></i>{{ tab.name }} </ng-template>
-                     <div   style="height: calc(100vh - 194px); overflow-x: auto;">
-
-                         <!-- Multi-line sliding item with icon options on both sides -->
-                         <ion-item-sliding *ngFor="let i of  [0,1,2,3,4,5,6,7]" id="item100">
-                             <ion-item href="#">
-                                 <ion-thumbnail slot="start">
-                                     <img src="assets/images/foody-hallyu-korean-fast-food-duong-3-thang-2-874-635989864458969585.jpg">
-                                 </ion-thumbnail>
-                                 <ion-label>
-                                     <h2>HubStruck Notifications</h2>
-                                     <p>A new message in your network</p>
-                                     <p>Oceanic Next has joined your network</p>
-                                 </ion-label>
-                                 <ion-note slot="end">
-                                     10:45 AM
-                                 </ion-note>
-                             </ion-item>
-
-                             <ion-item-options side="start">
-                                 <ion-item-option>
-                                     <ion-icon slot="icon-only" name="heart"></ion-icon>
-                                 </ion-item-option>
-                             </ion-item-options>
-
-                             <ion-item-options side="end">
-                                 <ion-item-option color="danger">
-                                     <ion-icon slot="icon-only" name="trash"></ion-icon>
-                                 </ion-item-option>
-                                 <ion-item-option>
-                                     <ion-icon slot="icon-only" name="star"></ion-icon>
-                                 </ion-item-option>
-                             </ion-item-options>
-                         </ion-item-sliding>
-
+                     <div   style="flex: 1; overflow-x: auto;">
+                        <ion-item *ngFor="let p of products"  >
+                            <ion-thumbnail slot="start">
+                              <img src="{{ p.img }}">
+                            </ion-thumbnail>
+                            <ion-label>
+                              <h2>{{ p.name }}</h2>
+                              <p>{{ p.price | currency:'VND' }} {{ p.amount === 0 ? '' : ( 'x ' +  p.amount + ' = ' + (p.price*p.amount | currency:'VND')  ) }}   </p>
+                            </ion-label>
+                                 <ion-icon (click)="addToCart(p)" name="add-circle-outline" slot="end"></ion-icon>
+                          </ion-item>
                      </div>
                 </nz-tab>
             </nz-tabset>

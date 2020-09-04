@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { CartModalPageRoutingModule } from './cart-modal-routing.module';
 
 import { CartModalPage } from './cart-modal.page';
 
@@ -12,8 +11,7 @@ import { CartModalPage } from './cart-modal.page';
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
-    CartModalPageRoutingModule
+    IonicModule
   ],
   declarations: [CartModalPage]
 })
