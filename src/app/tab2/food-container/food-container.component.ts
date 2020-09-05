@@ -37,6 +37,9 @@ export class FoodContainerComponent implements OnInit {
   addToCart(product) {
     this.cartService.addProduct(product);
   }
+  removeCartItem(product) {
+    this.cartService.removeProduct(product);
+  }
 
 }
 

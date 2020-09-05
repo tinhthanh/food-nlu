@@ -2,3 +2,9 @@
 ion-grid {
   height: 100%;
 }
+
+.item-add-visired:hover{
+  /* Your Style On Hover Converted to Tap*/
+  background:var(--ion-color-secondary-tint);
+  border-radius: 50%;
+}

@@ -10,11 +10,12 @@
                             <ion-thumbnail slot="start">
                               <img src="{{ p.img }}">
                             </ion-thumbnail>
-                            <ion-label>
+                            <ion-label [color]="p.amount === 0 ? '' : 'primary'">
                               <h2>{{ p.name }}</h2>
-                              <p>{{ p.price | currency:'VND' }} {{ p.amount === 0 ? '' : ( 'x ' +  p.amount + ' = ' + (p.price*p.amount | currency:'VND')  ) }}   </p>
+                              <p><ion-icon (click)="removeCartItem(p)" *ngIf="p.amount !== 0" color="danger" name="close-circle"></ion-icon>
+                                {{ p.price | currency:'VND' }} {{ p.amount === 0 ? '' : ( 'x ' +  p.amount + ' = ' + (p.price*p.amount | currency:'VND')  ) }}   </p>
                             </ion-label>
-                                 <ion-icon (click)="addToCart(p)" name="add-circle-outline" slot="end"></ion-icon>
+                                 <ion-icon class="item-add-visired" (click)="addToCart(p)" name="add-circle-outline" slot="end"></ion-icon>
                           </ion-item>
                      </div>
                 </nz-tab>

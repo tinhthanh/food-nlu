@@ -16,6 +16,7 @@ export class GoogleFoodFormComponent implements OnInit {
 
   ngOnInit() {
     this.cart = this.cartService.getCart();
+    this.cartService.itemCollection$.subscribe(cart => this.cart = cart);
   }
   
   decreaseCartItem(product) {
