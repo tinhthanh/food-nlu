@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from 'src/app/services/cart.service';
+import {CartService, Product} from 'src/app/services/cart.service';
+import {AlertController, IonicSafeString, ModalController} from '@ionic/angular';
+import {ModalViewItemComponent} from './modal-view-item/modal-view-item.component';
 
 @Component({
   selector: 'app-food-container',
@@ -27,7 +29,7 @@ export class FoodContainerComponent implements OnInit {
     }
   ];
   products = [];
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService, public alertController: AlertController, public modalController: ModalController) {
 
   }
 
@@ -40,6 +42,52 @@ export class FoodContainerComponent implements OnInit {
   removeCartItem(product) {
     this.cartService.removeProduct(product);
   }
+  count() {
+      console.log('hihi');
+  }
+
+    async presentModal(p: Product) {
+        const modal = await this.modalController.create({
+            component: ModalViewItemComponent,
+            cssClass: 'food-modal-custom-class',
+            componentProps: {
+                product: p
+            }
+        });
+        return await modal.present();
+    }
+    async presentAlertConfirm() {
+        const alert = await this.alertController.create({
+            mode: 'ios',
+            cssClass: 'food-modal-custom-class',
+            header: 'Confirm!',
+            message:  new IonicSafeString('<ion-button (click)="count()" >{{tabs | json}}</ion-button>'),
+            inputs: [
+                {
+                    name: 'test',
+                    placeholder: 'Test name',
+                    attributes: { maxlength: 6, id: 'test'}
+                }
+            ],
+            buttons: [
+                {
+                    text: 'Cancel',
+                    role: 'cancel',
+                    cssClass: 'secondary',
+                    handler: (blah) => {
+                        console.log('Confirm Cancel: blah');
+                    }
+                }, {
+                    text: 'Okay',
+                    handler: () => {
+                        console.log('Confirm Okay');
+                    }
+                }
+            ]
+        });
+
+        await alert.present();
+    }
 
 }
 

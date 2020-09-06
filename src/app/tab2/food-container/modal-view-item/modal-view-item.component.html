@@ -1,0 +1,49 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-title>Số lượng</ion-title>
+    <ion-buttons fill="outline" slot="end">
+      <ion-button (click)="dismiss()">
+        Đóng
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+  <ion-list>
+    <ion-item  >
+      <ion-thumbnail slot="start">
+        <img src="{{ product.img }}">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ product.name }}</h2>
+        <p>{{ product.price | currency:'VND' }} x  {{amount}}   =  {{product.price*amount | currency:'VND' }}</p>
+        <ion-row >
+<!--          <ion-button color="medium" fill="clear" (click)="decreaseCartItem(product)">-->
+<!--            <ion-icon name="remove-circle" slot="icon-only"></ion-icon>-->
+<!--          </ion-button>-->
+          <div class="increment-product">
+            <ion-button (click)="decreaseCartItem(product)" class="text-custom-size" color="light ">-</ion-button>
+            <ion-button  class="text-custom-size" color="medium" fill="clear" >
+              {{ amount }}
+            </ion-button>
+            <ion-button  (click)="increaseCartItem(product)" class="text-custom-size" color="light">+</ion-button>
+          </div>
+
+
+
+<!--          <ion-button color="medium" fill="clear" (click)="increaseCartItem(product)">-->
+<!--            <ion-icon name="add-circle" slot="icon-only"></ion-icon>-->
+<!--          </ion-button>-->
+
+        </ion-row>
+      </ion-label>
+
+      <ion-icon (click)="removeCartItem(product)" name="close-circle" slot="end"></ion-icon>
+    </ion-item>
+  </ion-list>
+
+
+<div class="ion-padding">
+  <ion-button (click)="dismiss()" expand="block" type="submit" class="ion-no-margin text-custom-size">Thêm vào giỏ hàng</ion-button>
+</div>

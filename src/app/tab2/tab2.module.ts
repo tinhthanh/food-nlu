@@ -6,6 +6,7 @@ import { Tab2Page } from './tab2.page';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 import {FoodContainerPageModule} from './food-container/food-container.module';
+import {ModalViewItemComponent} from './food-container/modal-view-item/modal-view-item.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import {FoodContainerPageModule} from './food-container/food-container.module';
     FoodContainerPageModule,
     Tab2PageRoutingModule
   ],
-  declarations: [Tab2Page]
+  declarations: [Tab2Page, ModalViewItemComponent],
+  exports: [ModalViewItemComponent]
 })
 export class Tab2PageModule {}
