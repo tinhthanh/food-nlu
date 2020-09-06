@@ -18,19 +18,19 @@ export class GoogleFoodFormComponent implements OnInit {
     this.cart = this.cartService.getCart();
     this.cartService.itemCollection$.subscribe(cart => this.cart = cart);
   }
-  
+
   decreaseCartItem(product) {
     this.cartService.decreaseProduct(product);
   }
- 
+
   increaseCartItem(product) {
     this.cartService.addProduct(product);
   }
- 
+
   removeCartItem(product) {
     this.cartService.removeProduct(product);
   }
- 
+
   getTotal() {
     return this.cart.reduce((i, j) => i + j.price * j.amount, 0);
   }
@@ -38,7 +38,7 @@ export class GoogleFoodFormComponent implements OnInit {
 
    processForm(event) {
     event.preventDefault();
-   this.alertController.create({
+    this.alertController.create({
       header: 'Account Created',
       message: `Created account for: <b>${this.firstName} ${this.lastName}</b>`,
       buttons: [{

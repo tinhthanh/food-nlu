@@ -42,26 +42,27 @@ export class FoodContainerComponent implements OnInit {
   removeCartItem(product) {
     this.cartService.removeProduct(product);
   }
-  count() {
-      console.log('hihi');
-  }
 
     async presentModal(p: Product) {
         const modal = await this.modalController.create({
             component: ModalViewItemComponent,
             cssClass: 'food-modal-custom-class',
             componentProps: {
-                product: p
+                product: {...p}
             }
         });
-        return await modal.present();
+        await modal.present();
+        const { data } = await modal.onWillDismiss();
+        if ( data && typeof data === 'object'){
+             p.amount =  data.product.amount;
+       }
     }
     async presentAlertConfirm() {
         const alert = await this.alertController.create({
             mode: 'ios',
             cssClass: 'food-modal-custom-class',
             header: 'Confirm!',
-            message:  new IonicSafeString('<ion-button (click)="count()" >{{tabs | json}}</ion-button>'),
+            message:  new IonicSafeString('<ion-button>{{tabs | json}}</ion-button>'),
             inputs: [
                 {
                     name: 'test',

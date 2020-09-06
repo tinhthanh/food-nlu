@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Số lượng</ion-title>
     <ion-buttons fill="outline" slot="end">
-      <ion-button (click)="dismiss()">
+      <ion-button (click)="close()">
         Đóng
       </ion-button>
     </ion-buttons>
@@ -17,17 +17,17 @@
       </ion-thumbnail>
       <ion-label>
         <h2>{{ product.name }}</h2>
-        <p>{{ product.price | currency:'VND' }} x  {{amount}}   =  {{product.price*amount | currency:'VND' }}</p>
+        <p>{{ product.price | currency:'VND' }} x  {{product.amount}}   =  {{product.price*product.amount | currency:'VND' }}</p>
         <ion-row >
 <!--          <ion-button color="medium" fill="clear" (click)="decreaseCartItem(product)">-->
 <!--            <ion-icon name="remove-circle" slot="icon-only"></ion-icon>-->
 <!--          </ion-button>-->
           <div class="increment-product">
-            <ion-button (click)="decreaseCartItem(product)" class="text-custom-size" color="light ">-</ion-button>
+            <ion-button disabled="{{product.amount === 1}}" (click)="decreaseCartItem()" class="text-custom-size" color="light ">-</ion-button>
             <ion-button  class="text-custom-size" color="medium" fill="clear" >
-              {{ amount }}
+              {{ product.amount }}
             </ion-button>
-            <ion-button  (click)="increaseCartItem(product)" class="text-custom-size" color="light">+</ion-button>
+            <ion-button  (click)="increaseCartItem()" class="text-custom-size" color="light">+</ion-button>
           </div>
 
 
@@ -39,7 +39,7 @@
         </ion-row>
       </ion-label>
 
-      <ion-icon (click)="removeCartItem(product)" name="close-circle" slot="end"></ion-icon>
+      <ion-icon (click)="removeCartItem()" name="close-circle" slot="end"></ion-icon>
     </ion-item>
   </ion-list>
 

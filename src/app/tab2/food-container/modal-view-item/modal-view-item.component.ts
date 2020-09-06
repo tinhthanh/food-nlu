@@ -10,20 +10,29 @@ import {Product} from '../../../services/cart.service';
 export class ModalViewItemComponent implements OnInit {
   @Input() product: Product;
   constructor(private modalCtrl: ModalController) { }
-  amount = 1;
-  ngOnInit() {}
-  dismiss() {
-    this.modalCtrl.dismiss();
+  ngOnInit() {
+    if ( this.product.amount === 0) {
+      this.product.amount = 1;
+     }
   }
-  decreaseCartItem(p) {
-    if ( this.amount > 0) {
-      this.amount--;
+  async  close() {
+    await this.modalCtrl.dismiss();
+  }
+  async  dismiss() {
+   await this.modalCtrl.dismiss({
+     product: this.product
+    });
+  }
+  decreaseCartItem() {
+    if ( this.product.amount > 1) {
+      this.product.amount--;
     }
   }
-  increaseCartItem(p) {
-   this.amount++;
+  increaseCartItem() {
+    this.product.amount++;
   }
-  removeCartItem(p) {
-    this.modalCtrl.dismiss();
+  async removeCartItem() {
+    this.product.amount = 0;
+    await this.dismiss();
   }
 }
