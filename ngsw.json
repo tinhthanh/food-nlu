@@ -1,15 +1,15 @@
 {
   "configVersion": 1,
-  "timestamp": 1599409723736,
+  "timestamp": 1599984990325,
   "index": "/index.html",
   "assetGroups": [
     {
-      "name": "app",
+      "name": "8gian",
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/10-es2015.920f296af00c20ed6a0f.js",
-        "/10-es5.920f296af00c20ed6a0f.js",
+        "/10-es2015.71136f6f433f38bbeb2c.js",
+        "/10-es5.71136f6f433f38bbeb2c.js",
         "/11-es2015.fc6b6442c65080d4cba1.js",
         "/11-es5.fc6b6442c65080d4cba1.js",
         "/12-es2015.76f9c185c6200ef1d6df.js",
@@ -136,8 +136,8 @@
         "/polyfills-dom-es5.c316f52d5ba20cd53dec.js",
         "/polyfills-es2015.479c714c8555b532c330.js",
         "/polyfills-es5.6b1d0b04edf70d139d54.js",
-        "/runtime-es2015.e85089390a60ed42e6c3.js",
-        "/runtime-es5.e85089390a60ed42e6c3.js",
+        "/runtime-es2015.8dff7fd14bfc91419434.js",
+        "/runtime-es5.8dff7fd14bfc91419434.js",
         "/styles.7a4642186e49d6865edd.css"
       ],
       "patterns": []
@@ -1746,8 +1746,8 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/10-es2015.920f296af00c20ed6a0f.js": "4e6e08f674231c2a331bb8218bdf9180a8479480",
-    "/10-es5.920f296af00c20ed6a0f.js": "a64e7a31b8465ea0e2115ee23c1a88226485e24e",
+    "/10-es2015.71136f6f433f38bbeb2c.js": "449f8db11015bd187dd08de9386936236306f6bf",
+    "/10-es5.71136f6f433f38bbeb2c.js": "95d6b92d334879b1f1f8b4f837e39aca8992cec0",
     "/11-es2015.fc6b6442c65080d4cba1.js": "7d7b473da8678e5a8939401019876799118386d6",
     "/11-es5.fc6b6442c65080d4cba1.js": "8bde40931ec5f6de9d780157c22f7909bc34bb3c",
     "/12-es2015.76f9c185c6200ef1d6df.js": "c3ba2189fae0c42f173b84e96a59678a6f730a8a",
@@ -2307,7 +2307,7 @@
     "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
     "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
     "/assets/icons/icon-72x72.png": "7798b8e0eb61d7375c245af78bbf5c916932bf13",
-    "/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
+    "/assets/icons/icon-96x96.png": "7798b8e0eb61d7375c245af78bbf5c916932bf13",
     "/assets/images/foody-hallyu-korean-fast-food-duong-3-thang-2-874-635989864458969585.jpg": "2deefb444c6e9405e537090e44e53c265cd7a1e8",
     "/assets/outline/.gitkeep": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
     "/assets/outline/account-book.js": "f6e496aa659fde136105e24d498b378a3965c8c7",
@@ -3455,10 +3455,10 @@
     "/assets/twotone/warning.svg": "8c7a2d3e765a2e7dd58ac674870c6655cecb0068",
     "/common-es2015.57ec9db8b3e3ca5f95e3.js": "86b82fe87bb8fae7cd41a6c52a39b8b8188f731a",
     "/common-es5.57ec9db8b3e3ca5f95e3.js": "b3880906ff2497a4e162b584fd71b96f3b05385d",
-    "/index.html": "e6bdb4d65cbaeee3e635e5a08922dd49ed728492",
+    "/index.html": "e01e9b270cb8111c2f75c2bd14e5813589146db7",
     "/main-es2015.60a9d5020e9cb4cc7ec8.js": "3466b873cc916d6a92637c7d899ddcc922b3e76e",
     "/main-es5.60a9d5020e9cb4cc7ec8.js": "178f7c180f506e7715e27e53073e4bfd86ed303f",
-    "/manifest.webmanifest": "da2061dba175bf2d881980e8596ff5343e2dd7b6",
+    "/manifest.webmanifest": "c33cb760ee72f81c6c437c43cc50c4daeb273314",
     "/polyfills-core-js-es2015.79ebeed52926c7a46d5b.js": "f007c630c357ee7eeec2289a6cfc013dbcbe6fe9",
     "/polyfills-core-js-es5.79ebeed52926c7a46d5b.js": "8531ee642b05d9e12e859babeaec61c2b1c1e57a",
     "/polyfills-css-shim-es2015.1a5fa67c8e0d5b8fcf00.js": "6343427d16ba2f6bb2f94a06e31f7eecc55af384",
@@ -3467,8 +3467,8 @@
     "/polyfills-dom-es5.c316f52d5ba20cd53dec.js": "4a5f6b4ae69229915f2d21699cea3462a5b0dc0f",
     "/polyfills-es2015.479c714c8555b532c330.js": "8ea3172d9dfcf79a7dea59945f5c6db8864d21f6",
     "/polyfills-es5.6b1d0b04edf70d139d54.js": "33eea639b959a4374c26717549d97ea557ee81e4",
-    "/runtime-es2015.e85089390a60ed42e6c3.js": "3096eeb9fabb18083f5eb3f3e4ef8668f63c1679",
-    "/runtime-es5.e85089390a60ed42e6c3.js": "534bcf129f2e102a69bd91bb620185eef30ff671",
+    "/runtime-es2015.8dff7fd14bfc91419434.js": "0d4d082424d6c43298021028d5a95c12b9cbb437",
+    "/runtime-es5.8dff7fd14bfc91419434.js": "7907ce3151de6a25e0bea639daedd82ab7350db7",
     "/styles.7a4642186e49d6865edd.css": "4dacf15e23e0140d8fabd49c1bbdde5525d941fd"
   },
   "navigationUrls": [
