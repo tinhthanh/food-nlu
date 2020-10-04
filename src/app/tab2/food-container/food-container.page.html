@@ -6,16 +6,16 @@
                 <nz-tab *ngFor="let tab of tabs" [nzTitle]="titleTemplate">
                     <ng-template #titleTemplate> <i nz-icon [nzType]="tab.icon"></i>{{ tab.name }} </ng-template>
                      <div   style="flex: 1; overflow-x: auto;">
-                        <ion-item button *ngFor="let p of products"  >
+                        <ion-item  (click)="presentModal(p)"  button *ngFor="let p of products"  >
                             <ion-thumbnail slot="start">
                               <img src="{{ p.img }}">
                             </ion-thumbnail>
-                            <ion-label (click)="presentModal(p)" [color]="p.amount === 0 ? '' : 'primary'">
+                            <ion-label [color]="p.amount === 0 ? '' : 'primary'">
                               <h2>{{ p.name }}</h2>
-                              <p><ion-icon (click)="removeCartItem(p)" *ngIf="p.amount !== 0" color="danger" name="close-circle"></ion-icon>
+                              <p><ion-icon  *ngIf="p.amount !== 0" color="danger" name="close-circle"></ion-icon>
                                 {{ p.price | currency:'VND' }} {{ p.amount === 0 ? '' : ( 'x ' +  p.amount + ' = ' + (p.price*p.amount | currency:'VND')  ) }}   </p>
                             </ion-label>
-                                 <ion-icon  (click)="addToCart(p)" name="add-circle-outline" slot="end"></ion-icon>
+                                 <ion-icon  name="add-circle-outline" slot="end"></ion-icon>
                           </ion-item>
                      </div>
                 </nz-tab>

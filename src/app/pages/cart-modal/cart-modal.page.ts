@@ -16,16 +16,16 @@ export class CartModalPage implements OnInit {
     this.cart = this.cartService.getCart();
   }
  
-  decreaseCartItem(product) {
-    this.cartService.decreaseProduct(product);
+  decreaseCartItem(product: Product) {
+    this.cartService.decreaseProduct(product.id);
   }
  
   increaseCartItem(product) {
     this.cartService.addProduct(product);
   }
  
-  removeCartItem(product) {
-    this.cartService.removeProduct(product);
+  removeCartItem(productId: string) {
+    this.cartService.removeProduct(productId);
   }
  
   getTotal() {

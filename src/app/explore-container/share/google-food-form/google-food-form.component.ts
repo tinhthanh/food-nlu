@@ -19,16 +19,16 @@ export class GoogleFoodFormComponent implements OnInit {
     this.cartService.itemCollection$.subscribe(cart => this.cart = cart);
   }
 
-  decreaseCartItem(product) {
-    this.cartService.decreaseProduct(product);
+  decreaseCartItem(product: Product) {
+    this.cartService.decreaseProduct(product.id);
   }
 
   increaseCartItem(product) {
     this.cartService.addProduct(product);
   }
 
-  removeCartItem(product) {
-    this.cartService.removeProduct(product);
+  removeCartItem(product: Product) {
+    this.cartService.removeProduct(product.id);
   }
 
   getTotal() {
@@ -39,12 +39,13 @@ export class GoogleFoodFormComponent implements OnInit {
    processForm(event) {
     event.preventDefault();
     this.alertController.create({
-      header: 'Account Created',
-      message: `Created account for: <b>${this.firstName} ${this.lastName}</b>`,
+      mode: 'ios',
+      header: 'Cảm ơn bạn đã đặt hàng',
+      message: `Chúng tôi sẽ giao hàng sớm nhất`,
       buttons: [{
         text: 'OK'
       }]
-    }).then(alert => alert.present());
+    }).then(alert => {alert.present();  this.cartService.clearCart();});
   }
 
    handleFirstNameValue(event) {

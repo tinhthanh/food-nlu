@@ -54,7 +54,14 @@ export class FoodContainerComponent implements OnInit {
         await modal.present();
         const { data } = await modal.onWillDismiss();
         if ( data && typeof data === 'object'){
-             p.amount =  data.product.amount;
+          if( data.product.amount  === 0 ) {
+            this.cartService.removeProduct(p.id);
+          } else {
+            console.log(p.amount)
+              console.log(data.product.amount)
+            this.cartService.changeAmount(p ,data.product.amount );
+          }
+            
        }
     }
     async presentAlertConfirm() {

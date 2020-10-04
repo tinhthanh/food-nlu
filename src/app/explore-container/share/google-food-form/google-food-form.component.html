@@ -40,7 +40,7 @@
     
     </ion-list>
   </div>
-<form onsubmit="processForm(event)">
+<form>
   <ion-list lines="full" class="ion-no-margin ion-no-padding">
     <ion-item>
       <ion-label position="stacked">Tên người Nhận<ion-text color="danger">*</ion-text></ion-label>
@@ -49,7 +49,7 @@
 
     <ion-item>
       <ion-label position="stacked">Số điện thoại người nhận <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required type="text" ></ion-input>
+      <ion-input required type="number" ></ion-input>
     </ion-item>
     
     <!-- <ion-item>
@@ -74,13 +74,13 @@
     </ion-item>
    
     <ion-item>
-      <ion-label position="stacked">Notes</ion-label>
+      <ion-label position="stacked">Ghi chú </ion-label>
       <ion-textarea></ion-textarea>
     </ion-item>
   </ion-list>
 
   <div class="ion-padding">
-    <ion-button expand="block" type="submit" class="ion-no-margin">Đặt Món</ion-button>
+    <ion-button (click)="processForm($event)" expand="block" type="submit" class="ion-no-margin">Đặt Món</ion-button>
   </div>
 </form>
 

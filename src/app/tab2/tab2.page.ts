@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService, Product} from '../services/cart.service';
 import {BehaviorSubject} from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab2',
@@ -10,7 +11,7 @@ import {BehaviorSubject} from 'rxjs';
 export class Tab2Page implements OnInit   {
   cartItemCount: BehaviorSubject<number>;
   cart: Product[] = [];
-  constructor(private cartService: CartService) {
+  constructor(private cartService: CartService,   private router: Router) {
     this.cartItemCount = this.cartService.getCartItemCount();
   }
   ngOnInit() {
@@ -18,5 +19,10 @@ export class Tab2Page implements OnInit   {
   }
   getTotal() {
     return this.cart.reduce((i, j) => i + j.price * j.amount, 0);
+  }
+
+
+  navigate(){
+    this.router.navigate(['/tabs/cart'])
   }
 }

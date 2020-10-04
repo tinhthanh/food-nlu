@@ -10,12 +10,12 @@
   <ion-item lines="none">
     <div class="ion-padding-start ion-padding-bottom">
       <ion-label>
-        <h2>Choose a Car</h2>
+        <h2>Tìm kiếm món ăn</h2>
       </ion-label>
 
       <ion-row class="ion-align-items-center">
         <ion-col size="10">
-          <ion-searchbar placeholder="Oman, Muscat" searchIcon="location-outline"></ion-searchbar>
+          <ion-searchbar placeholder="Nhập tên món ăn" searchIcon="location-outline"></ion-searchbar>
         </ion-col>
         <ion-col size="2">
           <ion-button color="light" fill="clear">
@@ -33,7 +33,7 @@
 
     <ion-row class="ion-align-items-center ion-padding-horizontal">
       <ion-col size="6">
-        <h5>8 Results</h5>
+        <h5>8 Gian Hàng đã Đăng ký</h5>
       </ion-col>
       <ion-col size="6" class="ion-text-right">
         <ion-button fill="clear" color="dark">
@@ -52,17 +52,47 @@
             </ion-badge>
           </ion-col>
           <ion-col size="6" class="ion-text-right">
-            <ion-card-subtitle color="success">25 Deals</ion-card-subtitle>
+            <ion-card-subtitle color="success">Hơn 25 Món</ion-card-subtitle>
           </ion-col>
         </ion-row>
       </ion-card-header>
       <ion-card-content>
-        <ion-img src="https://www.pngonly.com/wp-content/uploads/2017/06/transparent-car-png-10207.png"></ion-img>
+        <ion-img src="assets/com-tam/pngguru.png"></ion-img>
 
         <ion-row>
           <ion-col size="8">
-            <ion-card-title>Car Title</ion-card-title>
-            <ion-card-subtitle>From 15 OMR / day</ion-card-subtitle>
+            <ion-card-title>Cơm Tấm </ion-card-title>
+            <ion-card-subtitle>Cơm Tấm Hoàng Diệu</ion-card-subtitle>
+          </ion-col>
+          <ion-col size="4" class="ion-text-right">
+            <ion-button fill="clear" color="dark" size="large" routerLink="/details">
+              <ion-icon slot="icon-only" name="chevron-forward-circle-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-header>
+        <ion-row class="ion-align-items-center">
+          <ion-col size="6">
+            <ion-badge color="warning" mode="ios">
+              <ion-icon name="star"></ion-icon>
+              4.5
+            </ion-badge>
+          </ion-col>
+          <ion-col size="6" class="ion-text-right">
+            <ion-card-subtitle color="success">Hơn 25 Món</ion-card-subtitle>
+          </ion-col>
+        </ion-row>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-img src="assets/com-tam/pngguru.png"></ion-img>
+
+        <ion-row>
+          <ion-col size="8">
+            <ion-card-title>Cơm Tấm </ion-card-title>
+            <ion-card-subtitle>Cơm Tấm Hoàng Diệu</ion-card-subtitle>
           </ion-col>
           <ion-col size="4" class="ion-text-right">
             <ion-button fill="clear" color="dark" size="large" routerLink="/details">
@@ -75,7 +105,7 @@
 
   </div>
 </ion-content>
-
+<!-- 
 <div class="ion-padding">
   <ion-badge class="ion-text-center" color="danger" mode="ios">Habib Dev.</ion-badge>
-</div>
+</div> -->
