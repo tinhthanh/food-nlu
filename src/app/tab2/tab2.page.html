@@ -1,10 +1,10 @@
-<ion-header  mode="ios" [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Đồ uống
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!--<ion-header  mode="ios" [translucent]="true">-->
+<!--  <ion-toolbar>-->
+<!--    <ion-title>-->
+<!--      Đồ uống-->
+<!--    </ion-title>-->
+<!--  </ion-toolbar>-->
+<!--</ion-header>-->
 
 <ion-content [fullscreen]="true">
   <!-- <ion-header collapse="condense">
@@ -12,8 +12,9 @@
       <ion-title >Đồ uống</ion-title>
     </ion-toolbar>
   </ion-header> -->
+ <app-smoothie-option> </app-smoothie-option>
+<!--  <app-food-container></app-food-container>-->
 
-  <app-food-container></app-food-container>
 </ion-content>
 <div *ngIf="(cartItemCount | async) !== 0" style="position: absolute;  bottom: 0; width: 100%; z-index: 1" >
   <div class="ion-padding">
