@@ -1,3 +1,4 @@
+
 ion-header {
   ion-toolbar {
     --background: rgba(0,0,0,0);
@@ -31,12 +32,19 @@ ion-header {
     box-shadow: none;
     border-radius: 8px;
     margin: 26px 0;
-
+    ion-card-title {
+      font-family: cursive;
+    }
     ion-col {
       ion-img {
         position: relative;
         bottom: 36px;
         width: 120px;
+      }
+      ion-img.leve1 {
+        bottom: 54px !important;
+        width: 97px;
+        left: 17px;
       }
     }
 
