@@ -71,12 +71,13 @@ logScrollEnd(){
 
 }
 logScrolling(ev: any) {
-  console.log(ev);
   this.scrollTop = ev.detail.scrollTop ; 
   if(this.scrollTop > MAX_HEADER) {
     this.paddingHeader = 0;
   } else {
-    this.paddingHeader = MAX_HEADER - this.scrollTop;
+    if(Math.abs(this.paddingHeader -  (MAX_HEADER - this.scrollTop)) > 3) {
+      this.paddingHeader = MAX_HEADER - this.scrollTop;
+    }
   }
 }
 
