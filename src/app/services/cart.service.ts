@@ -124,4 +124,7 @@ export class CartService {
     }
     this.stateSubject.next(this.cart);
   }
+  getTotal() {
+    return this.cart.reduce((i, j) => i + j.price * j.amount, 0);
+  }
 }

@@ -1,0 +1,22 @@
+<ion-card mode="md"  (click)="viewDetails(category)"  [color]="category.color" >
+  <div class="mask">
+    <img src="assets/smoothie/pokeball.png">
+  </div>
+  <ion-card-content>
+    <ion-row >
+      <ion-col  size="8">
+        <ion-card-subtitle class="no">{{category.name}}</ion-card-subtitle>
+        <ion-card-title  >{{category.title}}</ion-card-title>
+        <ion-card-subtitle>
+          <ion-badge>
+            <ion-icon name="flash"></ion-icon>
+                 Nhấp vào để xem thêm
+          </ion-badge>
+        </ion-card-subtitle>
+      </ion-col>
+      <ion-col size="4">
+        <ion-img [ngClass]="category.customClass" [src]="category.url"></ion-img>
+      </ion-col>
+    </ion-row>
+  </ion-card-content>
+</ion-card>
