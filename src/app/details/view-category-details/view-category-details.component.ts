@@ -72,12 +72,11 @@ logScrollEnd(){
 }
 logScrolling(ev: any) {
   this.scrollTop = ev.detail.scrollTop ; 
-  if(this.scrollTop > MAX_HEADER) {
+  if(this.scrollTop == 0) {
+    this.paddingHeader = MAX_HEADER;
+  }
+  if(this.scrollTop > 55) {
     this.paddingHeader = 0;
-  } else {
-    if(Math.abs(this.paddingHeader -  (MAX_HEADER - this.scrollTop)) > 3) {
-      this.paddingHeader = MAX_HEADER - this.scrollTop;
-    }
   }
 }
 

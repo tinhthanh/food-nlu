@@ -1,7 +1,7 @@
 ion-toolbar {
     color: #FFFFFF;
     border-radius: 0 0 20% 20%;
-    transition: .5s;
+    transition: 0.2s;
 }
 .border-default {
     border-radius: 0;
@@ -13,6 +13,7 @@ ion-col {
 
 ion-content {
     --background: #f6f6f6;
+    transition: 10.9s;
 }
 
 ion-card {
