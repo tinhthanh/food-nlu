@@ -16,10 +16,12 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
+<ion-content  >
    
-  <div class="ion-padding content-container">
-          
+  <div [ngClass]="{'content-default': headerFixed }" class="ion-padding content-container">
+          <div style="position: absolute; top: 0; width: 100% ;border: 1px solid red; left: 0px;" >
+          xxxxx
+          </div>
         <p>
           If you get lost, the 
           <a href=""> docs </a>

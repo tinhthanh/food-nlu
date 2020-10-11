@@ -13,19 +13,20 @@ ion-searchbar {
     height: 44px;
     padding-top: 0px;
     padding-bottom: 0px;
+    transition: 0.5s;
 }
      ion-content {
         --background: transparent;
          transition: 0.5s;
          transform: translate3d(0, 150px, 0);
      }
+    
      
      .no-transform {
          transform: translate3d(0, 0, 0) !important;
      }
      ion-toolbar {
-    //  --background: transparent;
-    //  --border-width: 0 !important;
+        transition: 0.5s;
      }
      .transparent-toolbar {
         --background: transparent;
@@ -40,3 +41,7 @@ ion-searchbar {
          overflow: scroll;
          padding-bottom: 150px;
      }
+     .content-default {
+        border-radius: 0px !important;  
+  
+    }
