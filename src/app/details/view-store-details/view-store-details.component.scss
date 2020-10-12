@@ -1,6 +1,6 @@
-// new code 
+// new code
 :host {
-    background-color: #f3c96a; 
+    background-color: #f3c96a;
     --offset-top: 150px;
     background-image: url(https://images.foody.vn/res/g103/1022810/prof/s1242x600/foody-upload-api-foody-mobile-trasuaaaw-200512101101.jpg);;
     background-size: auto 220px;
@@ -20,8 +20,8 @@ ion-searchbar {
          transition: 0.5s;
          transform: translate3d(0, 150px, 0);
      }
-    
-     
+
+
      .no-transform {
          transform: translate3d(0, 0, 0) !important;
      }
@@ -36,12 +36,68 @@ ion-searchbar {
      .content-container  {
          height: 100%;
          border-radius: 10px;
-         padding-top: 40px;
          background-color: #fff;
          overflow: scroll;
          padding-bottom: 150px;
      }
      .content-default {
-        border-radius: 0px !important;  
-  
+        border-radius: 0px !important;
     }
+
+
+    ion-tab-button {
+      border-bottom: 1px solid ;
+    }
+     ion-tab-button[selected='true'] {
+         border-bottom: 3px solid !important;
+     }
+    .ellipsis {
+      width:100%;
+      margin:0 auto;
+      padding:10px;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+    .absolute-header {
+      position: absolute !important;
+    }
+
+
+ion-card {
+  margin-top: -180px;
+  z-index: 10;
+  padding: 6px;
+  box-shadow: none;
+  box-shadow: 0px 3px 45px 0px rgba(0, 0, 0, 0.16);
+  border-radius: 40px;
+  overflow: visible;
+
+  ion-img {
+    height: 113px;
+    margin: -60px auto auto auto;
+  }
+
+}
+
+ion-item {
+  --background: #f6f6f6;
+
+  border-radius: 14px;
+  // box-shadow: 0px 3px 45px 0px rgba(0, 0, 0, 0.08);
+
+  ion-icon:first-of-type {
+    background: #ed576b;
+    color: #FFFFFF;
+    padding: 4px;
+    border-radius: 12px;
+  }
+
+  ion-icon:last-of-type {
+    background: #316dd0;
+    color: #FFFFFF;
+    padding: 4px;
+    border-radius: 12px;
+  }
+
+}
