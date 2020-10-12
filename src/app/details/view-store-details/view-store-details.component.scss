@@ -9,6 +9,12 @@
     width: 100%;
     height: -webkit-fill-available;
 }
+ion-card-content {
+  padding-top: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 ion-searchbar {
     height: 44px;
     padding-top: 0px;
@@ -16,12 +22,16 @@ ion-searchbar {
     transition: 0.5s;
 }
      ion-content {
+     
+      --offset-bottom: 0px;
         --background: transparent;
          transition: 0.5s;
          transform: translate3d(0, 150px, 0);
      }
 
-
+     .transform-top-offset{
+      --offset-top: 244px !important;
+     }
      .no-transform {
          transform: translate3d(0, 0, 0) !important;
      }
@@ -65,13 +75,14 @@ ion-searchbar {
 
 
 ion-card {
-  margin-top: -180px;
+  margin-top: -105px;
   z-index: 10;
   padding: 6px;
   box-shadow: none;
   box-shadow: 0px 3px 45px 0px rgba(0, 0, 0, 0.16);
   border-radius: 40px;
   overflow: visible;
+  position: absolute;
 
   ion-img {
     height: 113px;
@@ -101,3 +112,5 @@ ion-item {
   }
 
 }
+
+
