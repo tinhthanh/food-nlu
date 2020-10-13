@@ -9,13 +9,15 @@ import { DetailsPageRoutingModule } from './details-routing.module';
 import { DetailsPage } from './details.page';
 import { ViewCategoryDetailsComponent } from './view-category-details/view-category-details.component';
 import { ViewStoreDetailsComponent } from './view-store-details/view-store-details.component';
+import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DetailsPageRoutingModule
+    DetailsPageRoutingModule,
+    ExploreContainerComponentModule,
   ],
   declarations: [DetailsPage, ViewCategoryDetailsComponent, ViewStoreDetailsComponent]
 })

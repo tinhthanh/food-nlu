@@ -1,29 +1,5 @@
-<!--<ion-header  mode="ios" [translucent]="true">-->
-<!--  <ion-toolbar>-->
-<!--    <ion-title>-->
-<!--      Đồ uống-->
-<!--    </ion-title>-->
-<!--  </ion-toolbar>-->
-<!--</ion-header>-->
 
 <ion-content [fullscreen]="true">
-  <!-- <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title >Đồ uống</ion-title>
-    </ion-toolbar>
-  </ion-header> -->
  <app-smoothie-option> </app-smoothie-option>
-<!--  <app-food-container></app-food-container>-->
-
 </ion-content>
-<div *ngIf="(cartItemCount | async) !== 0" style="position: absolute;  bottom: 0; width: 100%; z-index: 1" >
-  <div class="ion-padding">
-    <ion-button (click)="navigate()" expand="block" type="submit" class="ion-no-margin">
-       <div style=" width: 100%; height: 100%; display: flex; justify-content: center; align-items: center">
-          <div style="flex: 1;  font-weight: bold" >Xem giỏ hàng </div>
-           <div style="    padding-left: 10px;"> {{cartItemCount | async}} món </div>
-           <div style="flex: 1; font-weight: bold" >{{getTotal() | currency: 'VND'}}</div>
-       </div>
-    </ion-button>
-  </div>
-</div>
+<app-counter-cart></app-counter-cart>

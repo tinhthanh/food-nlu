@@ -24,5 +24,6 @@
 
 </ion-header>
 <div class="ion-padding">
+  <app-card-smoothie  (navigation)="viewStoreDetails($event)" [category]="{id: 'C01' ,name:'Danh mục #Sinh tố' ,  title: 'Sinh tố Nông Lâm' , url : 'assets/smoothie/smoothie.png' , color: 'warning', customClass: 'leve1' }" ></app-card-smoothie>
   <app-card-smoothie *ngFor="let c of category" (navigation)="viewDetails($event)" [category]="c" ></app-card-smoothie>
 </div>

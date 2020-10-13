@@ -9,7 +9,8 @@ import {BannerComponent} from './share/banner/banner.component';
 import { GoogleFoodFormComponent} from  './share/google-food-form/google-food-form.component'
 import {SmoothieOptionComponent} from './share/smoothie-option/smoothie-option.component';
 import { CardSmoothieComponent } from './share/components/card-smoothie/card-smoothie.component';
-const CORE_COMPONENT =  [CardSmoothieComponent ];
+import { CounterCartComponent } from './share/components/counter-cart/counter-cart.component';
+const CORE_COMPONENT =  [CardSmoothieComponent, CounterCartComponent ];
 @NgModule({
   imports: [ CommonModule, FormsModule, IonicModule],
   declarations: [ExploreContainerComponent, BannerComponent, GoogleFoodFormComponent, SmoothieOptionComponent, ...CORE_COMPONENT],

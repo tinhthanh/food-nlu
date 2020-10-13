@@ -18,6 +18,9 @@ export class SmoothieOptionComponent implements OnInit {
     this.router.navigate([`/details/category/${ev.id}`]);
   }
 
+  public viewStoreDetails(ev) {
+    this.router.navigate([`/details/store`]);
+  }
   
 
 }
