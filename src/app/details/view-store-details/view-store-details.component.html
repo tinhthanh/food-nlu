@@ -56,7 +56,7 @@
             <ion-col size="10">
               <ion-label>
                 <h3 style="
-                                        font-family: cursive;
+                                        font-family: auto;
                                         font-size: 18px;
                                         font-weight: bold;
                                         color: #3880ff;">MỞ CỬA 14:00 - 22:00</h3>
@@ -85,7 +85,10 @@
       </div>
 
       <ng-container  *ngFor="let item of objectKeys(tabs)" >
-        <div style="height: 40px; border: 1px solid red;" id="ele{{item}}" >Sinh tố + {{item}}</div>
+      
+        <div  class="header-category" id="ele{{item}}" >
+           Sinh Tố {{item}}
+         </div>
         <div style="flex: 1; overflow-x: auto;">
           <ion-item mode="md" (click)="presentModal(p)" button *ngFor="let p of products">
             <ion-thumbnail slot="start">
