@@ -12,6 +12,12 @@ export class ViewStoreDetailsComponent implements OnInit {
   headerFixed  = false;
     products = [];
   @ViewChild('triggerElement', {read: ElementRef, static: true}) triggerElement: ElementRef;
+  tabs = {
+    tab1:{ active: true , ico: 'fast-food-outline' , name:'Sinh tố',  badge: 0 }
+  , tab2: { active: false , ico: 'wine-outline' , name:'Nước ép',  badge: 0 }
+  , tab3: { active: false , ico: 'nutrition-outline' , name:'Trái cây dầm', badge: 0 },
+   tab4: { active: false , ico: 'heart-circle-outline' , name:'Đặt nhiều',badge: 6 }};
+   objectKeys = Object.keys;
   private observer: IntersectionObserver;
   constructor(public modalController: ModalController, private render2: Renderer2, private cartService: CartService) { }
 
@@ -37,9 +43,13 @@ export class ViewStoreDetailsComponent implements OnInit {
   }
 
     scrollToCategory(categoryId: number | string) {
+
         const element = document.querySelector('#ele' + categoryId);
         if (!element) { return; }
-        element.scrollIntoView({behavior: 'smooth', block: 'center', inline: 'center'});
+        // element.scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});
+        console.log(element);
+       
+         this.scrollTo(document.getElementById('container'),  element.getBoundingClientRect().top + window.scrollY-30, 600); 
     }
 
     async presentModal(p: Product) {
@@ -63,4 +73,37 @@ export class ViewStoreDetailsComponent implements OnInit {
 
         }
     }
+    selectedTab(key: string){
+      console.log(key);
+      Object.keys(this.tabs).forEach( k => {
+        this.tabs[k].active = false;
+      });
+      this.tabs[key].active = true;
+      this.scrollToCategory(key);
+    }
+
+   easeInOutQuad(t, b, c, d) {
+        t /= d/2;
+        if (t < 1) return c/2*t*t + b;
+        t--;
+        return -c/2 * (t*(t-2) - 1) + b;
+    };
+
+     scrollTo(element, to, duration) {
+        let start = element.scrollTop,
+            change = to - start,
+            currentTime = 0,
+            increment = 20;
+            
+        let animateScroll = () => {        
+            currentTime += increment;
+            var val = this.easeInOutQuad(currentTime, start, change, duration);
+            element.scrollTop = val;
+            if(currentTime < duration) {
+                setTimeout(animateScroll, increment);
+            }
+        };
+        animateScroll();
+    }
+    
 }
