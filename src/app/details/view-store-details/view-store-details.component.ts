@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2 } fr
 import {IonContent, ModalController} from '@ionic/angular';
 import {CartService, Product} from '../../services/cart.service';
 import {ModalViewItemComponent} from '../../tab2/food-container/modal-view-item/modal-view-item.component';
+import {ScrollService} from '../../services/scroll.service';
+import { AnimationController } from '@ionic/angular';
 @Component({
   selector: 'app-view-store-details',
   templateUrl: './view-store-details.component.html',
@@ -12,14 +14,16 @@ export class ViewStoreDetailsComponent implements OnInit {
   headerFixed  = false;
     products = [];
   @ViewChild('triggerElement', {read: ElementRef, static: true}) triggerElement: ElementRef;
-  tabs = {
+  @ViewChild("header", { read:ElementRef, static: true }) header: ElementRef;
+
+    tabs = {
     tab1:{ active: true , ico: 'fast-food-outline' , name:'Sinh tố',  badge: 0 }
   , tab2: { active: false , ico: 'wine-outline' , name:'Nước ép',  badge: 0 }
   , tab3: { active: false , ico: 'nutrition-outline' , name:'Trái cây dầm', badge: 0 },
    tab4: { active: false , ico: 'heart-circle-outline' , name:'Đặt nhiều',badge: 6 }};
    objectKeys = Object.keys;
   private observer: IntersectionObserver;
-  constructor(public modalController: ModalController, private render2: Renderer2, private cartService: CartService) { }
+  constructor(private animationCtrl: AnimationController, private scrollService: ScrollService,public modalController: ModalController, private render2: Renderer2, private cartService: CartService) { }
 
   ngOnInit() {
       this.products = this.cartService.getProducts();
@@ -36,6 +40,7 @@ export class ViewStoreDetailsComponent implements OnInit {
               console.log("remove transform");
                this.render2.addClass(this.contentArea.nativeElement, "no-transform");
                this.headerFixed = true;
+               this.animatedHeader();
            }
         });
       });
@@ -46,11 +51,17 @@ export class ViewStoreDetailsComponent implements OnInit {
 
         const element = document.querySelector('#ele' + categoryId);
         if (!element) { return; }
-        // element.scrollIntoView({behavior: 'auto', block: 'center', inline: 'center'});
-        console.log(element);
-       
-         this.scrollTo(document.getElementById('container'),  element.getBoundingClientRect().top + window.scrollY-30, 600); 
+        if (categoryId === 'tab1') {
+            this.scrollToId('eleTop');
+            return;
+        }
+        this.scrollToId('ele' + categoryId);
     }
+    scrollToId(id: string) {
+        console.log("element id : ", id);
+        this.scrollService.scrollToElementById(id);
+    }
+
 
     async presentModal(p: Product) {
         const modal = await this.modalController.create({
@@ -82,28 +93,13 @@ export class ViewStoreDetailsComponent implements OnInit {
       this.scrollToCategory(key);
     }
 
-   easeInOutQuad(t, b, c, d) {
-        t /= d/2;
-        if (t < 1) return c/2*t*t + b;
-        t--;
-        return -c/2 * (t*(t-2) - 1) + b;
-    };
-
-     scrollTo(element, to, duration) {
-        let start = element.scrollTop,
-            change = to - start,
-            currentTime = 0,
-            increment = 20;
-            
-        let animateScroll = () => {        
-            currentTime += increment;
-            var val = this.easeInOutQuad(currentTime, start, change, duration);
-            element.scrollTop = val;
-            if(currentTime < duration) {
-                setTimeout(animateScroll, increment);
-            }
-        };
-        animateScroll();
+    animatedHeader() {
+        const animateHeader = this.animationCtrl.create()
+            .addElement(this.header.nativeElement)
+            .duration(1000)
+            .iterations(1)
+            .fromTo('opacity', '0', '1')
+            .fromTo('transform', 'translateY(-100px)', 'translateY(0px)');
+        animateHeader.play();
     }
-    
 }

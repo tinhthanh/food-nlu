@@ -1,4 +1,4 @@
-<ion-header mode="ios">
+<ion-header #header mode="ios">
   <ion-toolbar [ngClass]="{'transparent-toolbar':!headerFixed}">
     <ion-buttons slot="start">
       <ion-back-button [color]="!headerFixed? 'light' :'dark'" icon="chevron-back" defaultHref="/"></ion-back-button>
@@ -21,7 +21,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content  id="container" [ngClass]="{'transform-top-offset' : !headerFixed }">
+<ion-content   id="container" [ngClass]="{'transform-top-offset' : !headerFixed }">
 
   <ion-card class="ion-margin-bottom">
     <ion-img src="assets/smoothie/smoothie_2.png"></ion-img>
@@ -44,7 +44,7 @@
     </ion-card-content>
   </ion-card>
   <div [ngClass]="{'content-default': headerFixed }" class="ion-padding content-container">
-    <div style="margin-top: 24px;">
+    <div  id="eleTop"  style="margin-top: 24px;">
       <div>
         <ion-grid #triggerElement>
           <ion-row class="ion-align-items-center">
@@ -70,7 +70,7 @@
         </ion-grid>
       </div>
 
-      <div [ngClass]="{'absolute-header' : headerFixed}"
+      <div  [ngClass]="{'absolute-header' : headerFixed}"
         style="position: relative; top: 0; width: 100% ; left: 0px; height: 45px; z-index: 999; ">
         <ion-tabs mode="ios">
           <ion-tab-bar slot="bottom">
@@ -85,7 +85,7 @@
       </div>
 
       <ng-container  *ngFor="let item of objectKeys(tabs)" >
-        <div id="ele{{item}}" >Sinh tố + {{item}}</div>
+        <div style="height: 40px; border: 1px solid red;" id="ele{{item}}" >Sinh tố + {{item}}</div>
         <div style="flex: 1; overflow-x: auto;">
           <ion-item mode="md" (click)="presentModal(p)" button *ngFor="let p of products">
             <ion-thumbnail slot="start">
@@ -103,7 +103,7 @@
           </ion-item>
         </div>
       </ng-container>
-     
+
     </div>
   </div>
 </ion-content>
