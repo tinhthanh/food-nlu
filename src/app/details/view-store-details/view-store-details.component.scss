@@ -1,6 +1,5 @@
 // new code
 :host {
-    background-color: #f3c96a;
     --offset-top: 150px;
     background-image: url(https://images.foody.vn/res/g103/1022810/prof/s1242x600/foody-upload-api-foody-mobile-trasuaaaw-200512101101.jpg);;
     background-size: auto 220px;
@@ -55,7 +54,9 @@ ion-searchbar {
         border-radius: 0px !important;
     }
 
-
+     ion-tabs {
+       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+     }
     ion-tab-button {
       border-bottom: 1px solid ;
     }
