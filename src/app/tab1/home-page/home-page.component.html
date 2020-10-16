@@ -5,10 +5,10 @@
       <img src="assets/profile.jpg">
     </ion-avatar>
 
-    <ion-button fill="clear" color="light">
-      <ion-icon (click)="openFirst()" slot="icon-only" name="menu"></ion-icon>
+    <ion-button (click)="openFirst()"  fill="clear" color="light">
+      <ion-icon (click)="openFirst()"   slot="icon-only" name="menu"></ion-icon>
     </ion-button>
-    <ion-searchbar class="search-bar-default"  #searchBarScroll placeholder="Nhập tên món ăn" searchIcon="location-outline"></ion-searchbar>
+    <ion-searchbar  class="search-bar-default"  #searchBarScroll placeholder="Nhập tên món.." searchIcon="location-outline"></ion-searchbar>
 
   </ion-item>
   <ion-item class="search-bar-animated" #searchBar lines="none">
@@ -19,7 +19,7 @@
 
       <ion-row class="ion-align-items-center">
         <ion-col size="10">
-          <ion-searchbar placeholder="Nhập tên món ăn" searchIcon="location-outline"></ion-searchbar>
+          <ion-searchbar placeholder="Nhập tên món.." searchIcon="location-outline"></ion-searchbar>
         </ion-col>
         <ion-col size="2">
           <ion-button color="light" fill="clear">
@@ -67,7 +67,7 @@
 
         <ion-row>
           <ion-col size="8">
-            <ion-card-title>Cơm Tấm </ion-card-title>
+            <ion-card-title  >Cơm Tấm </ion-card-title>
             <ion-card-subtitle>Cơm Tấm Hoàng Diệu</ion-card-subtitle>
           </ion-col>
           <ion-col size="4" class="ion-text-right">
