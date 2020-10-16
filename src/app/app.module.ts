@@ -25,7 +25,7 @@ registerLocaleData(vi);
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [CartModalPageModule, BrowserModule, IonicModule.forRoot(), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }), FormsModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [CartModalPageModule, BrowserModule, IonicModule.forRoot({ mode: "md"}), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }), FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [
     StatusBar,
     SplashScreen,

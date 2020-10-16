@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2, OnDestroy } from '@angular/core';
 import {IonContent, ModalController} from '@ionic/angular';
 import {CartService, Product} from '../../services/cart.service';
 import {ModalViewItemComponent} from '../../tab2/food-container/modal-view-item/modal-view-item.component';
@@ -7,9 +7,9 @@ import { AnimationController } from '@ionic/angular';
 @Component({
   selector: 'app-view-store-details',
   templateUrl: './view-store-details.component.html',
-  styleUrls: ['./view-store-details.component.scss'],
+  styleUrls: ['./view-store-details.component.scss']
 })
-export class ViewStoreDetailsComponent implements OnInit {
+export class ViewStoreDetailsComponent implements OnInit, OnDestroy {
   @ViewChild(IonContent,  {static: false, read: ElementRef}) contentArea: ElementRef;
   headerFixed  = false;
     products = [];
@@ -24,6 +24,9 @@ export class ViewStoreDetailsComponent implements OnInit {
    objectKeys = Object.keys;
   private observer: IntersectionObserver;
   constructor(private animationCtrl: AnimationController, private scrollService: ScrollService,public modalController: ModalController, private render2: Renderer2, private cartService: CartService) { }
+  ngOnDestroy(): void {
+    this.observer.disconnect();
+  }
 
   ngOnInit() {
       this.products = this.cartService.getProducts();
@@ -32,20 +35,23 @@ export class ViewStoreDetailsComponent implements OnInit {
 
       this.observer = new IntersectionObserver( entries => {
         entries.forEach( entry => {
-           if(entry.isIntersecting) {
-              console.log(" add transform");
-              this.render2.removeClass(this.contentArea.nativeElement, "no-transform");
-              this.headerFixed = false;
-           } else {
-              console.log("remove transform");
-               this.render2.addClass(this.contentArea.nativeElement, "no-transform");
-               this.headerFixed = true;
-               this.animatedHeader();
-           }
+         if(window.location.href.indexOf("/details/store") !== -1){
+              if(entry.isIntersecting) {
+                console.log(" add transform");
+                this.render2.removeClass(this.contentArea.nativeElement, "no-transform");
+                this.headerFixed = false;
+            } else {
+                console.log("remove transform");
+                this.render2.addClass(this.contentArea.nativeElement, "no-transform");
+                this.headerFixed = true;
+                this.animatedHeader();
+            }
+          }
         });
       });
       this.observer.observe(this.triggerElement.nativeElement);
   }
+  
 
     scrollToCategory(categoryId: number | string) {
 

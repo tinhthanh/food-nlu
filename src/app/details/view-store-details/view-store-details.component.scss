@@ -134,12 +134,12 @@ ion-item {
 }
 
 
-.container {
+.container-node {
   position: relative;
   background: #fff;
   width: 320px;
-  margin: 50px auto;
-  padding-top: 20px;
+  // margin: 50px auto;
+  // padding-top: 20px;
   z-index: 9999;
   input[type="checkbox"] {
     display: none;

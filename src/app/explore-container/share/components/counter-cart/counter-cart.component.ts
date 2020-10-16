@@ -20,7 +20,7 @@ export class CounterCartComponent implements OnInit {
     this.cart = this.cartService.getCart();
   }
   getTotal() {
-    return this.cart.reduce((i, j) => i + j.price * j.amount, 0);
+    return this.cartService.getTotal();
   }
 
 
