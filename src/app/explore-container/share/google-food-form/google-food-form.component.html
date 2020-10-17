@@ -1,4 +1,4 @@
-<div style="display: flex; flex-direction: column; " >
+<div style="display: flex; flex-direction: column;  margin-bottom: 75px;" >
   <div style="flex: 1 ;">
   
     <ion-list>
@@ -10,18 +10,20 @@
           <h2>{{ p.name }}</h2>
           <p>{{ p.price | currency:'VND' }} x  {{p.amount}}   =  {{p.price*p.amount | currency:'VND' }}</p>
           <ion-row >
-              <ion-button color="medium" fill="clear" (click)="decreaseCartItem(p)">
+              <!-- <ion-button color="medium" fill="clear" (click)="decreaseCartItem(p)">
                 <ion-icon name="remove-circle" slot="icon-only"></ion-icon>
-              </ion-button>
- 
+              </ion-button> -->
+            <div class="increment-product">
+              <ion-button disabled="{{p.amount === 1}}" (click)="decreaseCartItem(p)" class="text-custom-size" color="light ">-</ion-button>
               <ion-button color="medium" fill="clear" >
                 {{ p.amount }}
               </ion-button>
-             
+              <ion-button  (click)="increaseCartItem(p)" class="text-custom-size" color="light">+</ion-button>
+            </div>
  
-              <ion-button color="medium" fill="clear" (click)="increaseCartItem(p)">
+              <!-- <ion-button color="medium" fill="clear" (click)="increaseCartItem(p)">
                 <ion-icon name="add-circle" slot="icon-only"></ion-icon>
-              </ion-button>
+              </ion-button> -->
  
           </ion-row>
         </ion-label>
@@ -40,16 +42,16 @@
     
     </ion-list>
   </div>
-<form>
+<form [formGroup]="form" >
   <ion-list lines="full" class="ion-no-margin ion-no-padding">
     <ion-item>
       <ion-label position="stacked">Tên người Nhận<ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required type="text" ></ion-input>
+      <ion-input formControlName="userName"  type="text" ></ion-input>
     </ion-item>
 
     <ion-item>
       <ion-label position="stacked">Số điện thoại người nhận <ion-text color="danger">*</ion-text></ion-label>
-      <ion-input required type="number" ></ion-input>
+      <ion-input id="elePhone" formControlName="phone"  type="text" ></ion-input>
     </ion-item>
     
     <!-- <ion-item>
@@ -62,28 +64,29 @@
     </ion-item> -->
     <ion-item>
       <ion-label position="floating">Chọn địa chỉ nhận  </ion-label>
-      <ion-select mode="ios">
-        <ion-select-option value="">No Game Console</ion-select-option>
-        <ion-select-option value="nes">KTX KHU A</ion-select-option>
-        <ion-select-option value="n64" selected>KTX KHU B</ion-select-option>
-        <ion-select-option value="ps">KTX KHU C</ion-select-option>
-        <ion-select-option value="genesis">KTX KHU D</ion-select-option>
-        <ion-select-option value="saturn">KTX KHU E</ion-select-option>
-        <ion-select-option value="snes">SNES</ion-select-option>
+      <ion-select  formControlName="address"  mode="ios">
+        <ion-select-option value="ktx_A">KTX KHU A</ion-select-option>
+        <ion-select-option value="ktx_B" >KTX KHU B</ion-select-option>
+        <ion-select-option value="KTX_C">KTX KHU C</ion-select-option>
+        <ion-select-option value="KTX_D">KTX KHU D</ion-select-option>
+        <ion-select-option value="KTX_E">KTX KHU E</ion-select-option>
+        <ion-select-option value="THU_VIEN">THƯ VIỆN</ion-select-option>
+        <ion-select-option value="PHUONG_VY">PHƯƠNG VỸ</ion-select-option>
+        <ion-select-option value="CAM_TU">CẨM TÚ</ion-select-option>
+        <ion-select-option value="MO_TA">Mô tả địa chỉ ở ghi chú</ion-select-option>
       </ion-select>
     </ion-item>
    
     <ion-item>
       <ion-label position="stacked">Ghi chú </ion-label>
-      <ion-textarea></ion-textarea>
+      <ion-textarea  formControlName="note"   ></ion-textarea>
     </ion-item>
   </ion-list>
-
-  <div class="ion-padding">
-    <ion-button (click)="processForm($event)" expand="block" type="submit" class="ion-no-margin">Đặt Món</ion-button>
-  </div>
 </form>
 
 
+</div>
+<div  style="position: fixed;  bottom: 0; width: 100%; z-index: 1 ; bottom: 0px;"  class="ion-padding">
+  <ion-button (click)="processForm($event)" expand="block" type="submit" class="ion-no-margin">Đặt Món</ion-button>
 </div>
 

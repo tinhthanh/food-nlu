@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -12,7 +12,7 @@ import { CardSmoothieComponent } from './share/components/card-smoothie/card-smo
 import { CounterCartComponent } from './share/components/counter-cart/counter-cart.component';
 const CORE_COMPONENT =  [CardSmoothieComponent, CounterCartComponent ];
 @NgModule({
-  imports: [ CommonModule, FormsModule, IonicModule],
+  imports: [ CommonModule, FormsModule, IonicModule, ReactiveFormsModule],
   declarations: [ExploreContainerComponent, BannerComponent, GoogleFoodFormComponent, SmoothieOptionComponent, ...CORE_COMPONENT],
   exports: [ExploreContainerComponent, BannerComponent, GoogleFoodFormComponent, SmoothieOptionComponent, ...CORE_COMPONENT]
 })

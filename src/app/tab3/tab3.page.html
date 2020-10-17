@@ -21,9 +21,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content no-padding (ionScroll)="handleScroll($event)" scroll-event="true">
+<ion-content  no-padding (ionScroll)="handleScroll($event)" scroll-event="true">
    
-  <div class="ion-padding content-container">
+  <div [ngStyle]="{'border-radius.px' : headerFixed ? 0 : 30}"  class="ion-padding content-container">
           
     <app-card-smoothie  [index]="'2'" (navigation)="viewStoreDetails($event)" [category]="{id: 'C01' ,name:'Danh mục #Sinh tố' ,  title: 'Sinh tố Nông Lâm' , url : 'assets/smoothie/smoothie.png' , color: 'linear-gradient(90deg,#f7bf0c,#c2e59c)', customClass: 'leve1' }" ></app-card-smoothie>
  
