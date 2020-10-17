@@ -1,35 +1,21 @@
-// ion-fab-button {
-//    height: 70px;
-//    width: 70px;
-// }
-
-// .cart-icon {
-//  font-size: 50px;
-// }
-
-// .cart-length {
-//     color: var(--ion-color-primary);
-//     position: absolute;
-//     top: 24px;
-//     left: 25px;
-//     font-weight: 600;
-//     font-size: 1em;
-//     min-width: 25px;
-//     z-index: 10;
-// }
 
 
 
 
 // new code 
 :host {
-   background-color: #f3c96a; 
-   --offset-top: 200px;
+    --offset-top: 150px;
+    background-image: url(https://blog.traveloka.com/source/uploads/sites/9/2018/11/mon-an-vat-ngon-ha-noi-1.jpg);
+    background-size: auto 73%;
+    background-position: -19px -137px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: -webkit-fill-available;
 }
     ion-content {
         --background: transparent;
         transition: 0.5s;
-        transform: translate3d(0, 200px, 0);
+        transform: translate3d(0, 150px, 0);
     }
     .no-transform {
         transform: translate3d(0, 0, 0) !important;
@@ -45,4 +31,20 @@
         background-color: #fff;
         overflow: scroll;
         padding-bottom: 200px;
+        overflow-x: hidden;
+    }
+
+    .transparent-toolbar {
+        --background: transparent;
+        --border-width: 0 !important;
+    }
+    ion-toolbar {
+        transition: 0.5s;
+       --background:  linear-gradient(to right, #64b3f4, #c2e59c);;
+     }
+     ion-searchbar {
+        height: 44px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        transition: 0.5s;
     }

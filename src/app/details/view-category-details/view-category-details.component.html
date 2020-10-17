@@ -1,8 +1,8 @@
 <ion-header mode="ios" class="ion-no-border">
-  <ion-toolbar [ngClass]="{'border-default': paddingHeader == 0 }" [ngStyle]="{'padding-bottom.px': paddingHeader}" [color]="category.color" >
+  <ion-toolbar [ngClass]="{'border-default': paddingHeader == 0 }" [ngStyle]="{'padding-bottom.px': paddingHeader , 'background': category.color }" [color]="category.color" >
    
     <ion-buttons slot="start">
-      <ion-back-button icon="chevron-back" defaultHref="home"></ion-back-button>
+      <ion-back-button icon="chevron-back" defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-title *ngIf="paddingHeader == 0" >{{category.title}}</ion-title>
   </ion-toolbar>

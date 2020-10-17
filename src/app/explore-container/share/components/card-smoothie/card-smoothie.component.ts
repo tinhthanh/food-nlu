@@ -9,11 +9,13 @@ import { Category } from 'src/app/services/category.service';
 export class CardSmoothieComponent implements OnInit {
   @Input() category: Category ;
   @Output() navigation: EventEmitter<Category> = new EventEmitter<Category>(); 
+  @Input() index = 1;
   constructor() { }
 
   ngOnInit() {}
 
   public viewDetails(c) {
+    
     this.navigation.emit(c);
   }
 

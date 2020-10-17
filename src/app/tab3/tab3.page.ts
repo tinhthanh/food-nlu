@@ -3,6 +3,7 @@ import { CartService } from '../services/cart.service';
 import { ModalController, IonContent } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
 import { CartModalPage } from '../pages/cart-modal/cart-modal.page';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -16,10 +17,10 @@ export class Tab3Page implements OnInit, AfterViewInit {
   cartItemCount: BehaviorSubject<number>;
   @ViewChild(IonContent,  {static: false, read: ElementRef}) contentArea: ElementRef;
   @ViewChild('cart', {static: false, read: ElementRef})fab: ElementRef;
- 
+  headerFixed  = false;
   @ViewChild("triggerElement", {read: ElementRef, static: true}) triggerElement: ElementRef;  
   private observer: IntersectionObserver;
-  constructor(private render2: Renderer2, private cartService: CartService, private modalCtrl: ModalController) {}
+  constructor(private router: Router,private render2: Renderer2, private cartService: CartService, private modalCtrl: ModalController) {}
   ngAfterViewInit(): void {
     console.log(this.triggerElement);
   
@@ -37,9 +38,11 @@ export class Tab3Page implements OnInit, AfterViewInit {
       entries.forEach( entry => {
          if(entry.isIntersecting) {
             console.log(" add transform");
+            this.headerFixed = false;
             this.render2.removeClass(this.contentArea.nativeElement, "no-transform");
          } else {
             console.log("remove transform");
+            this.headerFixed = true;
              this.render2.addClass(this.contentArea.nativeElement, "no-transform");
          }
       });
@@ -84,5 +87,9 @@ export class Tab3Page implements OnInit, AfterViewInit {
   // new fure
   handleScroll(ev) {
     console.log(ev);
+  }
+  
+  public viewStoreDetails(ev) {
+    this.router.navigate([`/details/store`]);
   }
 }

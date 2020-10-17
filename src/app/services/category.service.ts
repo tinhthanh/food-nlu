@@ -12,8 +12,8 @@ export class CategoryService {
 
 
   category: Category[] = [
-  {id: 'C02' , name: 'Danh mục #002' ,  title: 'Cơm Nông Lâm' , url : 'assets/com-tam/pngguru.png', color: 'primary', customClass: 'leve2'  },
-  {id: 'C03', name: 'Danh mục #003' ,  title: 'Đồ ăn vặt' , url : 'assets/do-an-vat/banh-trang-tron.png' , color: 'success', customClass: 'leve3'  }
+  {id: 'C02' , name: 'Danh mục #002' ,  title: 'Cơm Nông Lâm' , url : 'assets/com-tam/pngguru.png', color: 'linear-gradient(90deg, #096dd9,#c2e59c)', customClass: 'leve2'  },
+  {id: 'C03', name: 'Danh mục #003' ,  title: 'Đồ ăn vặt' , url : 'assets/do-an-vat/banh-trang-tron.png' , color: 'linear-gradient(90deg, #2dd36f,#c2e59c)', customClass: 'leve3'  }
   ];
   constructor() { }
   getCategories() {

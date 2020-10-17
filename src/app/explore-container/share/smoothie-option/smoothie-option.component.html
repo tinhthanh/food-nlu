@@ -13,7 +13,7 @@
 
   <div class="titles">
     <h4>
-      Quán sinh tố Chị Bích
+     Gian Hàng ĐH Nông Lâm
     </h4>
     <ion-card-subtitle>
       Địa Chỉ: Khu 8 Giang ĐH Nông Lâm
@@ -21,9 +21,8 @@
 
     <ion-searchbar class="ion-no-padding ion-padding-top" placeholder="Tìm kiếm đồ uống..."></ion-searchbar>
   </div>
-
 </ion-header>
 <div class="ion-padding">
-  <app-card-smoothie  (navigation)="viewStoreDetails($event)" [category]="{id: 'C01' ,name:'Danh mục #Sinh tố' ,  title: 'Sinh tố Nông Lâm' , url : 'assets/smoothie/smoothie.png' , color: 'warning', customClass: 'leve1' }" ></app-card-smoothie>
-  <app-card-smoothie *ngFor="let c of category" (navigation)="viewDetails($event)" [category]="c" ></app-card-smoothie>
+  <app-card-smoothie  [index]="'2'" (navigation)="viewStoreDetails($event)" [category]="{id: 'C01' ,name:'Danh mục #Sinh tố' ,  title: 'Sinh tố Nông Lâm' , url : 'assets/smoothie/smoothie.png' , color: 'linear-gradient(90deg,#f7bf0c,#c2e59c)', customClass: 'leve1' }" ></app-card-smoothie>
+  <app-card-smoothie *ngFor="let c of category; let index = index;" [index]="index + 3" (navigation)="viewDetails($event)" [category]="c" ></app-card-smoothie>
 </div>

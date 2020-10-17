@@ -1,81 +1,32 @@
-<!-- 
+<ion-header mode="md" #header mode="ios">
+  <ion-toolbar [ngClass]="{'transparent-toolbar':!headerFixed}">
+    <ion-buttons slot="start">
+      <ion-menu-button  [color]="!headerFixed? 'light' :'dark'"  ></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button *ngIf="!headerFixed" [color]="!headerFixed? 'light' :'dark'">
+        <ion-icon slot="icon-only" name="search-outline"></ion-icon>
+      </ion-button>
+      <ion-button [color]="!headerFixed? 'light' :'dark'">
+        <ion-icon slot="icon-only" name="heart"></ion-icon>
+      </ion-button>
+      <ion-button [color]="!headerFixed? 'light' :'dark'">
+        <ion-icon slot="icon-only" name="ellipsis-horizontal-outline"></ion-icon>
+      </ion-button>
 
-<ion-header>
-  <ion-toolbar color="primary">
-    <ion-title>
-      Ionic Shopping
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
- 
-<ion-content>
-  <ion-fab vertical="top" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="openCart()" #cart>
-      <div class="cart-length">{{ cartItemCount | async }}</div>
-      <ion-icon name="cart" class="cart-icon"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-list>
-    <ion-card *ngFor="let p of products">
-      <ion-card-header>
-        <ion-card-title> {{ p.name }}</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-row class="ion-align-items-center animated zoomIn">
-          <ion-col size="8">
-            <ion-label color="secondary">
-              <b>{{ p.price | currency:'VND' }}</b>
-            </ion-label>
-          </ion-col>
-          <ion-col size="4" class="ion-text-right">
-            <ion-button fill="clear" (click)="addToCart(p)">
-              <ion-icon name="add"></ion-icon>
-            </ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-card-content>
-    </ion-card>
-  </ion-list>
-</ion-content> -->
+    </ion-buttons>
+    <ion-searchbar *ngIf="headerFixed" class="search-bar-default" placeholder="Nhập tên món.."
+      searchIcon="search-outline"></ion-searchbar>
 
-<ion-header mode="ios">
-  <ion-toolbar>
-     <ion-buttons slot="end">
-       <ion-button color="light" > <ion-icon slot="icon-only" name="heart" ></ion-icon></ion-button>
-
-     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content (ionScroll)="handleScroll($event)" scroll-event="true">
+<ion-content no-padding (ionScroll)="handleScroll($event)" scroll-event="true">
    
   <div class="ion-padding content-container">
           
-        <p>
-          If you get lost, the 
-          <a href=""> docs </a>
-           will be your guide
-        </p>
-        <p>
-          If you get lost, the 
-          <a href=""> docs </a>
-           will be your guide
-        </p>
-        <p>
-          If you get lost, the 
-          <a href=""> docs </a>
-           will be your guide
-        </p>
-        <p>
-          If you get lost, the 
-          <a href=""> docs </a>
-           will be your guide
-        </p>
-        <p>
-          If you get lost, the 
-          <a href=""> docs </a>
-           will be your guide
-        </p>
+    <app-card-smoothie  [index]="'2'" (navigation)="viewStoreDetails($event)" [category]="{id: 'C01' ,name:'Danh mục #Sinh tố' ,  title: 'Sinh tố Nông Lâm' , url : 'assets/smoothie/smoothie.png' , color: 'linear-gradient(90deg,#f7bf0c,#c2e59c)', customClass: 'leve1' }" ></app-card-smoothie>
+ 
         <div #triggerElement>TRIGGER ELEMENT</div>
         <p>
           If you get lost, the 
@@ -300,3 +251,5 @@
         </p>
     </div>
 </ion-content>
+
+<app-counter-cart></app-counter-cart>
