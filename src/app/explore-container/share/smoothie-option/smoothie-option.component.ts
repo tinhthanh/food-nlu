@@ -23,4 +23,12 @@ export class SmoothieOptionComponent implements OnInit {
   }
   
 
+  public search() {
+    this.router.navigate([`/details/search`]);
+  }
+  public login() {
+    this.router.navigate([`/forms`]);
+  }
+
+
 }

@@ -1,28 +1,28 @@
 <ion-header mode="md"  class="ion-no-border">
   <ion-item lines="none">
 
-    <ion-avatar slot="end">
+    <ion-avatar (click)="login()" slot="end">
       <img src="assets/profile.jpg">
     </ion-avatar>
 
     <ion-button (click)="openFirst()"  fill="clear" color="light">
       <ion-icon (click)="openFirst()"   slot="icon-only" name="menu"></ion-icon>
     </ion-button>
-    <ion-searchbar  class="search-bar-default"  #searchBarScroll placeholder="Nhập tên món.." searchIcon="location-outline"></ion-searchbar>
+    <ion-searchbar (click)="search()"  class="search-bar-default"  #searchBarScroll placeholder="Nhập tên món.." searchIcon="location-outline"></ion-searchbar>
 
   </ion-item>
   <ion-item class="search-bar-animated" #searchBar lines="none">
-    <div class="ion-padding-start ion-padding-bottom">
+    <div style="width: 100%;" class="ion-padding-start ion-padding-bottom">
       <ion-label>
         <h2>Tìm kiếm món ăn</h2>
       </ion-label>
 
       <ion-row class="ion-align-items-center">
         <ion-col size="10">
-          <ion-searchbar placeholder="Nhập tên món.." searchIcon="location-outline"></ion-searchbar>
+          <ion-searchbar   (click)="search()"  placeholder="Nhập tên món.." searchIcon="location-outline"></ion-searchbar>
         </ion-col>
         <ion-col size="2">
-          <ion-button color="light" fill="clear">
+          <ion-button  color="light" fill="clear">
             <ion-icon slot="icon-only" name="options-outline"></ion-icon>
           </ion-button>
         </ion-col>

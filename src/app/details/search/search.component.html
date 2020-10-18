@@ -1,0 +1,64 @@
+<ion-header class="ion-no-border">
+  <img src="assets/smoothie/pokeball.png">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button style="color: black ;" icon="chevron-back" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <div class="titles">
+    <h4>
+     Gian Hàng ĐH Nông Lâm
+    </h4>
+    <ion-card-subtitle>
+      Địa Chỉ: Khu 8 Giang ĐH Nông Lâm
+    </ion-card-subtitle>
+
+    <ion-searchbar (ionInput)="searchByName($event.target.value)" class="ion-no-padding ion-padding-top" placeholder="Nhập từ khóa tìm kiếm ..."></ion-searchbar>
+  </div>
+</ion-header>
+<div style="overflow-y: auto;" class="ion-padding">
+ 
+  <div   style="flex: 1; overflow-x: auto;padding-bottom:  80px;">
+    <ng-container  *ngIf="!(searchName$  | async)">
+      <ion-list-header>Từ khóa phổ biến:</ion-list-header>
+      <p>
+        <ion-chip  (click)="searchByName('sinh to')" outline color="primary">
+          <ion-icon   name="pin"></ion-icon>
+          <ion-label>Sinh tố</ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
+        <ion-chip  (click)="searchByName('banh')" outline color="secondary">
+          <ion-icon  name="wine"></ion-icon>
+          <ion-label>Bánh tráng trộn</ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
+        <ion-chip  (click)="searchByName('com')"  outline color="tertiary">
+          <ion-icon name="restaurant"></ion-icon>
+          <ion-label>Cơm gà</ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
+        <ion-chip  (click)="searchByName('nuoc ep')"  outline color="secondary">
+          <ion-icon  name="wine"></ion-icon>
+          <ion-label>Nước ép </ion-label>
+          <ion-icon name="close-circle"></ion-icon>
+        </ion-chip>
+      </p>
+    </ng-container>
+    <ng-container *ngIf="(searchName$  | async) as temp"> 
+    <ion-item  (click)="presentModal(p)"  button *ngFor="let p of temp "  >
+        <ion-thumbnail slot="start">
+          <img src="{{ p.img }}">
+        </ion-thumbnail>
+        <ion-label [color]="p.amount === 0 ? '' : 'primary'">
+          <h2>{{ p.name }}</h2>
+          <p><ion-icon  *ngIf="p.amount !== 0" color="danger" name="close-circle"></ion-icon>
+            {{ p.price | currency:'VND' }} {{ p.amount === 0 ? '' : ( 'x ' +  p.amount + ' = ' + (p.price*p.amount | currency:'VND')  ) }}   </p>
+        </ion-label>
+             <ion-icon  name="add-circle-outline" slot="end"></ion-icon>
+      </ion-item>
+      </ng-container>
+ </div>
+</div>
+
+<app-counter-cart></app-counter-cart>

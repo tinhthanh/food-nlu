@@ -4,7 +4,7 @@
       <ion-back-button [color]="!headerFixed? 'light' :'dark'" icon="chevron-back" defaultHref="/"></ion-back-button>
     </ion-buttons>
     <ion-buttons slot="end">
-      <ion-button *ngIf="!headerFixed" [color]="!headerFixed? 'light' :'dark'">
+      <ion-button  (click)="search()" *ngIf="!headerFixed" [color]="!headerFixed? 'light' :'dark'">
         <ion-icon slot="icon-only" name="search-outline"></ion-icon>
       </ion-button>
       <ion-button [color]="!headerFixed? 'light' :'dark'">
@@ -15,7 +15,7 @@
       </ion-button>
 
     </ion-buttons>
-    <ion-searchbar *ngIf="headerFixed" class="search-bar-default" placeholder="Nhập tên món.."
+    <ion-searchbar (click)="search()" *ngIf="headerFixed" class="search-bar-default" placeholder="Nhập tên món.."
       searchIcon="location-outline"></ion-searchbar>
 
   </ion-toolbar>

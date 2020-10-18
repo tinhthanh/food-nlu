@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 import {MenuController} from '@ionic/angular';
 
 
@@ -23,7 +24,7 @@ export class HomePageComponent implements OnInit {
     slidesPerView: 2.5,
   };
 
-  constructor(private render2: Renderer2, private menu: MenuController) { }
+  constructor(private router: Router,private render2: Renderer2, private menu: MenuController) { }
 
   ngOnInit() {
     this.observer = new IntersectionObserver( entries => {
@@ -45,4 +46,12 @@ export class HomePageComponent implements OnInit {
          this.menu.enable(true, 'first');
          this.menu.open('first');
     }
+    
+  public search() {
+    this.router.navigate([`/details/search`]);
+  }
+  public login() {
+    this.router.navigate([`/forms`]);
+  }
+
 }

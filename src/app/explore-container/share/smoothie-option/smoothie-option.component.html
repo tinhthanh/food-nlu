@@ -2,10 +2,10 @@
   <img src="assets/smoothie/pokeball.png">
   <ion-toolbar>
     <ion-buttons slot="end">
-      <ion-button>
+      <ion-button  (click)="login()" >
         <ion-icon name="menu-outline"></ion-icon>
       </ion-button>
-      <ion-button>
+      <ion-button  (click)="login()" >
         <ion-icon name="options-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -19,7 +19,7 @@
       Địa Chỉ: Khu 8 Giang ĐH Nông Lâm
     </ion-card-subtitle>
 
-    <ion-searchbar class="ion-no-padding ion-padding-top" placeholder="Tìm kiếm đồ uống..."></ion-searchbar>
+    <ion-searchbar (click)="search()" class="ion-no-padding ion-padding-top" placeholder="Tìm kiếm đồ uống..."></ion-searchbar>
   </div>
 </ion-header>
 <div class="ion-padding">

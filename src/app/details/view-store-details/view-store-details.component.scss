@@ -89,6 +89,7 @@ ion-card {
   ion-img {
     height: 113px;
     margin: -60px auto auto auto;
+    min-width: calc(100vw - 33px);
   }
 
 }
@@ -263,4 +264,10 @@ ion-item {
   #actionMenuButton:checked + .actions-menu > .btn--comment {
     left: -70px;
   }
+}
+
+@media only screen and (min-width: 992px){
+ ion-card {
+   right: -7%;
+ }
 }

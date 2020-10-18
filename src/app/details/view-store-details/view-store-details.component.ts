@@ -4,6 +4,7 @@ import {CartService, Product} from '../../services/cart.service';
 import {ModalViewItemComponent} from '../../tab2/food-container/modal-view-item/modal-view-item.component';
 import {ScrollService} from '../../services/scroll.service';
 import { AnimationController } from '@ionic/angular';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-view-store-details',
   templateUrl: './view-store-details.component.html',
@@ -22,7 +23,7 @@ export class ViewStoreDetailsComponent implements OnInit, OnDestroy {
     ["tab"  , { active: true , ico: 'heart-circle-outline' , name:'Đặt nhiều',badge: 6,  tagName: 'DATNHIEU' , products: [] }]
    ]);
   private observer: IntersectionObserver;
-  constructor(private animationCtrl: AnimationController, private scrollService: ScrollService,public modalController: ModalController, private render2: Renderer2, private cartService: CartService) { }
+  constructor(private router: Router,private animationCtrl: AnimationController, private scrollService: ScrollService,public modalController: ModalController, private render2: Renderer2, private cartService: CartService) { }
   ngOnDestroy(): void {
     this.observer.disconnect();
   }
@@ -32,6 +33,7 @@ export class ViewStoreDetailsComponent implements OnInit, OnDestroy {
              value.products = (filterByTagsName[value.tagName] || []);
           } 
     tabs.get("tab").products = ([...products].sort((a, b) => b.priority -  a.priority).splice(0, Math.min(products.length, 10)));
+    tabs.get("tab").badge = tabs.get("tab").products.length;
     return tabs;
   }
   ngOnInit() {
@@ -113,6 +115,9 @@ export class ViewStoreDetailsComponent implements OnInit, OnDestroy {
             .fromTo('opacity', '0', '1')
             .fromTo('transform', 'translateY(-100px)', 'translateY(0px)');
         animateHeader.play();
+    }
+    public search() {
+      this.router.navigate([`/details/search`]);
     }
 }
 

@@ -60,16 +60,16 @@ export class CartService {
   ];
 
   rice: Product[] = [
-    { id: "35",priority: 5, name: 'Trứng chiên ', price: 15000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
-    { id: "36",priority: 5, name: 'Trứng chiên ốp la', price: 15000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
-    { id: "37", priority: 5,name: 'Trứng chiên thịt bằm', price: 17000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
-    { id: "38",priority: 3, name: 'Xúc xích + trứng chiên thịt bằm', price: 15000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
-    { id: "39",priority: 3, name: 'Cá rô chiên', price: 18000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
-    { id: "40", priority: 4,name: 'Cá bống kho tiêu', price: 20000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
-    { id: "41", priority: 2,name: 'Thịt xào cà pháo', price: 20000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
-    { id: "42",priority: 0, name: 'Gà chiên nước mắm', price: 15000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
-    { id: "43",priority: 0, name: 'Canh chua cá hú', price: 15000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
-    { id: "44",priority: 0, name: 'Mề gà xào nấm', price: 15000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' }
+    { id: "35",priority: 5, name: 'Cơm Trứng chiên ', price: 15000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
+    { id: "36",priority: 5, name: 'Cơm Trứng chiên ốp la', price: 15000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
+    { id: "37", priority: 5,name: 'Cơm Trứng chiên thịt bằm', price: 17000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
+    { id: "38",priority: 3, name: 'Cơm Xúc xích + trứng chiên thịt bằm', price: 15000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
+    { id: "39",priority: 3, name: 'Cơm Cá rô chiên', price: 18000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
+    { id: "40", priority: 4,name: 'Cơm Cá bống kho tiêu', price: 20000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
+    { id: "41", priority: 2,name: 'Cơm Thịt xào cà pháo', price: 20000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
+    { id: "42",priority: 0, name: 'Cơm Gà chiên nước mắm', price: 15000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
+    { id: "43",priority: 0, name: 'Cơm Canh chua cá hú', price: 15000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' },
+    { id: "44",priority: 0, name: 'Cơm Mề gà xào nấm', price: 15000.00, amount: 0, img: 'assets/food/DVC/com.jpg', categoryId: 'C02', tagName: 'COMTRANG' }
   ];
 
 
