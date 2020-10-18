@@ -25,7 +25,7 @@ export class ViewCategoryDetailsComponent implements OnInit {
   ngOnInit() {
   this.category  = this.categoryService.findOne(this.route.snapshot.paramMap.get("id"));
 
-  this.products = this.cartService.getProducts();
+  this.products = this.cartService.getProducts().filter(p =>  p.categoryId === this.route.snapshot.paramMap.get("id"));
   }
 
   addToCart(product) {

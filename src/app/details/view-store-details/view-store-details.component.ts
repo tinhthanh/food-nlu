@@ -12,24 +12,30 @@ import { AnimationController } from '@ionic/angular';
 export class ViewStoreDetailsComponent implements OnInit, OnDestroy {
   @ViewChild(IonContent,  {static: false, read: ElementRef}) contentArea: ElementRef;
   headerFixed  = false;
-    products = [];
   @ViewChild('triggerElement', {read: ElementRef, static: true}) triggerElement: ElementRef;
   @ViewChild("header", { read:ElementRef, static: true }) header: ElementRef;
 
-    tabs = {
-    tab1:{ active: true , ico: 'fast-food-outline' , name:'Sinh tố',  badge: 0 }
-  , tab2: { active: false , ico: 'wine-outline' , name:'Nước ép',  badge: 0 }
-  , tab3: { active: false , ico: 'nutrition-outline' , name:'Trái cây dầm', badge: 0 },
-   tab4: { active: false , ico: 'heart-circle-outline' , name:'Đặt nhiều',badge: 6 }};
-   objectKeys = Object.keys;
+    tabs: Map<string, Tab> = new Map([
+    ["tab1" , { active: false , ico: 'fast-food-outline' , name:'Sinh tố',  badge: 0 , tagName: 'SINHTO' , products: []}],
+    ["tab2" , { active: false , ico: 'wine-outline' , name:'Nước ép',  badge: 0,  tagName: 'NUOCEP', products: [] }],
+    ["tab3" , { active: false , ico: 'nutrition-outline' , name:'Trái cây dầm', badge: 0, tagName: 'TRAICAYDAM' , products: []}],
+    ["tab"  , { active: true , ico: 'heart-circle-outline' , name:'Đặt nhiều',badge: 6,  tagName: 'DATNHIEU' , products: [] }]
+   ]);
   private observer: IntersectionObserver;
   constructor(private animationCtrl: AnimationController, private scrollService: ScrollService,public modalController: ModalController, private render2: Renderer2, private cartService: CartService) { }
   ngOnDestroy(): void {
     this.observer.disconnect();
   }
-
+  filterProduct(products: Product[],tabs: Map<string, Tab> ):  Map<string, Tab>  {
+    const filterByTagsName = products.filter(p =>  p.categoryId === 'C01').reduce((pre, curr) => { pre[curr.tagName] = [curr, ...( pre[curr.tagName]|| [])] ;return pre;} ,  {});
+      for (let value of tabs.values()) {
+             value.products = (filterByTagsName[value.tagName] || []);
+          } 
+    tabs.get("tab").products = ([...products].sort((a, b) => b.priority -  a.priority).splice(0, Math.min(products.length, 10)));
+    return tabs;
+  }
   ngOnInit() {
-      this.products = this.cartService.getProducts();
+     this.tabs =  this.filterProduct(this.cartService.getProducts(), this.tabs);
 
       // new code
 
@@ -53,15 +59,16 @@ export class ViewStoreDetailsComponent implements OnInit, OnDestroy {
   }
   
 
-    scrollToCategory(categoryId: number | string) {
+    scrollToCategory(tagName: string) {
+      console.log(tagName);
 
-        const element = document.querySelector('#ele' + categoryId);
+        const element = document.querySelector('#' + tagName);
         if (!element) { return; }
-        if (categoryId === 'tab1') {
+        if (tagName === 'DATNHIEU') {
             this.scrollToId('eleTop');
             return;
         }
-        this.scrollToId('ele' + categoryId);
+        this.scrollToId(tagName);
     }
     scrollToId(id: string) {
         console.log("element id : ", id);
@@ -91,12 +98,11 @@ export class ViewStoreDetailsComponent implements OnInit, OnDestroy {
         }
     }
     selectedTab(key: string){
-      console.log(key);
-      Object.keys(this.tabs).forEach( k => {
-        this.tabs[k].active = false;
-      });
-      this.tabs[key].active = true;
-      this.scrollToCategory(key);
+      for (let value of this.tabs.values()) { 
+         value.active = false;
+      }
+      this.tabs.get(key).active = true;
+      this.scrollToCategory(this.tabs.get(key).tagName);
     }
 
     animatedHeader() {
@@ -108,4 +114,13 @@ export class ViewStoreDetailsComponent implements OnInit, OnDestroy {
             .fromTo('transform', 'translateY(-100px)', 'translateY(0px)');
         animateHeader.play();
     }
+}
+
+interface Tab {
+  active: boolean ;
+  ico: string; 
+  name: string;
+  badge: number ;
+  tagName: string ;
+  products: Product[];
 }

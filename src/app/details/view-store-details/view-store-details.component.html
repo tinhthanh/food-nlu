@@ -44,7 +44,8 @@
     </ion-card-content>
   </ion-card>
   <div [ngClass]="{'content-default': headerFixed }" class="ion-padding content-container">
-    <div  id="eleTop"  style="margin-top: 24px;">
+    <div  id="eleTop" ></div>
+    <div  style="margin-top: 24px;">
       <div>
         <ion-grid #triggerElement>
           <ion-row class="ion-align-items-center">
@@ -74,23 +75,23 @@
         style="position: relative; top: 0; width: 100% ; left: 0px; height: 45px; z-index: 999; ">
         <ion-tabs mode="ios">
           <ion-tab-bar slot="bottom">
-            <ion-tab-button (click)="selectedTab(item)" *ngFor="let item of objectKeys(tabs)"
-              [selected]="tabs[item].active">
-              <ion-icon name="{{tabs[item].ico}}"></ion-icon>
-              <ion-label>{{tabs[item].name}}</ion-label>
-              <ion-badge *ngIf="tabs[item].badge != 0" color="danger">6</ion-badge>
+            <ion-tab-button (click)="selectedTab(recipient.key)" *ngFor="let recipient  of tabs |  keyvalue"
+              [selected]="recipient.value.active">
+              <ion-icon name="{{recipient.value.ico}}"></ion-icon>
+              <ion-label>{{recipient.value.name}}</ion-label>
+              <ion-badge *ngIf="recipient.value.badge != 0" color="danger">6</ion-badge>
             </ion-tab-button>
           </ion-tab-bar>
         </ion-tabs>
       </div>
 
-      <ng-container  *ngFor="let item of objectKeys(tabs)" >
+      <ng-container  *ngFor="let recipient  of tabs |  keyvalue" >
 
-        <div  class="header-category" id="ele{{item}}" >
-           Sinh Tố {{item}}
+        <div  class="header-category" id="{{recipient.value.tagName}}" >
+          {{recipient.value.name}}
          </div>
         <div style="flex: 1; overflow-x: auto;">
-          <ion-item mode="md" (click)="presentModal(p)" button *ngFor="let p of products">
+          <ion-item mode="md" (click)="presentModal(p)" button *ngFor="let p of recipient.value.products">
             <ion-thumbnail slot="start">
               <img src="{{ p.img }}">
             </ion-thumbnail>
