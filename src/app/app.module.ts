@@ -10,23 +10,34 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { vi_VN } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
 import vi from '@angular/common/locales/vi';
 import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
+import { AngularFireModule } from '@angular/fire';
+import {AngularFireDatabaseModule} from '@angular/fire/database';
+import { AngularFirestoreModule}  from '@angular/fire/firestore';
+import { AddCommandComponent } from './pages/add-command/add-command.component';
+import { WefinexComponent } from './pages/wefinex/wefinex.component';
 
 
 registerLocaleData(vi);
 
 @NgModule({
-  declarations: [AppComponent, MainLayoutComponent],
+  declarations: [AppComponent, MainLayoutComponent, AddCommandComponent, WefinexComponent],
   entryComponents: [],
-  imports: [CartModalPageModule, BrowserModule, IonicModule.forRoot({ mode: "md"}), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }), FormsModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [
+    FormsModule,
+    CommonModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,CartModalPageModule, BrowserModule, IonicModule.forRoot({ mode: "md"}), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }), FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [
     StatusBar,
     SplashScreen,
