@@ -18,12 +18,13 @@ import { vi_VN } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import vi from '@angular/common/locales/vi';
 import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
+import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 
 
 registerLocaleData(vi);
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MainLayoutComponent],
   entryComponents: [],
   imports: [CartModalPageModule, BrowserModule, IonicModule.forRoot({ mode: "md"}), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }), FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [
