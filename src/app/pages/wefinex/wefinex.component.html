@@ -124,7 +124,7 @@
             </div>
             <div class="project-box-content-header">
               <p class="box-content-header">Tiền đặt:  {{current.price}} </p>
-              <p class="box-content-subheader">{{current.countDown > 30 ? ('Vui lòng đặt '+mapType[current.type].f+': '+ (30 - (60 - current.countDown)) + 's')  : ('Chờ kết quả: ' + current.countDown + 's')}}  </p>
+              <p class="box-content-subheader">{{current['countDown'] > 30 ? ('Vui lòng đặt '+mapType[current.type].f+': '+ (30 - (60 - current['countDown'])) + 's')  : ('Chờ kết quả: ' + current['countDown'] + 's')}}  </p>
             </div>
             <div class="box-progress-wrapper">
               <p class="box-progress-header">Progress</p>
