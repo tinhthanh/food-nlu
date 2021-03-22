@@ -1,26 +1,27 @@
-import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { WefinexCommandService , WefinetComand} from 'src/app/services/wefinex-command.service';
 import { WefinexResultService, WefinexResult } from 'src/app/services/wefinex-result.service';
 import { interval, timer } from 'rxjs';
 import { takeUntil, timeInterval, timeout } from 'rxjs/operators';
+import AudioTouchUnlock from './audio-touch-unblock';
 @Component({
   selector: 'app-wefinex',
   templateUrl: './wefinex.component.html',
   styleUrls: ['./wefinex.component.scss'],
 })
-export class WefinexComponent implements OnInit, AfterViewInit {
+export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   mapType =  { G : {b : "#fee4cb" , t: "#ff942e", f: "Giảm"} , T : {b : "#c8f7dc", t: "#34c471" , f:"Tăng"}};
   mapResult = {THUA: "Lose" , THANG :"WIN"};
   result: WefinexResult[];
   current: WefinetComand;
+  soundOn: boolean = window.localStorage.getItem("soundLive") != 'false';
   constructor(@Inject(DOCUMENT) private document: Document, private wefinexCommandService: WefinexCommandService,
    private wefinexResultService: WefinexResultService) {
       this.wefinexResultService.getListByCondition( (ref) =>  ref.orderBy("lastUpdate", "desc").limit(8)).subscribe((k) => {
          this.result  = k;
       });
-
-      
+    
       this.wefinexCommandService.get('command').subscribe( (data) => {
         const d = new Date();
         const hours = String(d.getHours()).padStart(2, '0') ;
@@ -37,6 +38,7 @@ export class WefinexComponent implements OnInit, AfterViewInit {
         console.log(data.time)
         if(currentTime === data.time) { 
               this.current = data;
+              this.playSound(`assets/wefinex/sounds/${this.current.type}.mp3`);
              const time =  timer((60 - new Date().getSeconds())*1000);
              time.subscribe(( d ) => {
               this.current = undefined;
@@ -50,10 +52,19 @@ export class WefinexComponent implements OnInit, AfterViewInit {
                   err =>   this.current = undefined
               );
         } else {
+          this.playSound(`assets/wefinex/sounds/warning.mp3`);
           this.current = undefined;
         }
     
       })
+  }
+  clickIconVolume(): void {
+    this.soundOn = !this.soundOn;
+    window.localStorage["soundLive"] = this.soundOn;
+   
+  }
+  ngOnDestroy(): void {
+    AudioTouchUnlock.onDestroy();
   }
   ngAfterViewInit(): void {
       const modeSwitch = this.document.querySelector('.mode-switch');
@@ -87,6 +98,13 @@ export class WefinexComponent implements OnInit, AfterViewInit {
     return item.id;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    AudioTouchUnlock.onInit();
+  }
+  playSound(url: string): void {
+    if (this.soundOn) {
+      AudioTouchUnlock.play(url);
+    }
+  }
 
 }

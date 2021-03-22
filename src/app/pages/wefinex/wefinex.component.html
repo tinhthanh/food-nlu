@@ -88,6 +88,7 @@
             <span class="status-type">Lợi nhuận</span>
           </div>
         </div>
+        <ion-icon (click)="clickIconVolume()" style="font-size: 30px;" [name]="soundOn? 'volume-high' :'volume-mute'"></ion-icon>
         <div class="view-actions">
           <button class="view-btn list-view" title="List View">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-list">
@@ -123,7 +124,7 @@
             </div>
             <div class="project-box-content-header">
               <p class="box-content-header">Tiền đặt:  {{current.price}} </p>
-              <p class="box-content-subheader">{{current.countDown > 30 ? ('Vui lòng đặt: '+ (30 - (60 - current.countDown)) + 's')  : ('Chờ kết quả: ' + current.countDown + 's')}}  </p>
+              <p class="box-content-subheader">{{current.countDown > 30 ? ('Vui lòng đặt '+mapType[current.type].f+': '+ (30 - (60 - current.countDown)) + 's')  : ('Chờ kết quả: ' + current.countDown + 's')}}  </p>
             </div>
             <div class="box-progress-wrapper">
               <p class="box-progress-header">Progress</p>
