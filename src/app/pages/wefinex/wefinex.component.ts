@@ -21,7 +21,7 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
       this.wefinexResultService.getListByCondition( (ref) =>  ref.orderBy("lastUpdate", "desc").limit(8)).subscribe((k) => {
          this.result  = k;
       });
-    
+  
       this.wefinexCommandService.get('command').subscribe( (data) => {
         const d = new Date();
         const hours = String(d.getHours()).padStart(2, '0') ;
@@ -58,6 +58,26 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
     
       })
   }
+  initSound() {
+    if(!this.soundOn)  return;
+    const audio = new Audio(`assets/wefinex/sounds/warning.mp3`);
+    audio.muted = true;
+    const alert_elem = document.querySelector( '#trigger-volume' );
+    audio.play().then( () => {
+      this.soundOn = true;
+      window.localStorage["soundLive"] = this.soundOn;
+    } )
+    .catch( () => {
+      this.soundOn = false;
+      window.localStorage["soundLive"] = this.soundOn;
+      alert_elem.addEventListener( 'click', () => {
+            audio.play()
+              .then();
+              this.soundOn = true;
+              window.localStorage["soundLive"] = this.soundOn;
+      } );
+    } );
+  }
   clickIconVolume(): void {
     this.soundOn = !this.soundOn;
     window.localStorage["soundLive"] = this.soundOn;
@@ -67,6 +87,7 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
     AudioTouchUnlock.onDestroy();
   }
   ngAfterViewInit(): void {
+    this.initSound();
       const modeSwitch = this.document.querySelector('.mode-switch');
       modeSwitch.addEventListener('click', () => {
         this.document.documentElement.classList.toggle('dark');
