@@ -74,17 +74,17 @@
         <p class="time">December, 12</p>
       </div> -->
       <div class="projects-section-line">
-        <div class="projects-status">
+        <div *ngIf="profit" class="projects-status">
           <div class="item-status">
-            <span class="status-number">$ 2,096  &nbsp;</span>
+            <span class="status-number">$ {{totalAmount}}  &nbsp;</span>
             <span class="status-type">Tiền hiện tại</span>
           </div>
           <div class="item-status">
-            <span class="status-number">$ 69</span>
+            <span class="status-number">$ {{buget}}</span>
             <span class="status-type">Vốn hôm nay</span>
           </div>
           <div class="item-status">
-            <span class="status-number">30%</span>
+            <span class="status-number"> {{profit}} %</span>
             <span class="status-type">Lợi nhuận</span>
           </div>
         </div>
