@@ -786,7 +786,7 @@ button, a {
    .app-sidebar {
     position: fixed;
     z-index: 999;
-    background: #ffffff;
+    background: var(--app-container) ;
     bottom: 0px;
     display: flex;
     flex-direction: row;

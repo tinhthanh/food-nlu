@@ -26,13 +26,13 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
     this.wefinexResultService.getListByCondition((ref) => ref.orderBy('lastUpdate', 'desc').limit(17)).subscribe((k) => {
       this.result = k;
     });
-    const d = new Date();
-    const hours = String(d.getHours()).padStart(2, '0');
-    const minute = String(d.getMinutes()).padStart(2, '0');
+    let d = new Date();
+    let hours = String(d.getHours()).padStart(2, '0');
+    let minute = String(d.getMinutes()).padStart(2, '0');
 
-    const day = String(d.getDate()).padStart(2, '0');
-    const month = String(d.getMonth() + 1).padStart(2, '0');
-    const year = d.getFullYear();
+    let day = String(d.getDate()).padStart(2, '0');
+    let month = String(d.getMonth() + 1).padStart(2, '0');
+    let year = d.getFullYear();
     this.wefinexTotalAmountService.get(`${day}:${month}:${year}`).subscribe((data) => {
       console.log(data);
       this.buget = Number(data.budget);
@@ -41,17 +41,22 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
       this.totalWin = Number(this.totalAmount) - Number(this.buget);
     });
     this.wefinexCommandService.get('command').subscribe((data) => {
-
+      d = new Date();
+      hours = String(d.getHours()).padStart(2, '0');
+      minute = String(d.getMinutes()).padStart(2, '0');
+      day = String(d.getDate()).padStart(2, '0');
+      month = String(d.getMonth() + 1).padStart(2, '0');
+      year = d.getFullYear();
       const datePlace = data.time.split(' ')[0];
       const timePlace = data.time.split(' ')[1];
       const currentTime = `${day}:${month}:${year} ${hours}:${minute}`;
       console.log(currentTime);
-      console.log(data.time)
+      console.log(data.time);
       if (currentTime === data.time) {
         this.current = data;
         this.playSound(`assets/wefinex/sounds/${this.current.type}.mp3`);
         const time = timer((60 - new Date().getSeconds()) * 1000);
-        time.subscribe((d) => {
+        time.subscribe((_) => {
           this.current = undefined;
         });
         interval(500).pipe(takeUntil(time))
@@ -66,8 +71,7 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
         this.playSound(`assets/wefinex/sounds/warning.mp3`);
         this.current = undefined;
       }
-
-    })
+    });
   }
   initSound() {
     if (!this.soundOn) return;
