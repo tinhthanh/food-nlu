@@ -3,12 +3,23 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AddCommandComponent } from './pages/add-command/add-command.component';
 import { StockComponent } from './pages/forms/pages/stock/stock.component';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
+import { WefinexHistoryComponent } from './pages/wefinex/pages/wefinex-history/wefinex-history.component';
+import { WifinexHomeComponent } from './pages/wefinex/pages/wifinex-home/wifinex-home.component';
 import { WefinexComponent } from './pages/wefinex/wefinex.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: WefinexComponent
+    component: WefinexComponent,
+    children: [
+    {
+      path: 'home',
+      component: WifinexHomeComponent
+    }, {
+      path: 'history',
+      component: WefinexHistoryComponent
+    }
+    ]
   },
   {
     path: '',

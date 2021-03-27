@@ -20,16 +20,18 @@ import vi from '@angular/common/locales/vi';
 import { CartModalPageModule } from './pages/cart-modal/cart-modal.module';
 import { MainLayoutComponent } from './pages/main-layout/main-layout.component';
 import { AngularFireModule } from '@angular/fire';
-import {AngularFireDatabaseModule} from '@angular/fire/database';
-import { AngularFirestoreModule}  from '@angular/fire/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AddCommandComponent } from './pages/add-command/add-command.component';
 import { WefinexComponent } from './pages/wefinex/wefinex.component';
+import { WifinexHomeComponent } from './pages/wefinex/pages/wifinex-home/wifinex-home.component';
+import { WefinexHistoryComponent } from './pages/wefinex/pages/wefinex-history/wefinex-history.component';
 
 
 registerLocaleData(vi);
 
 @NgModule({
-  declarations: [AppComponent, MainLayoutComponent, AddCommandComponent, WefinexComponent],
+  declarations: [AppComponent, MainLayoutComponent, AddCommandComponent, WefinexComponent, WifinexHomeComponent, WefinexHistoryComponent],
   entryComponents: [],
   imports: [
     FormsModule,
@@ -37,7 +39,10 @@ registerLocaleData(vi);
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
-    AngularFirestoreModule,CartModalPageModule, BrowserModule, IonicModule.forRoot({ mode: "md"}), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }), FormsModule, HttpClientModule, BrowserAnimationsModule],
+    AngularFirestoreModule, CartModalPageModule,
+     BrowserModule, IonicModule.forRoot({ mode: "md" }),
+      AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+       FormsModule, HttpClientModule, BrowserAnimationsModule],
   providers: [
     StatusBar,
     SplashScreen,
@@ -46,4 +51,4 @@ registerLocaleData(vi);
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

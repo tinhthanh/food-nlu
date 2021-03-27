@@ -76,15 +76,15 @@
       <div class="projects-section-line">
         <div *ngIf="profit" class="projects-status">
           <div class="item-status">
-            <span class="status-number">$ {{totalAmount}}  &nbsp;</span>
+            <span class="status-number">$ {{totalAmount | number: '1.2-2'}}  &nbsp;</span>
             <span class="status-type">Tiền hiện tại</span>
           </div>
           <div class="item-status">
-            <span class="status-number">$ {{buget}}</span>
+            <span class="status-number">$ {{buget | number: '1.2-2' }} <span style="color: rgb(52, 196, 113);" >({{ (totalWin > -1 ?'+' : '')  + (totalWin | number: '1.2-2')}}) </span> </span>
             <span class="status-type">Vốn hôm nay</span>
           </div>
           <div class="item-status">
-            <span class="status-number"> {{profit}} %</span>
+            <span class="status-number"> {{(profit | number: '1.2-2')}} %</span>
             <span class="status-type">Lợi nhuận</span>
           </div>
         </div>
