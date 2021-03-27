@@ -774,7 +774,13 @@ button, a {
     margin-left: 4px;
   }
 }
-
+ion-icon{
+  color: var(--main-color);
+}
+.person-circle-outline {
+  font-size: 27px;
+  color: var(--main-color);
+}
 @media screen and (max-width: 520px) {
   .projects-section { overflow: auto; }
   .project-boxes { overflow-y: visible; }

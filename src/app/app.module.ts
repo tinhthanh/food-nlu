@@ -26,6 +26,7 @@ import { AddCommandComponent } from './pages/add-command/add-command.component';
 import { WefinexComponent } from './pages/wefinex/wefinex.component';
 import { WifinexHomeComponent } from './pages/wefinex/pages/wifinex-home/wifinex-home.component';
 import { WefinexHistoryComponent } from './pages/wefinex/pages/wefinex-history/wefinex-history.component';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 
 registerLocaleData(vi);
@@ -38,6 +39,7 @@ registerLocaleData(vi);
     CommonModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
     AngularFireDatabaseModule,
     AngularFirestoreModule, CartModalPageModule,
      BrowserModule, IonicModule.forRoot({ mode: "md" }),

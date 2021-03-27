@@ -6,6 +6,7 @@ import { interval, timer } from 'rxjs';
 import { takeUntil, timeInterval, timeout } from 'rxjs/operators';
 import AudioTouchUnlock from './audio-touch-unblock';
 import { Profit, WefinexTotalAmountService } from 'src/app/services/wefinex-total-amount.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-wefinex',
   templateUrl: './wefinex.component.html',
@@ -21,8 +22,10 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   buget = 0;
   totalAmount = 0;
   totalWin = 0;
+  menuActive = 'HOME';
   constructor(@Inject(DOCUMENT) private document: Document, private wefinexCommandService: WefinexCommandService,
-    private wefinexResultService: WefinexResultService, private wefinexTotalAmountService: WefinexTotalAmountService) {
+              private wefinexResultService: WefinexResultService, private wefinexTotalAmountService: WefinexTotalAmountService,
+              public auth: AuthService) {
     this.wefinexResultService.getListByCondition((ref) => ref.orderBy('lastUpdate', 'desc').limit(17)).subscribe((k) => {
       this.result = k;
     });
@@ -141,6 +144,9 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.soundOn) {
       AudioTouchUnlock.play(url);
     }
+  }
+  setting() {
+    console.log("setting");
   }
 
 }

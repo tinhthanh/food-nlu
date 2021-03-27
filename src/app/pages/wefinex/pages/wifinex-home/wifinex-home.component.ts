@@ -2,6 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { AfterViewInit, Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { interval, timer } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AuthService } from 'src/app/services/auth.service';
 import { WefinetComand, WefinexCommandService } from 'src/app/services/wefinex-command.service';
 import { WefinexResult, WefinexResultService } from 'src/app/services/wefinex-result.service';
 import { WefinexTotalAmountService } from 'src/app/services/wefinex-total-amount.service';
@@ -24,7 +25,8 @@ export class WifinexHomeComponent  implements OnInit, AfterViewInit, OnDestroy {
   totalAmount = 0;
   totalWin = 0;
   constructor(@Inject(DOCUMENT) private document: Document, private wefinexCommandService: WefinexCommandService,
-    private wefinexResultService: WefinexResultService, private wefinexTotalAmountService: WefinexTotalAmountService) {
+              private wefinexResultService: WefinexResultService, private wefinexTotalAmountService: WefinexTotalAmountService,
+              private authService: AuthService) {
     this.wefinexResultService.getListByCondition((ref) => ref.orderBy('lastUpdate', 'desc').limit(17)).subscribe((k) => {
       this.result = k;
     });
