@@ -1,17 +1,26 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
+import { WefinexTotalAmountService, Profit } from 'src/app/services/wefinex-total-amount.service';
 
 @Component({
-  selector: 'app-setting',
-  templateUrl: './setting.component.html',
-  styleUrls: ['./setting.component.scss'],
+  selector: 'app-history',
+  templateUrl: './history.component.html',
+  styleUrls: ['./history.component.scss'],
 })
-export class SettingComponent implements OnInit {
+export class HistoryComponent implements OnInit {
   @Input() product: Product;
-  constructor(private modalCtrl: ModalController,   public auth: AuthService) { }
+  profits: Profit[] = [];
+  Number = Number;
+  constructor(private modalCtrl: ModalController,   public auth: AuthService,
+              private wefinexTotalAmountService: WefinexTotalAmountService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.wefinexTotalAmountService.getAll().subscribe( z =>  {
+      this.profits  = z;
+      console.log(z);
+     });
+  }
   async  close() {
     await this.modalCtrl.dismiss();
   }

@@ -9,6 +9,7 @@ import { Profit, WefinexTotalAmountService } from 'src/app/services/wefinex-tota
 import { AuthService } from 'src/app/services/auth.service';
 import { SettingComponent } from './modal/setting/setting.component';
 import { ModalController } from '@ionic/angular';
+import { HistoryComponent } from './modal/history/history.component';
 @Component({
   selector: 'app-wefinex',
   templateUrl: './wefinex.component.html',
@@ -152,6 +153,20 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
     const modal = await this.modalController.create({
       component: SettingComponent,
       cssClass: 'wefinex-setting-modal-custom-class',
+      componentProps: {
+          product: {amount: 5, email: '', isFollow: false}
+      }
+  });
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+    if ( data && typeof data === 'object'){
+          console.log(data);
+   }
+  }
+  async history() {
+    const modal = await this.modalController.create({
+      component: HistoryComponent,
+      cssClass: 'wefinex-history-modal-custom-class',
       componentProps: {
           product: {amount: 5, email: '', isFollow: false}
       }

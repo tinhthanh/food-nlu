@@ -35,7 +35,13 @@
   --border-radius: 10px;
   padding: 25px;
 }
-
+.wefinex-history-modal-custom-class {
+  display: flex;
+  align-items: flex-end;
+  .modal-wrapper {
+    height: 100%;
+  }
+}
 .food-modal-custom-class {
   display: flex;
   align-items: flex-end;
