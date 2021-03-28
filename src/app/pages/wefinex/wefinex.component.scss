@@ -796,7 +796,7 @@ ion-icon{
     bottom: 0px;
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: calc(100% - 28px);
     height: 55px;
     padding: 0px;
     .app-sidebar-link {

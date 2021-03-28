@@ -1,0 +1,105 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-title>Cài đặt </ion-title>
+    <ion-buttons fill="outline" slot="end">
+      <ion-button (click)="close()">
+        Đóng
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-list>
+  <ion-item  >
+    <ion-thumbnail slot="start">
+      <img src="https://static-s.aa-cdn.net/img/gp/20600013682729/F5M67aBZJC7jOmUZhGDCbjo-41uewJ-FihpR_SF6FJzWOlWEq5zuslHKDNlX_6j0GMQ=s300?v=1">
+    </ion-thumbnail>
+    <ion-label>
+      <h2>Email đã đăng ký wefinex </h2>
+      <!-- <p>{{ product.price | currency:'VND' }} x  {{product.amount}}   =  {{product.price*product.amount | currency:'VND' }}</p> -->
+      <ion-row >
+<!--          <ion-button color="medium" fill="clear" (click)="decreaseCartItem(product)">-->
+<!--            <ion-icon name="remove-circle" slot="icon-only"></ion-icon>-->
+<!--          </ion-button>-->
+        <div class="increment-product">
+          <ion-input (ionInput)="emailChange($event)" placeholder="Nhập Email wefinex" value="{{product.email}}"></ion-input>
+        </div>
+
+
+
+<!--          <ion-button color="medium" fill="clear" (click)="increaseCartItem(product)">-->
+<!--            <ion-icon name="add-circle" slot="icon-only"></ion-icon>-->
+<!--          </ion-button>-->
+
+      </ion-row>
+    </ion-label>
+
+    <ion-icon (click)="mailInfo()" name="alert-outline" slot="end"></ion-icon>
+  </ion-item>
+</ion-list>
+  <ion-list>
+    <ion-item  >
+      <ion-thumbnail slot="start">
+        <img src="https://www.winta.com.vn/images/TaiChinh/Finance_Winta_Cash.png">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>Số lần thua liên tiếp </h2>
+        <!-- <p>{{ product.price | currency:'VND' }} x  {{product.amount}}   =  {{product.price*product.amount | currency:'VND' }}</p> -->
+        <ion-row >
+<!--          <ion-button color="medium" fill="clear" (click)="decreaseCartItem(product)">-->
+<!--            <ion-icon name="remove-circle" slot="icon-only"></ion-icon>-->
+<!--          </ion-button>-->
+          <div class="increment-product">
+            <ion-button disabled="{{product.amount === 1}}" (click)="decreaseCartItem()" class="text-custom-size" color="light ">-</ion-button>
+            <ion-button  class="text-custom-size" color="medium" fill="clear" >
+              {{ product.amount }}
+            </ion-button>
+            <ion-button  (click)="increaseCartItem()" class="text-custom-size" color="light">+</ion-button>
+          </div>
+
+
+
+<!--          <ion-button color="medium" fill="clear" (click)="increaseCartItem(product)">-->
+<!--            <ion-icon name="add-circle" slot="icon-only"></ion-icon>-->
+<!--          </ion-button>-->
+
+        </ion-row>
+      </ion-label>
+
+      <ion-icon (click)="info()" name="alert-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-list>
+      <ion-item  >
+        <ion-thumbnail slot="start">
+          <img src="https://image.flaticon.com/icons/png/512/13/13770.png">
+        </ion-thumbnail>
+        <ion-label>
+          <h2>Tài khoản không online </h2>
+          <!-- <p>{{ product.price | currency:'VND' }} x  {{product.amount}}   =  {{product.price*product.amount | currency:'VND' }}</p> -->
+          <ion-row >
+  <!--          <ion-button color="medium" fill="clear" (click)="decreaseCartItem(product)">-->
+  <!--            <ion-icon name="remove-circle" slot="icon-only"></ion-icon>-->
+  <!--          </ion-button>-->
+            <div class="increment-product">
+              <ion-toggle checked={{product.isFollow}} (ionChange)="changeStatus($event)" color="primary"></ion-toggle>
+            </div>
+  
+  
+  
+  <!--          <ion-button color="medium" fill="clear" (click)="increaseCartItem(product)">-->
+  <!--            <ion-icon name="add-circle" slot="icon-only"></ion-icon>-->
+  <!--          </ion-button>-->
+  
+          </ion-row>
+        </ion-label>
+  
+        <ion-icon (click)="infOnline()" name="alert-outline" slot="end"></ion-icon>
+      </ion-item>
+  </ion-list>
+  
+
+
+<div class="ion-padding">
+  <ion-button (click)="dismiss()" expand="block" type="submit" class="ion-no-margin text-custom-size">Lưu lại</ion-button>
+</div>

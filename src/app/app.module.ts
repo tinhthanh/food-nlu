@@ -27,12 +27,14 @@ import { WefinexComponent } from './pages/wefinex/wefinex.component';
 import { WifinexHomeComponent } from './pages/wefinex/pages/wifinex-home/wifinex-home.component';
 import { WefinexHistoryComponent } from './pages/wefinex/pages/wefinex-history/wefinex-history.component';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { SettingComponent } from './pages/wefinex/modal/setting/setting.component';
 
 
 registerLocaleData(vi);
 
 @NgModule({
-  declarations: [AppComponent, MainLayoutComponent, AddCommandComponent, WefinexComponent, WifinexHomeComponent, WefinexHistoryComponent],
+  declarations: [AppComponent, MainLayoutComponent, AddCommandComponent, WefinexComponent,
+     WifinexHomeComponent, WefinexHistoryComponent, SettingComponent],
   entryComponents: [],
   imports: [
     FormsModule,

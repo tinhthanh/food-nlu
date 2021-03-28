@@ -45,6 +45,15 @@
   }
 
 }
+.wefinex-setting-modal-custom-class {
+  display: flex;
+  align-items: flex-end;
+  .modal-wrapper {
+    height: 398px;
+    border-radius: 20px 20px 0px 0px;
+  }
+
+}
 
 :root {
   --app-container: #f3f6fd;

@@ -7,13 +7,15 @@ import { takeUntil, timeInterval, timeout } from 'rxjs/operators';
 import AudioTouchUnlock from './audio-touch-unblock';
 import { Profit, WefinexTotalAmountService } from 'src/app/services/wefinex-total-amount.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { SettingComponent } from './modal/setting/setting.component';
+import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-wefinex',
   templateUrl: './wefinex.component.html',
   styleUrls: ['./wefinex.component.scss'],
 })
 export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
-  mapType = { G: { b: '#fee4cb', t: '#ff942e', f: 'Giảm' }, T: { b: '#c8f7dc', t: '#34c471', f: 'Tăng' } };
+  mapType = { G: { b: '#fee4cb', t: '#ff942e', f: 'MUA' }, T: { b: '#c8f7dc', t: '#34c471', f: 'BÁN' } };
   mapResult = { THUA: 'Lose', THANG: 'WIN' };
   result: WefinexResult[];
   current: WefinetComand;
@@ -25,7 +27,8 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   menuActive = 'HOME';
   constructor(@Inject(DOCUMENT) private document: Document, private wefinexCommandService: WefinexCommandService,
               private wefinexResultService: WefinexResultService, private wefinexTotalAmountService: WefinexTotalAmountService,
-              public auth: AuthService) {
+              public auth: AuthService,
+              public modalController: ModalController) {
     this.wefinexResultService.getListByCondition((ref) => ref.orderBy('lastUpdate', 'desc').limit(17)).subscribe((k) => {
       this.result = k;
     });
@@ -145,8 +148,18 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
       AudioTouchUnlock.play(url);
     }
   }
-  setting() {
-    console.log("setting");
+  async setting() {
+    const modal = await this.modalController.create({
+      component: SettingComponent,
+      cssClass: 'wefinex-setting-modal-custom-class',
+      componentProps: {
+          product: {amount: 5, email: '', isFollow: false}
+      }
+  });
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+    if ( data && typeof data === 'object'){
+          console.log(data);
+   }
   }
-
 }
