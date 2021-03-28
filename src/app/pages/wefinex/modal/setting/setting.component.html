@@ -21,8 +21,8 @@
 <!--          <ion-button color="medium" fill="clear" (click)="decreaseCartItem(product)">-->
 <!--            <ion-icon name="remove-circle" slot="icon-only"></ion-icon>-->
 <!--          </ion-button>-->
-        <div *ngIf="auth.user$ | async as user;" class="increment-product">
-          <ion-input  disabled  placeholder="Nhập Email wefinex" value="{{user.email}}"></ion-input>
+        <div class="increment-product">
+          <ion-input  disabled  placeholder="Nhập Email wefinex" value="{{product.email}}"></ion-input>
         </div>
 
 
@@ -44,11 +44,7 @@
       </ion-thumbnail>
       <ion-label>
         <h2>Số lần thua liên tiếp </h2>
-        <!-- <p>{{ product.price | currency:'VND' }} x  {{product.amount}}   =  {{product.price*product.amount | currency:'VND' }}</p> -->
         <ion-row >
-<!--          <ion-button color="medium" fill="clear" (click)="decreaseCartItem(product)">-->
-<!--            <ion-icon name="remove-circle" slot="icon-only"></ion-icon>-->
-<!--          </ion-button>-->
           <div class="increment-product">
             <ion-button disabled="{{product.amount === 1}}" (click)="decreaseCartItem()" class="text-custom-size" color="light ">-</ion-button>
             <ion-button  class="text-custom-size" color="medium" fill="clear" >
@@ -56,50 +52,42 @@
             </ion-button>
             <ion-button  (click)="increaseCartItem()" class="text-custom-size" color="light">+</ion-button>
           </div>
-
-
-
-<!--          <ion-button color="medium" fill="clear" (click)="increaseCartItem(product)">-->
-<!--            <ion-icon name="add-circle" slot="icon-only"></ion-icon>-->
-<!--          </ion-button>-->
-
         </ion-row>
       </ion-label>
-
       <ion-icon (click)="info()" name="alert-outline" slot="end"></ion-icon>
     </ion-item>
-
     <ion-list>
       <ion-item  >
         <ion-thumbnail slot="start">
-          <img src="https://image.flaticon.com/icons/png/512/13/13770.png">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSeK2EKbS97MGLKNYGOwqY-3V2f1vjeuBPXg&usqp=CAU">
         </ion-thumbnail>
         <ion-label>
-          <h2>Tài khoản không online </h2>
-          <!-- <p>{{ product.price | currency:'VND' }} x  {{product.amount}}   =  {{product.price*product.amount | currency:'VND' }}</p> -->
+          <h2>Cổng kết nối </h2>
           <ion-row >
-  <!--          <ion-button color="medium" fill="clear" (click)="decreaseCartItem(product)">-->
-  <!--            <ion-icon name="remove-circle" slot="icon-only"></ion-icon>-->
-  <!--          </ion-button>-->
+            <div class="increment-product">
+              <ion-input (ionInput)="changeFollowByCommand($event)"  placeholder="Cổng kết nối" value="{{product.followByCommand}}"></ion-input>
+            </div>
+          </ion-row>
+        </ion-label>
+        <ion-icon (click)="followByCommand()" name="alert-outline" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img *ngIf="user && !user.online" src="https://image.flaticon.com/icons/png/512/13/13770.png">
+          <img *ngIf="user && user.online" src=" https://iconarchive.com/download/i95295/dtafalonso/android-l/Chrome.ico">
+        </ion-thumbnail>
+        <ion-label>
+          <h2 *ngIf="user && !user.online" >Tài khoản không online </h2>
+          <h2 *ngIf="user && user.online" >Tài khoản hoạt động tốt </h2>
+          <ion-row >
             <div class="increment-product">
               <ion-toggle checked={{product.isFollow}} (ionChange)="changeStatus($event)" color="primary"></ion-toggle>
             </div>
-  
-  
-  
-  <!--          <ion-button color="medium" fill="clear" (click)="increaseCartItem(product)">-->
-  <!--            <ion-icon name="add-circle" slot="icon-only"></ion-icon>-->
-  <!--          </ion-button>-->
-  
           </ion-row>
         </ion-label>
-  
         <ion-icon (click)="infOnline()" name="alert-outline" slot="end"></ion-icon>
       </ion-item>
   </ion-list>
-  
-
-
 <div class="ion-padding">
   <ion-button (click)="dismiss()" expand="block" type="submit" class="ion-no-margin text-custom-size">Lưu lại</ion-button>
 </div>

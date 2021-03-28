@@ -16,21 +16,10 @@
     </ion-thumbnail>
     <ion-label>
       <h2>Bạn phải đăng ký wefinex bằng email này </h2>
-      <!-- <p>{{ product.price | currency:'VND' }} x  {{product.amount}}   =  {{product.price*product.amount | currency:'VND' }}</p> -->
       <ion-row >
-<!--          <ion-button color="medium" fill="clear" (click)="decreaseCartItem(product)">-->
-<!--            <ion-icon name="remove-circle" slot="icon-only"></ion-icon>-->
-<!--          </ion-button>-->
-        <div *ngIf="auth.user$ | async as user;" class="increment-product">
-          <ion-input  disabled  placeholder="Nhập Email wefinex" value="{{user.email}}"></ion-input>
+        <div class="increment-product">
+          <ion-input  disabled  placeholder="Nhập Email wefinex" value="{{product.email}}"></ion-input>
         </div>
-
-
-
-<!--          <ion-button color="medium" fill="clear" (click)="increaseCartItem(product)">-->
-<!--            <ion-icon name="add-circle" slot="icon-only"></ion-icon>-->
-<!--          </ion-button>-->
-
       </ion-row>
     </ion-label>
 
@@ -44,11 +33,7 @@
         </ion-thumbnail>
         <ion-label>
           <h2 style=" color: #4a8bff;">Thời gian:  {{item.id}} </h2>
-          <!-- <p>{{ product.price | currency:'VND' }} x  {{product.amount}}   =  {{product.price*product.amount | currency:'VND' }}</p> -->
           <ion-row >
-  <!--          <ion-button color="medium" fill="clear" (click)="decreaseCartItem(product)">-->
-  <!--            <ion-icon name="remove-circle" slot="icon-only"></ion-icon>-->
-  <!--          </ion-button>-->
               <div class="item-status">
                 <span class="status-type">Tổng tiền: </span>
                 <span class="status-number">$ {{item.totalAmount | number: '1.2-2'}}  &nbsp;</span>

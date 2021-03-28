@@ -12,7 +12,7 @@ export class HistoryComponent implements OnInit {
   @Input() product: Product;
   profits: Profit[] = [];
   Number = Number;
-  constructor(private modalCtrl: ModalController,   public auth: AuthService,
+  constructor(private modalCtrl: ModalController,
               private wefinexTotalAmountService: WefinexTotalAmountService) { }
 
   ngOnInit() {

@@ -6,7 +6,7 @@ import { interval, timer } from 'rxjs';
 import { takeUntil, timeInterval, timeout } from 'rxjs/operators';
 import AudioTouchUnlock from './audio-touch-unblock';
 import { Profit, WefinexTotalAmountService } from 'src/app/services/wefinex-total-amount.service';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService, User } from 'src/app/services/auth.service';
 import { SettingComponent } from './modal/setting/setting.component';
 import { ModalController } from '@ionic/angular';
 import { HistoryComponent } from './modal/history/history.component';
@@ -26,6 +26,7 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   totalAmount = 0;
   totalWin = 0;
   menuActive = 'HOME';
+  user: User;
   constructor(@Inject(DOCUMENT) private document: Document, private wefinexCommandService: WefinexCommandService,
               private wefinexResultService: WefinexResultService, private wefinexTotalAmountService: WefinexTotalAmountService,
               public auth: AuthService,
@@ -142,6 +143,10 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
+      this.auth.user$.subscribe( z => {
+        this.user = z ;
+        console.log(z);
+    });
     AudioTouchUnlock.onInit();
   }
   playSound(url: string): void {
@@ -150,11 +155,26 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
   async setting() {
+    if (!this.user) {
+    const isLogin = confirm('Vui lòng đăng nhập');
+    if (isLogin) {
+      try {
+        const user = await this.auth.googleSignIn();
+        console.log(user);
+      } catch ( e) {
+        return;
+      }
+     }
+    }
     const modal = await this.modalController.create({
       component: SettingComponent,
       cssClass: 'wefinex-setting-modal-custom-class',
       componentProps: {
-          product: {amount: 5, email: '', isFollow: false}
+          product: {amount: this.user.doubly,
+             email: this.user.email,
+             isFollow: this.user.auto,
+             followByCommand: this.user.followByCommand,
+             uid: this.user.uid}
       }
   });
     await modal.present();
@@ -168,7 +188,7 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
       component: HistoryComponent,
       cssClass: 'wefinex-history-modal-custom-class',
       componentProps: {
-          product: {amount: 5, email: '', isFollow: false}
+          product: {amount: 5, email: this.user.email, isFollow: false}
       }
   });
     await modal.present();

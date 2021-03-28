@@ -1,17 +1,37 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { Subject } from 'rxjs';
+import { first, take, takeUntil } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserFirebase, UserFirebaseService } from 'src/app/services/user-firebase.service';
 
 @Component({
   selector: 'app-setting',
   templateUrl: './setting.component.html',
   styleUrls: ['./setting.component.scss'],
 })
-export class SettingComponent implements OnInit {
+export class SettingComponent implements OnInit, OnDestroy {
   @Input() product: Product;
-  constructor(private modalCtrl: ModalController,   public auth: AuthService) { }
-
-  ngOnInit() {}
+  user: UserFirebase ;
+  private ngUnsubscribe = new Subject();
+  constructor(private userFirebaseService: UserFirebaseService , private modalCtrl: ModalController,   public auth: AuthService) { }
+  ngOnDestroy() {
+    this.ngUnsubscribe.next();
+    this.ngUnsubscribe.complete();
+}
+  ngOnInit() {
+    this.userFirebaseService.get(this.product.uid).pipe(take(1) , takeUntil(this.ngUnsubscribe)).subscribe( z => {
+      if ( !this.user) {
+          z.online = false;
+          this.userFirebaseService.update(z);
+          this.userFirebaseService.get(this.product.uid).pipe( takeUntil(this.ngUnsubscribe)).subscribe( k => {
+            console.log(k);
+            this.user = k;
+          });
+      }
+      console.log(z);
+    });
+  }
   async  close() {
     await this.modalCtrl.dismiss();
   }
@@ -19,6 +39,10 @@ export class SettingComponent implements OnInit {
    await this.modalCtrl.dismiss({
      product: this.product
     });
+   this.user.auto = this.product.isFollow ;
+   this.user.doubly = this.product.amount;
+   this.user.followByCommand = this.product.followByCommand;
+   this.userFirebaseService.update(this.user);
   }
   decreaseCartItem() {
     if ( this.product.amount > 1) {
@@ -49,11 +73,21 @@ export class SettingComponent implements OnInit {
   }
   infOnline() {
       // tslint:disable-next-line:max-line-length
-      alert(`Vui lòng cài đặt tools và treo tài khoản ${this.product.email} trên máy tính của bạn. Liện hệ 098 177 3084 để được hỗ trợ`);
+      alert(`Vui lòng cài đặt tools và treo tài khoản ${this.product.email} trên trang wefinex.net bằng trình duyệt. Liện hệ 098 177 3084 để được hỗ trợ`);
+  }
+  followByCommand() {
+     // tslint:disable-next-line:max-line-length
+     alert(`Hãy chắc chắn rằng bạn đang thay đổi đúng giá trị. Liện hệ 098 177 3084 để được hỗ trợ`);
+
+  }
+  changeFollowByCommand(ev: any) {
+    this.product.followByCommand = ev.target.value;
   }
 }
 export interface Product {
   amount: number;
   email: string;
   isFollow: boolean;
+  followByCommand: string;
+  uid: string;
 }

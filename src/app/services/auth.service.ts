@@ -39,6 +39,10 @@ export class AuthService {
       email,
       photoURL,
       displayName,
+      auto: false,
+      doubly: 5,
+      followByCommand: 'follow_bet',
+      online: false
     };
     return userRef.set(data, {merge: true});
   }
@@ -50,4 +54,8 @@ export interface User {
   photoURL?: string;
   displayName?: string;
   somethingCustom?: string;
+  auto?: boolean;
+  doubly?: number;
+  followByCommand?: string;
+  online?: boolean ;
 }
