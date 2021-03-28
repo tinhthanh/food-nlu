@@ -184,6 +184,17 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
    }
   }
   async history() {
+    if (!this.user) {
+      const isLogin = confirm('Vui lòng đăng nhập');
+      if (isLogin) {
+        try {
+          const user = await this.auth.googleSignIn();
+          console.log(user);
+        } catch ( e) {
+          return;
+        }
+       }
+      }
     const modal = await this.modalController.create({
       component: HistoryComponent,
       cssClass: 'wefinex-history-modal-custom-class',
