@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1617030263346,
+  "timestamp": 1617031242079,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -127,8 +127,8 @@
         "/common-es2015.cb8c42ac4376c0125ba2.js",
         "/common-es5.cb8c42ac4376c0125ba2.js",
         "/index.html",
-        "/main-es2015.56a48bfda2e6ebd85bbe.js",
-        "/main-es5.56a48bfda2e6ebd85bbe.js",
+        "/main-es2015.0e72c066171fc5340ebc.js",
+        "/main-es5.0e72c066171fc5340ebc.js",
         "/manifest.webmanifest",
         "/polyfills-core-js-es2015.79ebeed52926c7a46d5b.js",
         "/polyfills-core-js-es5.79ebeed52926c7a46d5b.js",
@@ -3577,9 +3577,9 @@
     "/assets/wefinex/sounds/warning.mp3": "d86622326425e5f0596fa17d899f3de58e702591",
     "/common-es2015.cb8c42ac4376c0125ba2.js": "bf52564dc48a4d9ef1f3865f4202e636999dc462",
     "/common-es5.cb8c42ac4376c0125ba2.js": "63e8f5bc1f93eef1a4db8d9df4b07280e4882f9c",
-    "/index.html": "bce778b0294e10b64eed7ccab29670f88c2f1441",
-    "/main-es2015.56a48bfda2e6ebd85bbe.js": "744895d4db968125d6010fdb10c59849f814a6a3",
-    "/main-es5.56a48bfda2e6ebd85bbe.js": "42b03d906af2e85160433e2f44e142077e493c04",
+    "/index.html": "e7319d4399cb522bc6cec8b00cd8286afb5d63bf",
+    "/main-es2015.0e72c066171fc5340ebc.js": "99e72e3fc94ad4fae69d6b6e0a5338bb0cfb3ea6",
+    "/main-es5.0e72c066171fc5340ebc.js": "470976564a1570b83dd222c9099af0ddba13286f",
     "/manifest.webmanifest": "c33cb760ee72f81c6c437c43cc50c4daeb273314",
     "/polyfills-core-js-es2015.79ebeed52926c7a46d5b.js": "f007c630c357ee7eeec2289a6cfc013dbcbe6fe9",
     "/polyfills-core-js-es5.79ebeed52926c7a46d5b.js": "8531ee642b05d9e12e859babeaec61c2b1c1e57a",
