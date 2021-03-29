@@ -29,13 +29,14 @@ import { WefinexHistoryComponent } from './pages/wefinex/pages/wefinex-history/w
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { SettingComponent } from './pages/wefinex/modal/setting/setting.component';
 import { HistoryComponent } from './pages/wefinex/modal/history/history.component';
+import { HighlightDirective } from './directive/highlight.directive';
 
 
 registerLocaleData(vi);
 
 @NgModule({
   declarations: [AppComponent, MainLayoutComponent, AddCommandComponent, WefinexComponent,
-     WifinexHomeComponent, WefinexHistoryComponent, SettingComponent, HistoryComponent],
+     WifinexHomeComponent, WefinexHistoryComponent, SettingComponent, HistoryComponent, HighlightDirective],
   entryComponents: [],
   imports: [
     FormsModule,

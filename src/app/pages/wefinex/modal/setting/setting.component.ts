@@ -1,5 +1,5 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { Subject } from 'rxjs';
 import { first, take, takeUntil } from 'rxjs/operators';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,23 +14,34 @@ export class SettingComponent implements OnInit, OnDestroy {
   @Input() product: Product;
   user: UserFirebase ;
   private ngUnsubscribe = new Subject();
-  constructor(private userFirebaseService: UserFirebaseService , private modalCtrl: ModalController,   public auth: AuthService) { }
+  constructor(private userFirebaseService: UserFirebaseService , private modalCtrl: ModalController,   public auth: AuthService,  public loadingController: LoadingController) { }
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
 }
   ngOnInit() {
+    this.presentLoading();
     this.userFirebaseService.get(this.product.uid).pipe(take(1) , takeUntil(this.ngUnsubscribe)).subscribe( z => {
       if ( !this.user) {
           z.online = false;
           this.userFirebaseService.update(z);
           this.userFirebaseService.get(this.product.uid).pipe( takeUntil(this.ngUnsubscribe)).subscribe( k => {
-            console.log(k);
             this.user = k;
           });
       }
-      console.log(z);
     });
+  }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+      duration: 500,
+      mode: 'ios',
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
   }
   async  close() {
     await this.modalCtrl.dismiss();

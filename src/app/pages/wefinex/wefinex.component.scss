@@ -796,7 +796,7 @@ ion-icon{
     bottom: 0px;
     display: flex;
     flex-direction: row;
-    width: calc(100% - 28px);
+    width: calc(100% - 22px);
     height: 55px;
     padding: 0px;
     .app-sidebar-link {
@@ -896,4 +896,44 @@ ion-icon{
     right: 2px;
     top: 10px;
   }
+}
+
+
+
+
+@-webkit-keyframes virtualSkeletonAnimation {
+  0% {
+    transform: translate3d(-30%, 0, 0);
+  }
+  100% {
+    transform: translate3d(30%, 0, 0);
+  }
+}
+
+@keyframes virtualSkeletonAnimation {
+  0% {
+    transform: translate3d(-30%, 0, 0);
+  }
+  100% {
+    transform: translate3d(30%, 0, 0);
+  }
+}
+.virtual-skeleton::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 1;
+  width: 300%;
+  margin-left: -100%;
+  animation: virtualSkeletonAnimation 1s linear infinite;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 46%, rgba(255, 255, 255, 0.5) 50%, rgba(255, 255, 255, 0) 54%) 50% 50%;
+}
+
+.virtual-skeleton-text {
+  background-color: #ced4da;
+  border-radius: 15px;
+  color: transparent;
 }

@@ -83,15 +83,15 @@
       <div class="projects-section-line">
         <div *ngIf="profit" class="projects-status">
           <div class="item-status">
-            <span class="status-number">$ {{totalAmount | number: '1.2-2'}}  &nbsp;</span>
+            <span class="status-number" [appHighlightOdds]="totalAmount" >$ {{totalAmount | number: '1.2-2'}}  &nbsp;</span>
             <span class="status-type">Tiền hiện tại</span>
           </div>
           <div class="item-status">
-            <span class="status-number">$ {{buget | number: '1.2-2' }} <span style="color: rgb(52, 196, 113);" >({{ (totalWin > -1 ?'+' : '')  + (totalWin | number: '1.2-2')}}) </span> </span>
+            <span class="status-number" [appHighlightOdds]="buget" >$ {{buget | number: '1.2-2' }} <span style="color: rgb(52, 196, 113);" >({{ (totalWin > -1 ?'+' : '')  + (totalWin | number: '1.2-2')}}) </span> </span>
             <span class="status-type">Vốn hôm nay</span>
           </div>
           <div class="item-status">
-            <span class="status-number"> {{(profit | number: '1.2-2')}} %</span>
+            <span class="status-number"  [appHighlightOdds]="profit" > {{(profit | number: '1.2-2')}} %</span>
             <span class="status-type">Lợi nhuận</span>
           </div>
         </div>
@@ -156,7 +156,7 @@
             </div>
           </div>
         </div>
-        <div  *ngIf="!current" class="project-box-wrapper">
+        <div  *ngIf="!current" [appHighlightOdds]="current" class="project-box-wrapper">
           <div class="project-box" style="background-color: #e9e7fd;">
             <div class="project-box-header">
               <span>Trạng thái đợi lệnh</span>
@@ -196,8 +196,50 @@
             </div>
           </div>
         </div>
+        <ng-container *ngIf="!result" >
+          <div *ngFor="let item of [0,1,2,3,4,5,6,7]" style="position: relative;" class="project-box-wrapper">
+          <div  class="project-box virtual-skeleton"  style="background-color: #e9e7fd;" >
+            <div class="project-box-header">
+              <span >Thời gian: ────────────</span>
+              <div class="more-wrapper">
+                <button class="project-btn-more">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical">
+                    <circle cx="12" cy="12" r="1" />
+                    <circle cx="12" cy="5" r="1" />
+                    <circle cx="12" cy="19" r="1" /></svg>
+                </button>
+              </div>
+            </div>
+            <div class="project-box-content-header">
+              <p class="box-content-header">Tiền đặt: ─────────── </p>
+              <p class="box-content-subheader">Lệnh:     ─────────── </p>
+            </div>
+            <div class="box-progress-wrapper">
+              <p class="box-progress-header">Done:  ────</p>
+              <div class="box-progress-bar">
+                <span class="box-progress" style="width: 100%; background-color: #4f3ff0"></span>
+              </div>
+              <p class="box-progress-percentage">100%</p>
+            </div>
+            <div class="project-box-footer">
+              <div class="participants">
+                <img src="https://avatars.githubusercontent.com/u/1878655?s=400&u=9cb3b972336c4f2181723498454d4e9b65113760&v=4" alt="participant">
+                <img src="https://i.stack.imgur.com/OIktc.png" alt="participant">
+                <button class="add-participant"   style="color: #4f3ff0;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                </button>
+              </div>
+              <div class="days-left"   style="color: #4f3ff0;">
+               User Follow
+              </div>
+            </div>
+          </div>
+        </div>
+        </ng-container>
       <div *ngFor="let item of result; trackBy: trackByFn" class="project-box-wrapper">
-        <div class="project-box" [style.background-color]="mapType[item.type].b" >
+        <div  class="project-box" [style.background-color]="mapType[item.type].b" [appHighlightOdds]="item" >
           <div class="project-box-header">
             <span>Thời gian: {{item.time}}</span>
             <div class="more-wrapper">

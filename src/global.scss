@@ -55,7 +55,7 @@
   display: flex;
   align-items: flex-end;
   .modal-wrapper {
-    height: 480px;
+    height: 505px;
     border-radius: 20px 20px 0px 0px;
   }
 
@@ -102,4 +102,21 @@
   --message-btn: rgba(195, 207, 244, 0.1);
   --scrollbar-bg: rgb(1 2 3 / 40%);
 }
+@-webkit-keyframes flash {
+  10% {
+    background-color: #ff0;
+  }
+}
+
+@keyframes flash {
+  10% {
+    background-color: #ff0;
+  }
+}
+
+.change {
+  -webkit-animation: flash .7s;
+  animation: flash .7s;
+}
+
 

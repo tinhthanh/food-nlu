@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { WefinexTotalAmountService, Profit } from 'src/app/services/wefinex-total-amount.service';
 
@@ -13,13 +13,27 @@ export class HistoryComponent implements OnInit {
   profits: Profit[] = [];
   Number = Number;
   constructor(private modalCtrl: ModalController,
-              private wefinexTotalAmountService: WefinexTotalAmountService) { }
+              private wefinexTotalAmountService: WefinexTotalAmountService, public loadingController: LoadingController) { }
 
   ngOnInit() {
-    this.wefinexTotalAmountService.getAll().subscribe( z =>  {
+    this.presentLoading();
+    this.wefinexTotalAmountService.getListByCondition((ref) => ref.orderBy('lastUpdate', 'desc')).subscribe( z =>  {
       this.profits  = z;
       console.log(z);
      });
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+      duration: 500,
+      mode: 'ios',
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
   }
   async  close() {
     await this.modalCtrl.dismiss();
