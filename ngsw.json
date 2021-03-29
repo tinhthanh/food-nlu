@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1617020377146,
+  "timestamp": 1617030263346,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -127,8 +127,8 @@
         "/common-es2015.cb8c42ac4376c0125ba2.js",
         "/common-es5.cb8c42ac4376c0125ba2.js",
         "/index.html",
-        "/main-es2015.b47fae75b4602994cb59.js",
-        "/main-es5.b47fae75b4602994cb59.js",
+        "/main-es2015.56a48bfda2e6ebd85bbe.js",
+        "/main-es5.56a48bfda2e6ebd85bbe.js",
         "/manifest.webmanifest",
         "/polyfills-core-js-es2015.79ebeed52926c7a46d5b.js",
         "/polyfills-core-js-es5.79ebeed52926c7a46d5b.js",
@@ -1799,6 +1799,7 @@
         "/assets/wefinex/cover.PNG",
         "/assets/wefinex/sounds/G.mp3",
         "/assets/wefinex/sounds/T.mp3",
+        "/assets/wefinex/sounds/ping.mp3",
         "/assets/wefinex/sounds/warning.mp3"
       ],
       "patterns": []
@@ -3572,12 +3573,13 @@
     "/assets/wefinex/cover.PNG": "80999b076a5758db49f03c21eabafc577a532a84",
     "/assets/wefinex/sounds/G.mp3": "1cfec8646053166f67e525e64a89b29f2d622cff",
     "/assets/wefinex/sounds/T.mp3": "d397d11fed4ae8047b0053724bf7f802a60ad786",
+    "/assets/wefinex/sounds/ping.mp3": "23b0e68da796a87153186941585629d87e89506c",
     "/assets/wefinex/sounds/warning.mp3": "d86622326425e5f0596fa17d899f3de58e702591",
     "/common-es2015.cb8c42ac4376c0125ba2.js": "bf52564dc48a4d9ef1f3865f4202e636999dc462",
     "/common-es5.cb8c42ac4376c0125ba2.js": "63e8f5bc1f93eef1a4db8d9df4b07280e4882f9c",
-    "/index.html": "2f10cb439e1b023a2a18ae2cff6fdcb24a3b76dd",
-    "/main-es2015.b47fae75b4602994cb59.js": "1c1b814fe9f7863c0e974ce51f58d35930dc62da",
-    "/main-es5.b47fae75b4602994cb59.js": "ac73024034fd1c4cc2bd90ef8cfa810a22a509ba",
+    "/index.html": "bce778b0294e10b64eed7ccab29670f88c2f1441",
+    "/main-es2015.56a48bfda2e6ebd85bbe.js": "744895d4db968125d6010fdb10c59849f814a6a3",
+    "/main-es5.56a48bfda2e6ebd85bbe.js": "42b03d906af2e85160433e2f44e142077e493c04",
     "/manifest.webmanifest": "c33cb760ee72f81c6c437c43cc50c4daeb273314",
     "/polyfills-core-js-es2015.79ebeed52926c7a46d5b.js": "f007c630c357ee7eeec2289a6cfc013dbcbe6fe9",
     "/polyfills-core-js-es5.79ebeed52926c7a46d5b.js": "8531ee642b05d9e12e859babeaec61c2b1c1e57a",
