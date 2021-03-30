@@ -8,7 +8,7 @@ import AudioTouchUnlock from './audio-touch-unblock';
 import { Profit, WefinexTotalAmountService } from 'src/app/services/wefinex-total-amount.service';
 import { AuthService, User } from 'src/app/services/auth.service';
 import { SettingComponent } from './modal/setting/setting.component';
-import { ModalController } from '@ionic/angular';
+import { LoadingController, ModalController } from '@ionic/angular';
 import { HistoryComponent } from './modal/history/history.component';
 @Component({
   selector: 'app-wefinex',
@@ -30,7 +30,8 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor(@Inject(DOCUMENT) private document: Document, private wefinexCommandService: WefinexCommandService,
               private wefinexResultService: WefinexResultService, private wefinexTotalAmountService: WefinexTotalAmountService,
               public auth: AuthService,
-              public modalController: ModalController) {
+              public modalController: ModalController,
+              public loadingController: LoadingController) {
     this.wefinexResultService.getListByCondition((ref) => ref.orderBy('lastUpdate', 'desc').limit(17)).subscribe((k) => {
       this.result = k;
     });
@@ -83,7 +84,7 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   }
   initSound() {
     if (!this.soundOn) return;
-    const audio = new Audio(`assets/wefinex/sounds/warning.mp3`);
+    const audio = new Audio(`assets/wefinex/sounds/ping.mp3`);
     audio.muted = true;
     const alert_elem = document.querySelector('#trigger-volume');
     audio.play().then(() => {
@@ -176,6 +177,7 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
       }
      }
     }
+    this.presentLoading();
     const modal = await this.modalController.create({
       component: SettingComponent,
       cssClass: 'wefinex-setting-modal-custom-class',
@@ -204,7 +206,8 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
           return;
         }
        }
-      }
+      };
+      this.presentLoading();
     const modal = await this.modalController.create({
       component: HistoryComponent,
       cssClass: 'wefinex-history-modal-custom-class',
@@ -218,4 +221,20 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
           console.log(data);
    }
   }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      cssClass: 'my-custom-class',
+      message: 'Please wait...',
+      duration: 100,
+      mode: 'ios',
+    });
+    await loading.present();
+
+    const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
+  }
+  addUserFollow() {
+    // tslint:disable-next-line:max-line-length
+    alert(`Liện hệ quản trị viên qua sdt 098 177 3084 để được hỗ trợ`);
+}
 }

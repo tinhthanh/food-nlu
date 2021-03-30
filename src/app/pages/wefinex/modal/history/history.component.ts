@@ -13,28 +13,16 @@ export class HistoryComponent implements OnInit {
   profits: Profit[] = [];
   Number = Number;
   constructor(private modalCtrl: ModalController,
-              private wefinexTotalAmountService: WefinexTotalAmountService, public loadingController: LoadingController) { }
+              private wefinexTotalAmountService: WefinexTotalAmountService) { }
 
   ngOnInit() {
-    this.presentLoading();
     this.wefinexTotalAmountService.getListByCondition((ref) => ref.orderBy('lastUpdate', 'desc')).subscribe( z =>  {
       this.profits  = z;
       console.log(z);
      });
   }
 
-  async presentLoading() {
-    const loading = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Please wait...',
-      duration: 500,
-      mode: 'ios',
-    });
-    await loading.present();
 
-    const { role, data } = await loading.onDidDismiss();
-    console.log('Loading dismissed!');
-  }
   async  close() {
     await this.modalCtrl.dismiss();
   }

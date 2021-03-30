@@ -54,7 +54,7 @@
           <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
           <polyline points="9 22 9 12 15 12 15 22" /></svg>
       </a>
-      <a  class="app-sidebar-link"  (click)="menuActive = 'HISTORY'; history()" [ngClass]="{'active' : menuActive == 'HISTORY'}">
+      <a  class="app-sidebar-link" (click)="history()" [ngClass]="{'active' : menuActive == 'HISTORY'}">
         <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-pie-chart" viewBox="0 0 24 24">
           <defs />
           <path d="M21.21 15.89A10 10 0 118 2.83M22 12A10 10 0 0012 2v10z" />
@@ -67,7 +67,7 @@
           <line x1="8" y1="2" x2="8" y2="6" />
           <line x1="3" y1="10" x2="21" y2="10" /></svg>
       </a>
-      <a  class="app-sidebar-link" (click)="menuActive = 'SETTING'; setting()" [ngClass]="{'active' : menuActive == 'SETTING'}">
+      <a  class="app-sidebar-link" (click)="setting()"  [ngClass]="{'active' : menuActive == 'SETTING'}">
         <svg class="link-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="feather feather-settings" viewBox="0 0 24 24">
           <defs />
           <circle cx="12" cy="12" r="3" />
@@ -266,7 +266,7 @@
             <div class="participants">
               <img src="https://avatars.githubusercontent.com/u/1878655?s=400&u=9cb3b972336c4f2181723498454d4e9b65113760&v=4" alt="participant">
               <img src="https://i.stack.imgur.com/OIktc.png" alt="participant">
-              <button class="add-participant"  [style.background-color]="mapType[item.type].t">
+              <button (click)="addUserFollow()" class="add-participant"  [style.background-color]="mapType[item.type].t">
                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus">
                   <path d="M12 5v14M5 12h14" />
                 </svg>

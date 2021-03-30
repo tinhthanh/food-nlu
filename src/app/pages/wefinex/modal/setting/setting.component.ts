@@ -14,13 +14,12 @@ export class SettingComponent implements OnInit, OnDestroy {
   @Input() product: Product;
   user: UserFirebase ;
   private ngUnsubscribe = new Subject();
-  constructor(private userFirebaseService: UserFirebaseService , private modalCtrl: ModalController,   public auth: AuthService,  public loadingController: LoadingController) { }
+  constructor(private userFirebaseService: UserFirebaseService , private modalCtrl: ModalController,   public auth: AuthService) { }
   ngOnDestroy() {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
 }
   ngOnInit() {
-    this.presentLoading();
     this.userFirebaseService.get(this.product.uid).pipe(take(1) , takeUntil(this.ngUnsubscribe)).subscribe( z => {
       if ( !this.user) {
           z.online = false;
@@ -31,18 +30,7 @@ export class SettingComponent implements OnInit, OnDestroy {
       }
     });
   }
-  async presentLoading() {
-    const loading = await this.loadingController.create({
-      cssClass: 'my-custom-class',
-      message: 'Please wait...',
-      duration: 500,
-      mode: 'ios',
-    });
-    await loading.present();
-
-    const { role, data } = await loading.onDidDismiss();
-    console.log('Loading dismissed!');
-  }
+ 
   async  close() {
     await this.modalCtrl.dismiss();
   }
