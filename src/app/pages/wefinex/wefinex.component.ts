@@ -239,6 +239,9 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
     // tslint:disable-next-line:max-line-length
     alert(`Liện hệ quản trị viên qua sdt 098 177 3084 để được hỗ trợ`);
 }
+onIonRefresh($event) {
+  window.location.reload();
+}
 async presentAlertConfirm() {
   const alert = await this.alertController.create({
     cssClass: 'my-custom-class',

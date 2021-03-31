@@ -43,7 +43,8 @@ export class AuthService {
         auto: false,
         doubly: 5,
         followByCommand: 'follow_bet',
-        online: false
+        online: false,
+        balance: "",
       };
       if(user.exists) {
          let u  = user.data();
@@ -51,6 +52,7 @@ export class AuthService {
          data.doubly = u.doubly;
          data.followByCommand = u.followByCommand;
          data.online =  u.online;
+         data.balance = u.balance;
       }
       return userRef.set(data, {merge: true});
     });
@@ -70,4 +72,5 @@ export interface User {
   doubly?: number;
   followByCommand?: string;
   online?: boolean ;
+  balance?: string;
 }
