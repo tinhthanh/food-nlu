@@ -34,17 +34,29 @@ export class AuthService {
   }
   private  updateUserData({uid, email, displayName, photoURL}: User) {
     const userRef: AngularFirestoreDocument<User> =  this.afs.doc(`users/${uid}`);
-    const data = {
-      uid,
-      email,
-      photoURL,
-      displayName,
-      auto: false,
-      doubly: 5,
-      followByCommand: 'follow_bet',
-      online: false
-    };
-    return userRef.set(data, {merge: true});
+    userRef.get().subscribe( user => {
+      const data = {
+        uid,
+        email,
+        photoURL,
+        displayName,
+        auto: false,
+        doubly: 5,
+        followByCommand: 'follow_bet',
+        online: false
+      };
+      if(user.exists) {
+         let u  = user.data();
+         data.auto = u.auto ;
+         data.doubly = u.doubly;
+         data.followByCommand = u.followByCommand;
+         data.online =  u.online;
+      }
+      return userRef.set(data, {merge: true});
+    });
+  }
+  async signOut() {
+    await this.afAuth.signOut();
   }
 }
 

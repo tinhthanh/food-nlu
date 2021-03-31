@@ -61,6 +61,7 @@
 
 }
 
+
 :root {
   --app-container: #f3f6fd;
   --main-color: #1f1c2e;
@@ -80,6 +81,7 @@
   --star: #1ff1c2e;
   --message-btn: #fff;
   --scrollbar-bg: #d5d7de;
+  --dropdown-bg: #f7f7f7;
 }
 
 .dark:root {
@@ -101,6 +103,7 @@
   --more-list-shadow: rgba(195, 207, 244, 0.1);
   --message-btn: rgba(195, 207, 244, 0.1);
   --scrollbar-bg: rgb(1 2 3 / 40%);
+  --dropdown-bg: #21242d;
 }
 @-webkit-keyframes flash {
   10% {

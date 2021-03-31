@@ -8,7 +8,7 @@ import AudioTouchUnlock from './audio-touch-unblock';
 import { Profit, WefinexTotalAmountService } from 'src/app/services/wefinex-total-amount.service';
 import { AuthService, User } from 'src/app/services/auth.service';
 import { SettingComponent } from './modal/setting/setting.component';
-import { LoadingController, ModalController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController } from '@ionic/angular';
 import { HistoryComponent } from './modal/history/history.component';
 @Component({
   selector: 'app-wefinex',
@@ -31,7 +31,8 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
               private wefinexResultService: WefinexResultService, private wefinexTotalAmountService: WefinexTotalAmountService,
               public auth: AuthService,
               public modalController: ModalController,
-              public loadingController: LoadingController) {
+              public loadingController: LoadingController,
+              public alertController: AlertController) {
     this.wefinexResultService.getListByCondition((ref) => ref.orderBy('lastUpdate', 'desc').limit(17)).subscribe((k) => {
       this.result = k;
     });
@@ -110,13 +111,14 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     AudioTouchUnlock.onDestroy();
   }
+  switchMode() {
+    const modeSwitch = this.document.querySelector('.mode-switch');
+    this.document.documentElement.classList.toggle('dark');
+    modeSwitch.classList.toggle('active');
+  }
   ngAfterViewInit(): void {
     this.initSound();
-    const modeSwitch = this.document.querySelector('.mode-switch');
-    modeSwitch.addEventListener('click', () => {
-      this.document.documentElement.classList.toggle('dark');
-      modeSwitch.classList.toggle('active');
-    });
+
     const listView = this.document.querySelector('.list-view');
     const gridView = this.document.querySelector('.grid-view');
     const projectsList = this.document.querySelector('.project-boxes');
@@ -237,4 +239,29 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
     // tslint:disable-next-line:max-line-length
     alert(`Liện hệ quản trị viên qua sdt 098 177 3084 để được hỗ trợ`);
 }
+async presentAlertConfirm() {
+  const alert = await this.alertController.create({
+    cssClass: 'my-custom-class',
+    header: 'Confirm!',
+    message: 'Bạn có muốn <strong>Đăng xuất</strong>!!!',
+    mode: 'ios',
+    buttons: [
+      {
+        text: 'Không',
+        role: 'cancel',
+        cssClass: 'secondary',
+        handler: (blah) => {
+          console.log('Confirm Cancel: blah');
+        }
+      }, {
+        text: 'Có',
+        handler: () => {
+          this.auth.signOut();
+          console.log('Confirm Okay');
+        }
+      }
+    ]
+  });
+  await alert.present();
+  }
 }
