@@ -82,6 +82,7 @@
   --message-btn: #fff;
   --scrollbar-bg: #d5d7de;
   --dropdown-bg: #f7f7f7;
+  --app-header : #4e8ef7;
 }
 
 .dark:root {
@@ -104,6 +105,7 @@
   --message-btn: rgba(195, 207, 244, 0.1);
   --scrollbar-bg: rgb(1 2 3 / 40%);
   --dropdown-bg: #21242d;
+  --app-header : transparent; 
 }
 @-webkit-keyframes flash {
   10% {

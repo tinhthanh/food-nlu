@@ -727,7 +727,7 @@ button, a {
   .project-boxes.jsGridView .project-box-wrapper {
     width: 50%;
   }
-  
+
   .status-number, .status-type {
     font-size: 14px;
   }
@@ -838,6 +838,7 @@ ion-icon{
   
   .app-header {
     padding: 10px;
+    background-color: var(--app-header);
   }
   
   .projects-section-header p,
