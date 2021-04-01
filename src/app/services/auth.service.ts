@@ -73,4 +73,5 @@ export interface User {
   followByCommand?: string;
   online?: boolean ;
   balance?: string;
+  system?: boolean ;
 }

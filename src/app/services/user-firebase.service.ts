@@ -52,4 +52,5 @@ export class UserFirebase implements Entity {
   doubly?: number;
   followByCommand?: string;
   online?: boolean ;
+  system?: boolean;
 }

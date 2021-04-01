@@ -42,6 +42,16 @@ export class SettingComponent implements OnInit, OnDestroy {
    this.user.doubly = this.product.amount;
    this.user.followByCommand = this.product.followByCommand;
    this.userFirebaseService.update(this.user);
+   if(this.user.system) {
+     console.log("admin");
+     this.userFirebaseService.getListByCondition((ref) => ref.where('group', '==', 'A')).pipe(first(),takeUntil(this.ngUnsubscribe)).subscribe(z => {
+       z.forEach(u => {
+         u.auto = this.product.isFollow ;
+         this.userFirebaseService.update(u);
+         console.log(u);
+       });
+     });
+   }
   }
   decreaseCartItem() {
     if ( this.product.amount > 1) {
