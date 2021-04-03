@@ -1,0 +1,60 @@
+
+.keyboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    .number-dot{
+        width: 45px;
+        height: 45px;
+        background: #f5f9fc;
+        border-radius: 6px;
+        cursor: pointer;
+        margin: 0.1rem;
+        font-size: 1.4rem;
+        color: #474747;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 250ms ease;
+				
+		&:hover {
+			background: #e2e9f2;
+		}
+		
+		&:active {
+			background: #c7d7e6;
+		}
+	}
+    .remove {
+        width: 70px;
+        color: black;
+        background: #f5f9fc;
+        padding: 18px;
+    }
+    .clean {
+        font-size: 16px;
+        width: 70px;
+        background: #fff3cb;
+        color: #474747;
+        font-weight: bold;
+        line-height: 2px;
+    }
+    &.quick-stake {
+        .number-dot{ 
+            flex: 1;
+            background: #4caf5047;
+            font-size: 15px;
+            font-weight: bold;
+            height: 33px;
+            color: #4caf50;
+            &:hover {
+                background: #e2e9f2;
+            }
+            
+            &:active {
+                background: #c7d7e6;
+            }
+        }
+    }
+}

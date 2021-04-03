@@ -1,0 +1,46 @@
+<ion-header mode="ios">
+  <ion-toolbar>
+    <ion-title>Chart Wefinex </ion-title>
+    <ion-buttons fill="outline" slot="end">
+      <ion-button (click)="close()">
+        Đóng
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<div id="chart">
+  <ng-container  *ngIf="chartOptions">
+    <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [xaxis]="chartOptions.xaxis"
+    [yaxis]="chartOptions.yaxis"
+    [title]="chartOptions.title"
+  ></apx-chart>
+  </ng-container>
+</div>
+<ion-list>  
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail slot="start">
+        <img src="https://image.flaticon.com/icons/png/128/1027/1027961.png">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>Nhập tiền đặt</h2>
+        <ion-row >
+          <div class="increment-product">
+            <ion-input  (ionInput)="changeFollowByCommand($event)"  placeholder="Nhập tiền đặt" value="{{stake}}"></ion-input>
+          </div>
+        </ion-row>
+      </ion-label>
+      <ion-icon name="alert-outline" slot="end"></ion-icon>
+    </ion-item>
+    <app-keypad (change)="keyboardChange($event)"></app-keypad>
+  
+</ion-list>
+<div style="display: flex; flex-direction: row;" class="ion-padding betting">
+  <ion-button  [disabled]="!isPlaceBet" (click)="dismiss('T')"  expand="block" type="submit" class="ion-no-margin text-custom-size">Tăng</ion-button>
+  <ion-button  expand="block" color="light" disabled type="submit" class="ion-no-margin text-custom-size"> {{ isPlaceBet? 'Hãy đặt lênh' : 'Chờ kết quả' }}<br> {{this.countDown}}s</ion-button>
+   <ion-button [disabled]="!isPlaceBet"  (click)="dismiss('G')" color="danger" expand="block" type="submit" class="ion-no-margin text-custom-size">Giảm</ion-button>
+</div>

@@ -1,0 +1,28 @@
+p {
+    font-family: Lato;
+  }
+  #chart {
+    // max-width: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  .betting {
+    ion-button {
+        flex: 1;
+        padding: 0px 3px 0px 3px;
+    }
+  }
+  .increment-product {
+      display:  flex ;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      ion-button {
+          flex: 1;
+      }
+  }
+  apx-chart {
+      width: 100%;
+  }

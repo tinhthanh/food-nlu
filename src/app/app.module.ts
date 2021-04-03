@@ -30,15 +30,19 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { SettingComponent } from './pages/wefinex/modal/setting/setting.component';
 import { HistoryComponent } from './pages/wefinex/modal/history/history.component';
 import { HighlightDirective } from './directive/highlight.directive';
+import { ChartWefinexComponent } from './pages/wefinex/modal/chart-wefinex/chart-wefinex.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { KeypadComponent } from './pages/wefinex/modal/chart-wefinex/keypad/keypad.component';
 
 
 registerLocaleData(vi);
 
 @NgModule({
   declarations: [AppComponent, MainLayoutComponent, AddCommandComponent, WefinexComponent,
-     WifinexHomeComponent, WefinexHistoryComponent, SettingComponent, HistoryComponent, HighlightDirective],
+     WifinexHomeComponent, WefinexHistoryComponent, SettingComponent, HistoryComponent, HighlightDirective, ChartWefinexComponent, KeypadComponent],
   entryComponents: [],
   imports: [
+    NgApexchartsModule,
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
