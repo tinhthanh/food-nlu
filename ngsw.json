@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1617461350186,
+  "timestamp": 1617552662749,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -127,8 +127,8 @@
         "/common-es2015.64d8c0d568fd720ce308.js",
         "/common-es5.64d8c0d568fd720ce308.js",
         "/index.html",
-        "/main-es2015.cf713755994974149446.js",
-        "/main-es5.cf713755994974149446.js",
+        "/main-es2015.58d43588ff771d7ebaf0.js",
+        "/main-es5.58d43588ff771d7ebaf0.js",
         "/manifest.webmanifest",
         "/polyfills-core-js-es2015.79ebeed52926c7a46d5b.js",
         "/polyfills-core-js-es5.79ebeed52926c7a46d5b.js",
@@ -140,7 +140,7 @@
         "/polyfills-es5.f6fc74ebff3a5656a5c8.js",
         "/runtime-es2015.cccd88e27a37018ec532.js",
         "/runtime-es5.cccd88e27a37018ec532.js",
-        "/styles.c4ef828cfa1c41afc092.css"
+        "/styles.d328d11e7ffe99a0b9c1.css"
       ],
       "patterns": []
     },
@@ -2370,11 +2370,11 @@
     "/assets/food/an-vat/trang-tron.jpg": "be66c6ff868bc47a6966edc5eb676575b8aa55c3",
     "/assets/icon/favicon.png": "7798b8e0eb61d7375c245af78bbf5c916932bf13",
     "/assets/icons/icon-128x128.png": "7798b8e0eb61d7375c245af78bbf5c916932bf13",
-    "/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
-    "/assets/icons/icon-152x152.png": "7479a9477815dfd9668d60f8b3b2fba709b91310",
-    "/assets/icons/icon-192x192.png": "1abd80d431a237a853ce38147d8c63752f10933b",
-    "/assets/icons/icon-384x384.png": "329749cd6393768d3131ed6304c136b1ca05f2fd",
-    "/assets/icons/icon-512x512.png": "559d9c4318b45a1f2b10596bbb4c960fe521dbcc",
+    "/assets/icons/icon-144x144.png": "7798b8e0eb61d7375c245af78bbf5c916932bf13",
+    "/assets/icons/icon-152x152.png": "7798b8e0eb61d7375c245af78bbf5c916932bf13",
+    "/assets/icons/icon-192x192.png": "7798b8e0eb61d7375c245af78bbf5c916932bf13",
+    "/assets/icons/icon-384x384.png": "7798b8e0eb61d7375c245af78bbf5c916932bf13",
+    "/assets/icons/icon-512x512.png": "7798b8e0eb61d7375c245af78bbf5c916932bf13",
     "/assets/icons/icon-72x72.png": "7798b8e0eb61d7375c245af78bbf5c916932bf13",
     "/assets/icons/icon-96x96.png": "7798b8e0eb61d7375c245af78bbf5c916932bf13",
     "/assets/images/food/burger.svg": "200e63cff21c666474c434c748f875e38ae24068",
@@ -3577,9 +3577,9 @@
     "/assets/wefinex/sounds/warning.mp3": "d86622326425e5f0596fa17d899f3de58e702591",
     "/common-es2015.64d8c0d568fd720ce308.js": "ab576ace9de8822a4cec2b66cc467ebebd3577e3",
     "/common-es5.64d8c0d568fd720ce308.js": "5b4fb24a92f50d7a5d2540e1e950f0b5232ad9ab",
-    "/index.html": "d7aa33b59046e26554672e3c841ed834980c49da",
-    "/main-es2015.cf713755994974149446.js": "051a2ea4a602490f697c0c859f2c8fb7b8837706",
-    "/main-es5.cf713755994974149446.js": "3ed5afca3acaabd952335a241eb0e961e4b88c02",
+    "/index.html": "3d1ebfd15f2c102cea73d4b98c7eda93358d2861",
+    "/main-es2015.58d43588ff771d7ebaf0.js": "9d07cbd5e0082c37e63074d2d43cafab3764b447",
+    "/main-es5.58d43588ff771d7ebaf0.js": "cab62ff5f741fc4497911aedff97f8ec83763713",
     "/manifest.webmanifest": "bd5b8645f1773f1e16123edeb097429fc8573389",
     "/polyfills-core-js-es2015.79ebeed52926c7a46d5b.js": "f007c630c357ee7eeec2289a6cfc013dbcbe6fe9",
     "/polyfills-core-js-es5.79ebeed52926c7a46d5b.js": "8531ee642b05d9e12e859babeaec61c2b1c1e57a",
@@ -3591,7 +3591,7 @@
     "/polyfills-es5.f6fc74ebff3a5656a5c8.js": "51a6fd93a0d377e6938c41335908d404183dcdff",
     "/runtime-es2015.cccd88e27a37018ec532.js": "10bc317e390aa07b6e2604e866b11670cdc90bb3",
     "/runtime-es5.cccd88e27a37018ec532.js": "08a8385f0633f2ada046c5c4e3098b80900fe84a",
-    "/styles.c4ef828cfa1c41afc092.css": "bde7b42ff5c888c584e78213304e986e5e123579"
+    "/styles.d328d11e7ffe99a0b9c1.css": "228a258af29b2963560828b795316c688eb9f414"
   },
   "navigationUrls": [
     {
