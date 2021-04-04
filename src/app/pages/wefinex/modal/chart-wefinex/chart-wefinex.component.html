@@ -8,7 +8,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
+<ion-content>
 <div id="chart">
   <ng-container  *ngIf="chartOptions">
     <apx-chart
@@ -26,8 +26,8 @@
       <ion-thumbnail slot="start">
         <img src="https://image.flaticon.com/icons/png/128/1027/1027961.png">
       </ion-thumbnail>
-      <ion-label>
-        <h2>Nhập tiền đặt</h2>
+      <ion-label *ngIf="user" >
+        <h2 [appHighlightOdds]="this.user.balance" >Nhập tiền đặt |  ${{user? this.user.balance : ''}} </h2>
         <ion-row >
           <div class="increment-product">
             <ion-input  (ionInput)="changeFollowByCommand($event)"  placeholder="Nhập tiền đặt" value="{{stake}}"></ion-input>
@@ -44,3 +44,4 @@
   <ion-button  expand="block" color="light" disabled type="submit" class="ion-no-margin text-custom-size"> {{ isPlaceBet? 'Hãy đặt lênh' : 'Chờ kết quả' }}<br> {{this.countDown}}s</ion-button>
    <ion-button [disabled]="!isPlaceBet"  (click)="dismiss('G')" color="danger" expand="block" type="submit" class="ion-no-margin text-custom-size">Giảm</ion-button>
 </div>
+<ion-content>

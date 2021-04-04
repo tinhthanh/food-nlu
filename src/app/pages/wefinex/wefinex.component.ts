@@ -182,8 +182,10 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
       } catch ( e) {
         return;
       }
-     }
+     }  else {
+      return;
     }
+    } 
     this.presentLoading();
     const modal = await this.modalController.create({
       component: SettingComponent,
@@ -205,13 +207,15 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   async history() {
     if (!this.user) {
       const isLogin = confirm('Vui lòng đăng nhập');
-      if (isLogin) {
+      if (isLogin) { 
         try {
           const user = await this.auth.googleSignIn();
         } catch ( e) {
           return;
         }
-       }
+       }  else {
+        return;
+      }
       };
       this.presentLoading();
     const modal = await this.modalController.create({
@@ -237,6 +241,8 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
         } catch ( e) {
           return;
         }
+       } else {
+         return;
        }
       };
       this.presentLoading();
@@ -250,7 +256,7 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
     await modal.present();
     const { data } = await modal.onWillDismiss();
     if ( data && typeof data === 'object'){
-          this.followBetManuallyService.addComandByUser(this.user.uid, data.data.stake, data.data.type);
+         console.log(data);
    }
   }
   async presentLoading() {

@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { AlertController, ModalController } from '@ionic/angular';
 
 import {ChartComponent,ApexAxisChartSeries,ApexChart,ApexYAxis,ApexXAxis,ApexTitleSubtitle} from "ng-apexcharts";
 import { interval, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import { AuthService, User } from 'src/app/services/auth.service';
+import { FollowBetManuallyService } from 'src/app/services/follow-bet-manually.service';
 import { WefinexChartService } from 'src/app/services/wefinex-chart.service';
 
 export type ChartOptions = {
@@ -21,7 +23,6 @@ export type ChartOptions = {
   styleUrls: ['./chart-wefinex.component.scss'],
 })
 export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
-  @Input() data: any = {price: 10};
   stake: string = '1';
   
   @ViewChild("chart") chart: ChartComponent;
@@ -30,9 +31,10 @@ export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   countDown = 30 ;
   isPlaceBet =  false;
   private ngUnsubscribe = new Subject();
-  constructor(private modalCtrl: ModalController, private wefinexChartService: WefinexChartService) { 
+  user: User;
+  constructor( public alertController: AlertController, public auth: AuthService, public followBetManuallyService: FollowBetManuallyService, private modalCtrl: ModalController, private wefinexChartService: WefinexChartService) { 
     
-    this.wefinexChartService.getListByCondition((ref) => ref.orderBy('settledDateTime', 'desc').limit(17)).pipe(takeUntil(this.ngUnsubscribe)).subscribe((k) => {
+    this.wefinexChartService.getListByCondition((ref) => ref.orderBy('settledDateTime', 'desc').limit(27)).pipe(takeUntil(this.ngUnsubscribe)).subscribe((k) => {
         const data = k.map((item) => { return { x : new Date(item.settledDateTime), y: [item.openPrice ,item.highPrice , item.lowPrice , item.closePrice]}}).reverse();
         this.chartOptions = {
           series: [
@@ -75,6 +77,9 @@ export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
   ngOnInit() {
+    this.auth.user$.subscribe( z => {
+      this.user = z ;
+  });
     interval(500).pipe(takeUntil(this.ngUnsubscribe)).subscribe( value => {
       let second =  new Date().getSeconds() ;
             second = second%31; 
@@ -103,9 +108,38 @@ export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
     await this.modalCtrl.dismiss();
   }
   async  dismiss(type) {
-    await this.modalCtrl.dismiss({
-      data: { stake: this.stake , type: type }
-     });
+    // await this.modalCtrl.dismiss({
+    //   data: { stake: this.stake , type: type }
+    //  });
+     if(this.stake && this.user) {
+      const alert = await this.alertController.create({
+        cssClass: 'my-custom-class',
+        header: 'Success!',
+        message: 'Đặt cược <strong>'+this.stake+'</strong>!!!',
+        mode: 'ios',
+        buttons: [
+          {
+            text: 'Không',
+            role: 'cancel',
+            cssClass: 'secondary',
+            handler: (blah) => {
+              console.log('Confirm Cancel: blah');
+            }
+          }, {
+            text: 'Có',
+            handler: () => {
+              this.followBetManuallyService.addComandByUser(this.user.uid, this.stake,type);
+              this.stake = '1';
+              console.log('Confirm Okay');
+            }
+          }
+        ]
+      });
+      await alert.present();
+
+     } else {
+       alert("Không được để trống stake");
+     }
    }
    public generateDayWiseTimeSeries(baseval, count, yrange) {
     var i = 0;
