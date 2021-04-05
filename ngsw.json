@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1617607846646,
+  "timestamp": 1617611109934,
   "index": "/index.html",
   "assetGroups": [
     {
@@ -127,8 +127,8 @@
         "/common-es2015.64d8c0d568fd720ce308.js",
         "/common-es5.64d8c0d568fd720ce308.js",
         "/index.html",
-        "/main-es2015.d7d0aabce31cc3e8ded9.js",
-        "/main-es5.d7d0aabce31cc3e8ded9.js",
+        "/main-es2015.c5a4bb11f019e5a19257.js",
+        "/main-es5.c5a4bb11f019e5a19257.js",
         "/manifest.webmanifest",
         "/polyfills-core-js-es2015.79ebeed52926c7a46d5b.js",
         "/polyfills-core-js-es5.79ebeed52926c7a46d5b.js",
@@ -140,7 +140,7 @@
         "/polyfills-es5.f6fc74ebff3a5656a5c8.js",
         "/runtime-es2015.cccd88e27a37018ec532.js",
         "/runtime-es5.cccd88e27a37018ec532.js",
-        "/styles.96a0373635055667dabb.css"
+        "/styles.4e2cf0d8d5e6c264950d.css"
       ],
       "patterns": []
     },
@@ -3577,9 +3577,9 @@
     "/assets/wefinex/sounds/warning.mp3": "d86622326425e5f0596fa17d899f3de58e702591",
     "/common-es2015.64d8c0d568fd720ce308.js": "ab576ace9de8822a4cec2b66cc467ebebd3577e3",
     "/common-es5.64d8c0d568fd720ce308.js": "5b4fb24a92f50d7a5d2540e1e950f0b5232ad9ab",
-    "/index.html": "c04879ee80f2a2d883027a7479bdfcfc0cc07ff4",
-    "/main-es2015.d7d0aabce31cc3e8ded9.js": "c93a166adf15a941628ca10ed8d106b7d7510ff5",
-    "/main-es5.d7d0aabce31cc3e8ded9.js": "1456d3dbeadeb295f40e19a4618e1d7503503b82",
+    "/index.html": "6f11b4376ecd8506137109d8c019de481acb83d4",
+    "/main-es2015.c5a4bb11f019e5a19257.js": "e45590cc52f5e6d8315cedc41be0877de1ee1438",
+    "/main-es5.c5a4bb11f019e5a19257.js": "d763005a437f195127f2c1a35cc553f620b9d860",
     "/manifest.webmanifest": "bd5b8645f1773f1e16123edeb097429fc8573389",
     "/polyfills-core-js-es2015.79ebeed52926c7a46d5b.js": "f007c630c357ee7eeec2289a6cfc013dbcbe6fe9",
     "/polyfills-core-js-es5.79ebeed52926c7a46d5b.js": "8531ee642b05d9e12e859babeaec61c2b1c1e57a",
@@ -3591,7 +3591,7 @@
     "/polyfills-es5.f6fc74ebff3a5656a5c8.js": "51a6fd93a0d377e6938c41335908d404183dcdff",
     "/runtime-es2015.cccd88e27a37018ec532.js": "10bc317e390aa07b6e2604e866b11670cdc90bb3",
     "/runtime-es5.cccd88e27a37018ec532.js": "08a8385f0633f2ada046c5c4e3098b80900fe84a",
-    "/styles.96a0373635055667dabb.css": "e4908e2b0bb3198912726e359751d579b747ba73"
+    "/styles.4e2cf0d8d5e6c264950d.css": "932e23004bd0fd6c74edd3f83a7d949a793704a0"
   },
   "navigationUrls": [
     {
