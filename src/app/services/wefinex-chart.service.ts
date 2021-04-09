@@ -42,4 +42,5 @@ export class WefinexChart implements Entity {
   closePrice: number; 
   settledDateTime: number;
   status: string;
+  createdTime: number
 }

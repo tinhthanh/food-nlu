@@ -67,7 +67,7 @@ export class SettingComponent implements OnInit, OnDestroy {
   }
    info() {
     // tslint:disable-next-line:max-line-length
-    alert('Số lần thua liên tiếp bạn có thể follow, vd: 1-2-4-8-16 = 5 mặc định cài đặt của hệ thống là 5 chúng tôi không khuyến nghị thay đổi. Liện hệ 098 177 3084 để được hỗ trợ');
+    alert('Số tiền đặt cược lớn nhất, vd: 1-2-4-8-16  mặc định cài đặt của hệ thống là 4 chúng tôi không khuyến nghị thay đổi. Liện hệ 098 177 3084 để được hỗ trợ');
   }
   mailInfo() {
      // tslint:disable-next-line:max-line-length

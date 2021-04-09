@@ -121,6 +121,7 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
     const modeSwitch = this.document.querySelector('.mode-switch');
     this.document.documentElement.classList.toggle('dark');
     modeSwitch.classList.toggle('active');
+    document.body.classList.toggle('dark');
   }
   ngAfterViewInit(): void {
     this.initSound();
@@ -151,6 +152,9 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
       listView.classList.add('active');
       projectsList.classList.remove('jsGridView');
       projectsList.classList.add('jsListView');
+    }
+    if(new Date().getHours() >= 17) {
+      this.switchMode() ;
     }
   }
   mobileCheck() {

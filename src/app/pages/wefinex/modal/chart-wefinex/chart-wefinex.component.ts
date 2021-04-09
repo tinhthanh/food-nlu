@@ -35,7 +35,7 @@ export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   constructor( public alertController: AlertController, public auth: AuthService, public followBetManuallyService: FollowBetManuallyService, private modalCtrl: ModalController, private wefinexChartService: WefinexChartService) { 
     
     this.wefinexChartService.getListByCondition((ref) => ref.orderBy('settledDateTime', 'desc').limit(27)).pipe(takeUntil(this.ngUnsubscribe)).subscribe((k) => {
-        const data = k.map((item) => { return { x : new Date(item.settledDateTime), y: [item.openPrice ,item.highPrice , item.lowPrice , item.closePrice]}}).reverse();
+        const data = k.map((item) => { return { x : new Date(item.createdTime), y: [item.openPrice ,item.highPrice , item.lowPrice , item.closePrice]}}).reverse();
         this.chartOptions = {
           series: [
             {

@@ -130,7 +130,7 @@
       </div>
       <div class="project-boxes jsGridView">
         <div *ngIf="current" class="project-box-wrapper">
-          <div class="project-box" [style.background-color]="mapType[current.type].b" >
+          <div [ngClass]="{'disable-bet' : current['countDown'] <= 30 }" class="project-box" [style.background-color]="mapType[current.type].b" >
             <div class="project-box-header">
               <span>Thời gian: {{current.time}}</span>
               <div class="more-wrapper">
