@@ -9,8 +9,27 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
+  <ion-fab horizontal="start" vertical="top" slot="fixed">
+    <ion-fab-button color="secondary">
+      <ion-icon md="caret-forward" ios="chevron-forward-circle-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-list side="end">
+      <ion-fab-button (click)="chartBar(false, 0)" color="light">
+       1d
+      </ion-fab-button>
+      <ion-fab-button  (click)="chartBar(false, 1)" color="light">
+       2d
+      </ion-fab-button>
+      <ion-fab-button  (click)="chartBar(false, 2)" color="light">
+       3d 
+      </ion-fab-button>
+      <ion-fab-button color="light">
+        <ion-icon (click)="chartBar(true)" name="bar-chart-sharp"></ion-icon>
+      </ion-fab-button>
+    </ion-fab-list>
+  </ion-fab>
 <div id="chart">
-  <ng-container  *ngIf="chartOptions">
+  <ng-container *ngIf="chartOptions">
     <apx-chart
     [series]="chartOptions.series"
     [chart]="chartOptions.chart"
