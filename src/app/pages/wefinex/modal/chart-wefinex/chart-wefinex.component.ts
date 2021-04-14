@@ -2,10 +2,12 @@ import { AfterViewInit, Component, ElementRef, Input, OnDestroy, OnInit, ViewChi
 import { AlertController, ModalController } from '@ionic/angular';
 
 import {ChartComponent,ApexAxisChartSeries,ApexChart,ApexYAxis,ApexXAxis,ApexTitleSubtitle} from "ng-apexcharts";
-import { interval, Subject, Subscription } from 'rxjs';
+import { interval, Observable, Subject, Subscription } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { AuthService, User } from 'src/app/services/auth.service';
+import { DestroyService } from 'src/app/services/destroy.service';
 import { FollowBetManuallyService } from 'src/app/services/follow-bet-manually.service';
+import { UserBalance, UserBalanceService } from 'src/app/services/user-balance.service';
 import { WefinexChartService } from 'src/app/services/wefinex-chart.service';
 
 export type ChartOptions = {
@@ -20,21 +22,22 @@ export type ChartOptions = {
 @Component({
   selector: 'app-chart-wefinex',
   templateUrl: './chart-wefinex.component.html',
-  styleUrls: ['./chart-wefinex.component.scss'],
+  styleUrls: ['./chart-wefinex.component.scss']
 })
 export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   stake: string = '1';
   
   @ViewChild("chart") chart: ChartComponent;
   public chartOptions: Partial<ChartOptions>;
-
+  
   countDown = 30 ;
   isPlaceBet =  false;
   private ngUnsubscribe = new Subject();
   user: User;
   subscription: Subscription;
   day = new Date().getDay();
-  constructor( public alertController: AlertController, public auth: AuthService, public followBetManuallyService: FollowBetManuallyService, private modalCtrl: ModalController, private wefinexChartService: WefinexChartService) { 
+  $userBalance: Observable<UserBalance>;
+  constructor( public alertController: AlertController, public auth: AuthService, public followBetManuallyService: FollowBetManuallyService, private modalCtrl: ModalController, private wefinexChartService: WefinexChartService,  private userBalanceService: UserBalanceService) { 
     
     this.chartBar(true);
    
@@ -160,8 +163,9 @@ export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
 
   }
   ngOnInit() {
-    this.auth.user$.subscribe( z => {
+    this.auth.user$.pipe(takeUntil(this.ngUnsubscribe)).subscribe( z => {
       this.user = z ;
+      this.$userBalance =  this.userBalanceService.get(z.uid).pipe(takeUntil(this.ngUnsubscribe));
   });
     interval(500).pipe(takeUntil(this.ngUnsubscribe)).subscribe( value => {
       let second =  new Date().getSeconds() ;

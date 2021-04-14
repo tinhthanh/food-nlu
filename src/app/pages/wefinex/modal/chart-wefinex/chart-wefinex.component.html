@@ -45,8 +45,8 @@
       <ion-thumbnail slot="start">
         <img src="https://image.flaticon.com/icons/png/128/1027/1027961.png">
       </ion-thumbnail>
-      <ion-label *ngIf="user" >
-        <h2 [appHighlightOdds]="this.user.balance" >Nhập tiền đặt |  ${{user? this.user.balance : ''}} </h2>
+      <ion-label  *ngIf="$userBalance  | async as user;"  >
+        <h2 [appHighlightOdds]="user.balance" >Nhập tiền đặt |  ${{user? this.user.balance : ''}} </h2>
         <ion-row >
           <div class="increment-product">
             <ion-input  (ionInput)="changeFollowByCommand($event)"  placeholder="Nhập tiền đặt" value="{{stake}}"></ion-input>

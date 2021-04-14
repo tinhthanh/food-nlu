@@ -2,7 +2,7 @@ import { AfterViewInit, Component, Inject, OnDestroy, OnInit } from '@angular/co
 import { DOCUMENT } from '@angular/common';
 import { WefinexCommandService, WefinetComand } from 'src/app/services/wefinex-command.service';
 import { WefinexResultService, WefinexResult } from 'src/app/services/wefinex-result.service';
-import { interval, Subject, timer } from 'rxjs';
+import { interval, Observable, Subject, timer } from 'rxjs';
 import { takeUntil, timeInterval, timeout } from 'rxjs/operators';
 import AudioTouchUnlock from './audio-touch-unblock';
 import { Profit, WefinexTotalAmountService } from 'src/app/services/wefinex-total-amount.service';
@@ -12,6 +12,7 @@ import { AlertController, LoadingController, ModalController } from '@ionic/angu
 import { HistoryComponent } from './modal/history/history.component';
 import { ChartWefinexComponent } from './modal/chart-wefinex/chart-wefinex.component';
 import { FollowBetManuallyService } from 'src/app/services/follow-bet-manually.service';
+import { UserBalance, UserBalanceService } from 'src/app/services/user-balance.service';
 @Component({
   selector: 'app-wefinex',
   templateUrl: './wefinex.component.html',
@@ -30,13 +31,15 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   menuActive = 'HOME';
   user: User;
   private ngUnsubscribe = new Subject();
+  $userBalance: Observable<UserBalance>;
   constructor(@Inject(DOCUMENT) private document: Document, private wefinexCommandService: WefinexCommandService,
               private wefinexResultService: WefinexResultService, private wefinexTotalAmountService: WefinexTotalAmountService,
               public auth: AuthService,
               public modalController: ModalController,
               public loadingController: LoadingController,
               public alertController: AlertController,
-              public followBetManuallyService: FollowBetManuallyService) {
+              public followBetManuallyService: FollowBetManuallyService,
+              private userBalanceService: UserBalanceService) {
     this.wefinexResultService.getListByCondition((ref) => ref.orderBy('lastUpdate', 'desc').limit(17)).subscribe((k) => {
       this.result = k;
     });
@@ -167,8 +170,12 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
-      this.auth.user$.subscribe( z => {
+      this.auth.user$.pipe(takeUntil(this.ngUnsubscribe)).subscribe( z => {
         this.user = z ;
+        this.$userBalance =  this.userBalanceService.get(z.uid).pipe(takeUntil(this.ngUnsubscribe));
+        this.$userBalance.subscribe(z => {
+          console.log(z);
+        } )
     });
     AudioTouchUnlock.onInit();
   }
