@@ -1,8 +1,8 @@
 {
-  "name": "8 Gian",
-  "short_name": "8Gian",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Bot Auto Trade Wefinex",
+  "short_name": "BotWefinex",
+  "theme_color": "#4e8ef7",
+  "background_color": "#4e8ef7",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

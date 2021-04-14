@@ -109,12 +109,22 @@ export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
         const key  = listKey.length + listKey[0] ;
         obj[key]  =  [...(obj[key] || [] ), result[0].key.split(' ')[1]];
       }
-      console.log(obj);
-        this.chartOptions = {
+      var temp1 = obj;
+      var list = Object.values(Object.keys(temp1).reduce( (pre , curr) => {  pre[curr.replace("T", "").replace("G", "")]  = { name:curr.match(/\d+/g)[0] , T : (temp1[curr.match(/\d+/g)[0] + "T"] ? temp1[curr.match(/\d+/g) + "T"].length : 0)  , G : (temp1[curr.match(/\d+/g)[0] + "G"] ? temp1[curr.match(/\d+/g) + "G"].length : 0) } ; return pre; } , {})).
+      sort((b1: any, b2: any) => Number(b1.name) - Number(b2.name) ) ;
+       
+      this.chartOptions = {
+         
           series: [
             {
-              name: "Time",
-              data: Object.values(obj).map( (b:[]) => b.length)
+              name: "Giảm",
+              data: list.map((k: any) => k.G),
+              color: 'rgb(254 ,25, 25)'
+            },
+            {
+              name: "Tăng",
+              data: list.map((k: any) => k.T),
+              color: 'rgb(0, 143, 251)'
             }
           ],
           chart: {
@@ -122,11 +132,11 @@ export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
             type: "bar"
           },
           title: {
-            text: "My First Angular Chart"
+            text: "Time"
           },
           xaxis: {
             categories: 
-             Object.keys(obj)
+            list.map((k: any) => k.name)
           }
         };
     });
