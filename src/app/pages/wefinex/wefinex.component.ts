@@ -173,9 +173,6 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
       this.auth.user$.pipe(takeUntil(this.ngUnsubscribe)).subscribe( z => {
         this.user = z ;
         this.$userBalance =  this.userBalanceService.get(z.uid).pipe(takeUntil(this.ngUnsubscribe));
-        this.$userBalance.subscribe(z => {
-          console.log(z);
-        } )
     });
     AudioTouchUnlock.onInit();
   }
