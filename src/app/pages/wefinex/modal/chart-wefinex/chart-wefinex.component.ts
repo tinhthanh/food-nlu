@@ -8,6 +8,7 @@ import { AuthService, User } from 'src/app/services/auth.service';
 import { DestroyService } from 'src/app/services/destroy.service';
 import { FollowBetManuallyService } from 'src/app/services/follow-bet-manually.service';
 import { UserBalance, UserBalanceService } from 'src/app/services/user-balance.service';
+import { WefinexChartStatisticalService } from 'src/app/services/wefinex-chart-statistical.service';
 import { WefinexChartService } from 'src/app/services/wefinex-chart.service';
 
 export type ChartOptions = {
@@ -37,7 +38,7 @@ export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
   subscription: Subscription;
   day = new Date().getDay();
   $userBalance: Observable<UserBalance>;
-  constructor( public alertController: AlertController, public auth: AuthService, public followBetManuallyService: FollowBetManuallyService, private modalCtrl: ModalController, private wefinexChartService: WefinexChartService,  private userBalanceService: UserBalanceService) { 
+  constructor( public wefinexChartStatisticalService: WefinexChartStatisticalService ,public alertController: AlertController, public auth: AuthService, public followBetManuallyService: FollowBetManuallyService, private modalCtrl: ModalController, private wefinexChartService: WefinexChartService,  private userBalanceService: UserBalanceService) { 
     
     this.chartBar(true);
    
@@ -80,43 +81,15 @@ export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
         };
     });
     } else {
-     const temp =  this.setKeyByDate(num || 0);
-     const day =  String(temp.getDate()).padStart(2, '0') ;
-     const month =   String(temp.getMonth() + 1).padStart(2, '0') ;
-     const year = temp.getFullYear();
-      let start =  new Date(`${year}-${month}-${day} 00:00:00`).getTime();
-      let end = new Date(`${year}-${month}-${day} 23:59:59`).getTime();
-      this.subscription =  this.wefinexChartService.getListByCondition((ref) => ref.where('settledDateTime', '>', start)
-      .where('settledDateTime', '<', end).orderBy('settledDateTime', 'desc')).pipe(takeUntil(this.ngUnsubscribe)).subscribe((data) => {
- //const data  = ["T", "T" , "G" , "G", "G", "T" , "G", "T",  "T" ,"T" , "T","T"];
-      let result = [];
-      let same:any = data[0];
-      let obj = {};
-      for( let i = 0 ; i < data.length; i++) {
-        const d:any = data[i] ;
-          if(d.type !== same.type) { 
-          if(result.length > 1){
-            const listKey = result.map(k => k.type).join('') ;
-            const key  = listKey.length + listKey[0] ;
-            
-            obj[key]  = [...(obj[key] || [] ), result[0].key.split(' ')[1]]  ;
-          }
-          result = [];
-        }
-        result.push(d)
-        same = d;
+      const temp =  this.setKeyByDate(num || 0);
+      const day =  String(temp.getDate()).padStart(2, '0') ;
+      const month =   String(temp.getMonth() + 1).padStart(2, '0') ;
+      const year = temp.getFullYear();
 
-      }
-      if(result.length > 1){
-        const listKey = result.map(k => k.type).join('') ;
-        const key  = listKey.length + listKey[0] ;
-        obj[key]  =  [...(obj[key] || [] ), result[0].key.split(' ')[1]];
-      }
-      var temp1 = obj;
-      var list = Object.values(Object.keys(temp1).reduce( (pre , curr) => {  pre[curr.replace("T", "").replace("G", "")]  = { name:curr.match(/\d+/g)[0] , T : (temp1[curr.match(/\d+/g)[0] + "T"] ? temp1[curr.match(/\d+/g) + "T"].length : 0)  , G : (temp1[curr.match(/\d+/g)[0] + "G"] ? temp1[curr.match(/\d+/g) + "G"].length : 0) } ; return pre; } , {})).
-      sort((b1: any, b2: any) => Number(b1.name) - Number(b2.name) ) ;
-       
-      this.chartOptions = {
+      this.subscription = this.wefinexChartStatisticalService.get(`${day}:${month}:${year}`).subscribe ( data => {
+        if(!data) {  alert("Không có dữ liệu"); return}
+        const list = JSON.parse( data.data);
+        this.chartOptions = {
          
           series: [
             {
@@ -139,10 +112,49 @@ export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
           },
           xaxis: {
             categories: 
-            list.map((k: any) => k.name)
+            list.map((k: any) => k.N)
           }
         };
-    });
+      });
+      return ;
+//      const temp =  this.setKeyByDate(num || 0);
+//      const day =  String(temp.getDate()).padStart(2, '0') ;
+//      const month =   String(temp.getMonth() + 1).padStart(2, '0') ;
+//      const year = temp.getFullYear();
+//       let start =  new Date(`${year}-${month}-${day} 00:00:00`).getTime();
+//       let end = new Date(`${year}-${month}-${day} 23:59:59`).getTime();
+//       this.subscription =  this.wefinexChartService.getListByCondition((ref) => ref.where('settledDateTime', '>', start)
+//       .where('settledDateTime', '<', end).orderBy('settledDateTime', 'desc')).pipe(takeUntil(this.ngUnsubscribe)).subscribe((data) => {
+//  //const data  = ["T", "T" , "G" , "G", "G", "T" , "G", "T",  "T" ,"T" , "T","T"];
+//       let result = [];
+//       let same:any = data[0];
+//       let obj = {};
+//       for( let i = 0 ; i < data.length; i++) {
+//         const d:any = data[i] ;
+//           if(d.type !== same.type) { 
+//           if(result.length > 1){
+//             const listKey = result.map(k => k.type).join('') ;
+//             const key  = listKey.length + listKey[0] ;
+            
+//             obj[key]  = [...(obj[key] || [] ), result[0].key.split(' ')[1]]  ;
+//           }
+//           result = [];
+//         }
+//         result.push(d)
+//         same = d;
+
+//       }
+//       if(result.length > 1){
+//         const listKey = result.map(k => k.type).join('') ;
+//         const key  = listKey.length + listKey[0] ;
+//         obj[key]  =  [...(obj[key] || [] ), result[0].key.split(' ')[1]];
+//       }
+//       var temp1 = obj;
+//       var list = Object.values(Object.keys(temp1).reduce( (pre , curr) => {  pre[curr.replace("T", "").replace("G", "")]  = { name:curr.match(/\d+/g)[0] , T : (temp1[curr.match(/\d+/g)[0] + "T"] ? temp1[curr.match(/\d+/g) + "T"].length : 0)  , G : (temp1[curr.match(/\d+/g)[0] + "G"] ? temp1[curr.match(/\d+/g) + "G"].length : 0) } ; return pre; } , {})).
+//       sort((b1: any, b2: any) => Number(b1.name) - Number(b2.name) ) ;
+       
+     
+    // });
     }
   
   }
