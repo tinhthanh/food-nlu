@@ -47,15 +47,20 @@ export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
     if(this.subscription) {
       this.subscription.unsubscribe();
     }
+    const temp =  this.setKeyByDate(num || 0);
+    const day =  String(temp.getDate()).padStart(2, '0') ;
+    const month =   String(temp.getMonth() + 1).padStart(2, '0') ;
+    const year = temp.getFullYear();
     if(isChart) {
-    this.subscription =  this.wefinexChartService.getListByCondition((ref) => ref.orderBy('settledDateTime', 'desc').limit(27)).pipe(takeUntil(this.ngUnsubscribe)).subscribe((k) => {
-        const data = k.map((item) => { return { x : new Date(item.createdTime), y: [item.openPrice ,item.highPrice , item.lowPrice , item.closePrice]}}).reverse();
+      this.subscription = this.wefinexChartStatisticalService.get(`${day}:${month}:${year}-STOCK`).subscribe ( data => {
+        if(!data) {  alert("Không có dữ liệu"); return}
+        // const data = k.map((item) => { return { x : new Date(item.createdTime), y: [item.openPrice ,item.highPrice , item.lowPrice , item.closePrice]}}).reverse();
         console.log("change.....");
         this.chartOptions = {
           series: [
             {
               name: "candle",
-              data: data
+              data: JSON.parse(data.data)
             }
           ],
           chart: {
@@ -81,11 +86,7 @@ export class ChartWefinexComponent implements OnInit, AfterViewInit, OnDestroy {
         };
     });
     } else {
-      const temp =  this.setKeyByDate(num || 0);
-      const day =  String(temp.getDate()).padStart(2, '0') ;
-      const month =   String(temp.getMonth() + 1).padStart(2, '0') ;
-      const year = temp.getFullYear();
-
+    
       this.subscription = this.wefinexChartStatisticalService.get(`${day}:${month}:${year}`).subscribe ( data => {
         if(!data) {  alert("Không có dữ liệu"); return}
         const list = JSON.parse( data.data);

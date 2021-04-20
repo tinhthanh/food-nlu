@@ -40,7 +40,7 @@ export class WefinexComponent implements OnInit, AfterViewInit, OnDestroy {
               public alertController: AlertController,
               public followBetManuallyService: FollowBetManuallyService,
               private userBalanceService: UserBalanceService) {
-    this.wefinexResultService.getListByCondition((ref) => ref.orderBy('lastUpdate', 'desc').limit(17)).subscribe((k) => {
+    this.wefinexResultService.getListByCondition((ref) => ref.orderBy('lastUpdate', 'desc').limit(8)).subscribe((k) => {
       this.result = k;
     });
     let d = new Date();
